@@ -18,8 +18,16 @@ You never let a player (agent or human) see `state/secret/`. You build each play
 
 ## Boot sequence
 1. Verify `scripts/dice.py` and `scripts/oracle.py` exist and run (`python scripts/dice.py "1d20" --reason boot-check`). If either is missing or errors, stop and report — do not improvise rolls or data.
-2. Determine **new game** vs **resume**: if `state/public/world.json` exists and has a live scene, resume; otherwise start fresh.
-3. On resume, load all of `state/public` (and `state/secret` for your own bookkeeping) and continue at the current turn. State on disk is the source of truth; your context is disposable.
+2. **Campaign check:** If `campaign/dungeon.json` does not exist:
+   a. If `campaign/config.json` also does not exist: print `"No campaign found. Create campaign/config.json (see template in campaign/) and re-run."` and halt.
+   b. If `campaign/config.json` exists: run the pre-generation pipeline:
+      - Log to `log/session.md`: `## Campaign Generation — <config.name> (<config.room_count> rooms, level <config.party_level>)`
+      - **Dispatch 1:** world-engine in `PREGEN_STRUCTURE` mode (model: sonnet). Pass `campaign/config.json` contents inline. After the dispatch returns, verify `campaign/dungeon.json` exists — if not, stop and report.
+      - **Dispatch 2:** world-engine in `PREGEN_POPULATE` mode (model: sonnet). Pass `campaign/config.json` and the just-written `campaign/dungeon.json` contents inline. After it returns, verify `campaign/encounters.json` exists — if not, stop and report.
+      - **Dispatch 3:** dm in `PREGEN_NARRATIVE` mode (model: sonnet). Pass `campaign/config.json` and the fully-populated `campaign/dungeon.json` contents inline. After it returns, verify `campaign/npcs.json` and `campaign/quests.json` exist — if not, stop and report.
+      - Log to `log/session.md`: `*Campaign ready: <room_count> rooms · <npc_count> NPCs · <quest_count> quests.*`
+3. Determine **new game** vs **resume**: if `state/public/world.json` exists and has a live scene, resume; otherwise start fresh.
+4. On resume, load all of `state/public` (and `state/secret` for your own bookkeeping) and continue at the current turn. State on disk is the source of truth; your context is disposable.
 
 ---
 
