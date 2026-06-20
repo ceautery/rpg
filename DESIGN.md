@@ -89,11 +89,13 @@ Stone Bauer (human fighter) added as second party member. Terminal prompt path: 
 
 ## Planned milestones (M6+)
 
-### M6 — Quality of life + speed
+### ✅ M6 — Quality of life + speed
 - **Inter-PC coordination phase:** New `COORDINATE` mode for player subagent. Before action collection opens, orchestrator presents the scene and asks: *"Anything you want to say to [party member] before you act?"* Human's message (if any) is passed to agent PC(s); agents respond in character and optionally signal intent. Action files written after coordination closes. One optional round-trip per scene.
 - **Haiku for fast agents:** Player agent `TAKE_TURN` and `COORDINATE` modes → `claude-haiku-4-5`. World-engine `RESOLVE` mode (pure dice + arithmetic) → Haiku. DM narration and world-engine `GENERATE` stay on Sonnet.
 - **Ditch HTML log:** Remove `render_log.py` from the active turn loop. Script stays in repo. Players use `tail -f log/session.md` or follow in Claude Code's UI.
 - **Milestone/roadmap tracking:** `MILESTONES.md` added to repo root.
+
+**Completed 2026-06-20.** Coordination phase (step 2b in run.md), Haiku model selection (all dispatch templates annotated), and log simplification (session.html untracked, tail note added) implemented across .claude/agents/player.md, run.md, and .gitignore.
 
 ### M7 — Campaign pre-generation
 - **Separate world-building from gameplay.** New phase before play: DM + world-engine generate the full campaign module — all rooms, room connections, NPC roster with goals, quest tree, encounter tables, loot tables, trap placements.
