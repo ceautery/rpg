@@ -96,7 +96,7 @@ Stone Bauer (human fighter) added as second party member. Terminal prompt path: 
 
 **Completed 2026-06-20.** Coordination phase (step 2b in run.md), Haiku model selection (all dispatch templates annotated), and log simplification (session.html untracked, tail note added) implemented across .claude/agents/player.md, run.md, and .gitignore. `MILESTONES.md` deferred to M7.
 
-### M7 — Campaign pre-generation
+### M7 — Campaign pre-generation ✓ *completed 2026-06-20*
 - **Separate world-building from gameplay.** New phase before play: DM + world-engine generate the full campaign module — all rooms, room connections, NPC roster with goals, quest tree, encounter tables, loot tables, trap placements.
 - Output: `campaign/dungeon.json`, `campaign/npcs.json`, `campaign/quests.json`, `campaign/encounters.json`.
 - Gameplay reads from `campaign/` rather than generating scenes live. Scene setup becomes a file read + token placement, not a dispatch.

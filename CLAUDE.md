@@ -23,6 +23,11 @@
 | `state/rng_log.jsonl` | dice.py (via world-engine) |
 | `log/session.md` | orchestrator |
 | `cache/*` | oracle.py |
+| `campaign/config.json` | User |
+| `campaign/dungeon.json` | world-engine (PREGEN_STRUCTURE → PREGEN_POPULATE), then DM (PREGEN_NARRATIVE) — sequential pre-gen dispatches only |
+| `campaign/encounters.json` | world-engine (PREGEN_POPULATE) |
+| `campaign/npcs.json` | DM (PREGEN_NARRATIVE) |
+| `campaign/quests.json` | DM (PREGEN_NARRATIVE); orchestrator toggles `completed` flags only |
 
 ## Attribution
 
