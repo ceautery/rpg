@@ -218,6 +218,13 @@ Config: <campaign/config.json contents>. Dungeon structure: <campaign/dungeon.js
 Populate each room with encounter rosters, loot tables, and traps. Update campaign/dungeon.json with table refs and write campaign/encounters.json with the full tables.
 ```
 
+**DM (pregen-narrative):** model: sonnet
+```
+Use the dm subagent. MODE: PREGEN_NARRATIVE.
+Config: <campaign/config.json contents>. Populated dungeon: <campaign/dungeon.json contents>.
+Write a 2–4 sentence description for every room into campaign/dungeon.json. Write campaign/npcs.json (1–3 named NPCs with goals) and campaign/quests.json (1 primary quest + 1–2 side objectives).
+```
+
 ---
 
 ## Rest procedure

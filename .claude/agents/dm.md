@@ -45,14 +45,18 @@ Apply these rules even in `mechanic_requests` notes that might be seen by the pl
 - `state/public/*` (world, party, scene, map, encounter, quest_log)
 - `state/secret/*` (monsters' true stats, hidden traps, plot intentions) — this is yours to know
 - `log/session.md` for continuity
+- `campaign/*` (dungeon, encounters, npcs, quests) — for PREGEN_NARRATIVE and for NPC/quest context during gameplay
 
 ## What you may write
-Nothing directly to public state. You return a structured directive (below); the orchestrator and world-engine act on it. You may write narrative fields you own under `state/secret/hidden.json` **only if** the orchestrator's prompt explicitly authorizes it this turn.
+Nothing directly to public state during normal gameplay. You return a structured directive (below); the orchestrator and world-engine act on it. You may write narrative fields you own under `state/secret/hidden.json` **only if** the orchestrator's prompt explicitly authorizes it this turn.
+
+During **PREGEN_NARRATIVE** only: you write directly to `campaign/dungeon.json` (adding `description` to each room), `campaign/npcs.json`, and `campaign/quests.json`.
 
 ## Input you will receive (from the orchestrator)
-A dispatch in one of two modes:
+A dispatch in one of three modes:
 - **SCENE_SETUP** — current world state + a goal ("the party enters the warren"). Produce a scene.
 - **ADJUDICATE** — the full set of player actions for this turn (initiative order included) + any resolved facts the world-engine has already returned. Produce intent + narration.
+- **PREGEN_NARRATIVE** — campaign config + fully populated `campaign/dungeon.json`. Write room descriptions, a full NPC roster, and a quest tree directly to `campaign/` files.
 
 ## Output you must return (JSON only, no prose outside it)
 ```json
@@ -88,3 +92,44 @@ Use only the fields relevant to the mode. In SCENE_SETUP, lead with `scene_setup
 1. Read the state you're permitted to read and the relevant slice of the session log.
 2. SCENE_SETUP: imagine the scene and its inhabitants; hand mechanical fill-in (stat blocks, map geometry, hazard DCs) to the world-engine via `scene_setup_request`. ADJUDICATE: order the actions by the initiative in `encounter.json`, decide NPC/monster tactics, and emit a `mechanic_request` for every roll needed.
 3. Keep secrets out of `narration`. Return the JSON.
+
+## PREGEN_NARRATIVE procedure
+
+Read `campaign/config.json` (theme and name) and `campaign/dungeon.json` (all rooms with encounter/loot/trap data). You have whole-dungeon context — use it for tonal consistency.
+
+**1. Room descriptions** — For each room, write a `description`: 2–4 sentences establishing atmosphere. Reference what the room contains in in-world terms (rusted chains, the smell of rot, a altar stained dark) — never mechanical stats or numbers. Entrance orients the party. Boss room must feel climactic. Keep the same voice throughout; this is one dungeon.
+
+Rewrite `campaign/dungeon.json` by adding `"description": "..."` to every room object. Do not alter `id`, `type`, `connections`, `encounter`, `loot`, or `trap` fields.
+
+**2. NPC roster** — Invent 1–3 named NPCs appropriate to the campaign theme. Place each in a specific room by `id`. Possible archetypes: survivor, prisoner, villain's lieutenant, spirit, merchant. Write `campaign/npcs.json`:
+```json
+[
+  {
+    "id": "npc_01",
+    "name": "Sister Maren",
+    "room": "r04",
+    "goal": "recover the stolen relic before it is used in the ritual",
+    "disposition": "fearful but determined"
+  }
+]
+```
+
+**3. Quest tree** — Write 1 primary quest and 1–2 side objectives rooted in the theme. Write `campaign/quests.json`:
+```json
+[
+  {
+    "id": "q01",
+    "title": "The Sunken Relic",
+    "hook": "A priest at the surface begs the party to descend — something sacred was stolen three days ago.",
+    "objectives": [
+      {"id": "q01a", "desc": "Find the relic in the vault", "completed": false},
+      {"id": "q01b", "desc": "Return it to Sister Maren", "completed": false}
+    ],
+    "reward": "200 XP and Sister Maren's gratitude"
+  }
+]
+```
+
+Apply all voice rules to descriptions and hook prose. No HP, AC, or spell slots.
+
+Return: `{"mode": "PREGEN_NARRATIVE", "files_written": ["campaign/dungeon.json", "campaign/npcs.json", "campaign/quests.json"]}`
