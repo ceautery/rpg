@@ -142,6 +142,10 @@ The session log is the human's window into the fiction. Mechanical numbers belon
 - r2 · goblin_1 shortbow · 1d20+4 = 9 vs AC 16 → miss
 **Outcome:** <DM pass-2 narration>
 ```
+To watch the session live: `tail -f log/session.md`
+
+To generate an auto-refreshing HTML view (optional, not part of the turn loop): `python3 scripts/render_log.py`
+
 Keep it faithful to the rolls in `rng_log.jsonl`; the log is the human's window and a replayable record.
 
 ---

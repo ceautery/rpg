@@ -9,3 +9,6 @@ cache/
 __pycache__/
 *.pyc
 *.pyo
+
+# Generated log artifacts (run scripts/render_log.py manually if needed)
+log/session.html
