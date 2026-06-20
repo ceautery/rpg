@@ -35,7 +35,7 @@ You never let a player (agent or human) see `state/secret/`. You build each play
 1. **Roster.** Decide the party: how many agent PCs, and whether the human is playing (ask the human once, up front). Keep the first game small — one agent PC, optionally the human.
 2. **Character creation.** For each agent PC, dispatch the player subagent in `CREATE_CHARACTER` mode. For the human, prompt them for the same concept fields. Route every returned `mechanics_request` to the world-engine in `GENERATE` mode to get real stats/HP/gear (rolled via `dice.py`).
 3. Write each finished PC into `state/public/party.json` (sheet, max/current HP, empty conditions, inventory, position once a scene exists).
-4. Initialize `state/public/world.json` with `{"current_room_id": "r01", "turn": 0, "time": "dawn"}` (use the `id` of the first room with `"type": "entrance"` in `campaign/dungeon.json`) and an empty `state/public/quest_log.json`.
+4. Initialize `state/public/world.json` with `{"current_room_id": <entrance_id>, "turn": 0, "time": "dawn"}` where `<entrance_id>` is the `id` of the first room with `"type": "entrance"` in `campaign/dungeon.json`, and an empty `state/public/quest_log.json`.
 5. Proceed into the turn loop with scene setup.
 
 ---
@@ -50,7 +50,7 @@ Read `state/public/*` fresh. Increment/confirm the turn number. Note the active 
 ### 2. Scene setup (only when a new scene/encounter is needed)
 1. Read `current_room_id` from `state/public/world.json`. Find the matching room object in `campaign/dungeon.json`. Its `description` field is the scene prose — no DM dispatch needed.
 2. Look up `encounter.table_ref` for this room in `campaign/encounters.json` to get the pre-selected monster roster. Dispatch **world-engine** in `GENERATE` mode, passing the roster as an explicit list (not a free-selection request). World-engine rolls each monster's HP, writes `map.txt`, `encounter.json`, and `state/secret/monsters.json`.
-   - If the room's `trap` is non-null, include the trap ref in the GENERATE request so world-engine places it on the map with the pre-rolled DC.
+   - If the room's `trap` is non-null, resolve `room.trap.table_ref` in `campaign/encounters.json` (same lookup as the encounter ref) to get the full trap object `{dc, damage_die, save}` — pass it inline to the GENERATE request so world-engine places it on the map with the pre-rolled DC.
 3. Build `state/public/scene.json` from: the pre-written `description`, the public map, visible creatures by name and apparent state (never numeric HP), exits derived from the room's `connections` list, and an empty `npc_dialogue` list. **Strip anything from `secret/`.**
 4. Place PC tokens in `party.json` and on the map.
 5. Append the scene to `log/session.md` (see Log format).
