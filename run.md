@@ -146,22 +146,55 @@ Keep it faithful to the rolls in `rng_log.jsonl`; the log is the human's window 
 
 ---
 
-## Dispatch templates (inline in the Task prompt)
+## Dispatch templates (inline in the Agent tool prompt)
 
-**Player (take turn):**
+Model assignments: **haiku** for fast/bounded tasks, **sonnet** for creative/generative tasks. Pass `model: "haiku"` or `model: "sonnet"` as the `model` parameter in the Agent tool call — this overrides the agent file's frontmatter.
+
+**Player (coordinate):** model: haiku
+```
+Use the player subagent. MODE: COORDINATE. Turn <n>. You control <actor>.
+Scene: <prose>. Sheet: <json>. Prior transcript: <running transcript or "none">.
+Speak one or two lines in character. Return plain text, not JSON.
+```
+
+**Player (take turn):** model: haiku
 ```
 Use the player subagent. MODE: TAKE_TURN. Turn <n>. You control <actor>.
 Sheet: <json>. Perception packet: <json>. Return only the action JSON.
 ```
 
-**DM (adjudicate):**
+**Player (create character):** model: sonnet
+```
+Use the player subagent. MODE: CREATE_CHARACTER.
+[character concept prompt]. Return the character concept JSON.
+```
+
+**Player (rest):** model: haiku
+```
+Use the player subagent. MODE: REST. You control <actor>.
+Sheet: <json>. You may spend 0 to <N> Hit Dice. Return {"hit_dice_to_spend": N}.
+```
+
+**DM (scene setup):** model: sonnet
+```
+Use the dm subagent. MODE: SCENE_SETUP.
+World state: <json>. Goal: <description>. Return the directive JSON.
+```
+
+**DM (adjudicate):** model: sonnet
 ```
 Use the dm subagent. MODE: ADJUDICATE. Turn <n>. Initiative: <order>.
 Player actions: <json[]>. Resolved facts: <none | world-engine results json>.
 Return the directive JSON.
 ```
 
-**World-engine (resolve):**
+**World-engine (generate):** model: sonnet
+```
+Use the world-engine subagent. MODE: GENERATE.
+Scene setup request: <json>. Generate encounter, write map/monsters/encounter files.
+```
+
+**World-engine (resolve):** model: haiku
 ```
 Use the world-engine subagent. MODE: RESOLVE.
 Mechanic requests: <json[]>. Roll each via dice.py and return rolls + results JSON.
