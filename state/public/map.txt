@@ -1,0 +1,38 @@
+GOBLIN TREASURY — Room 3, Undercroft Dungeon
+Scene ID: goblin_treasury  |  Bright torchlight throughout
+Scale: each cell = 5 ft  |  Room interior = 30 ft (E-W) x 20 ft (N-S)
+
+     A    B    C    D    E    F
+   +----+----+----+----+----+----+
+ 1 | #  | #  | >  | >  | #  | #  |
+   +----+----+----+----+----+----+
+ 2 | #  | A  | .  | .  | .  | #  |
+   +----+----+----+----+----+----+
+ 3 | #  | .  | S  | .  | T  | #  |
+   +----+----+----+----+----+----+
+ 4 | #  | #  | #  | #  | #  |G$ |
+   +----+----+----+----+----+----+
+
+TOKENS
+  >   Entry passage (C1, D1) — passage back to guard post (north wall)
+  A   Aldric Sootmantle (pc_aldric)  — position B2
+  S   Stone Bauer (pc_stone)         — position C3
+  G   Gruk (goblin boss, monster)    — position F4
+  $   Iron chest (iron_chest_F4)     — position F4 (same cell as Gruk)
+  T   Pressure-plate trap [HIDDEN]   — position E3
+      *** Redact T token from all player-facing views ***
+
+WALLS & FEATURES
+  #   Wall / impassable stone
+  .   Open flagstone floor
+  Row 4 is entirely south wall except F4 (Gruk + chest alcove)
+  Columns A and F are west and east walls respectively
+  Entry passage C1-D1 connects north to guard post (Room 2)
+
+COORDINATE GUIDE
+  Columns : A (west) through F (east)
+  Rows    : 1 (north) through 4 (south)
+  Format  : [Column][Row]  e.g. "E3", "F4", "C1"
+
+LIGHTING
+  Entire room: BRIGHT LIGHT (torches on columns)

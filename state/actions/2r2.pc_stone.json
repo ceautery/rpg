@@ -1,0 +1,10 @@
+{
+  "turn": 2,
+  "round": 2,
+  "actor": "pc_stone",
+  "intent": "attack",
+  "description": "Stone closes the remaining distance, steps around the side of the barrel, and swings his longsword at Vreck.",
+  "target": "vreck",
+  "movement": "B3 → C3 (adjacent to Vreck at D3)",
+  "uses": "longsword (1d8+3 slashing, melee, 5 ft reach)"
+}

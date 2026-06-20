@@ -1,0 +1,10 @@
+{
+  "turn": 2,
+  "actor": "pc_aldric",
+  "intent": "cast",
+  "description": "Aldric mutters a sharp curse — painfully aware he's standing exactly where that arrow is pointed, and that he acts after the goblin fires. When his turn arrives, he sidesteps quickly to the rubble pile, putting stone between himself and the shortbow, then thrusts his arcane focus forward and hurls a bolt of fire at the goblin behind the barrel.",
+  "target": "vreck",
+  "movement": "to B2, behind rubble for half cover",
+  "uses": "fire_bolt (cantrip, +5 spell attack)",
+  "ooc_note": "Acts after the goblin shoots — goblin attacks at Aldric's current position (B1) before Aldric can move. On his actual turn he moves to rubble then casts."
+}

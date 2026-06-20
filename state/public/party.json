@@ -1,0 +1,133 @@
+{
+  "characters": [
+    {
+      "id": "pc_aldric",
+      "name": "Aldric Sootmantle",
+      "class": "wizard",
+      "level": 1,
+      "ability_scores": {
+        "str": 7,
+        "dex": 12,
+        "con": 16,
+        "int": 16,
+        "wis": 12,
+        "cha": 12
+      },
+      "ability_modifiers": {
+        "str": -2,
+        "dex": 1,
+        "con": 3,
+        "int": 3,
+        "wis": 1,
+        "cha": 1
+      },
+      "saving_throw_proficiencies": ["int", "wis"],
+      "hit_die": "d6",
+      "hit_dice": {"die": "d6", "total": 1, "remaining": 1},
+      "max_hp": 7,
+      "current_hp": 7,
+      "armor_class": 11,
+      "speed": 30,
+      "initiative_bonus": 1,
+      "proficiency_bonus": 2,
+      "spell_attack_bonus": 5,
+      "spell_save_dc": 13,
+      "cantrips": [
+        "fire_bolt",
+        "prestidigitation",
+        "mage_hand"
+      ],
+      "spells_prepared": [
+        "burning_hands",
+        "magic_missile",
+        "shield",
+        "detect_magic"
+      ],
+      "spell_slots": {
+        "1": {"total": 2, "used": 1}
+      },
+      "features": [],
+      "equipment": [
+        "spellbook",
+        "arcane_focus",
+        "component_pouch",
+        "scholars_pack",
+        "dagger",
+        "mentor_grimoire (recovered)",
+        "potion_of_healing (2d4+2 HP)",
+        "folded_note (mentor's handwriting)"
+      ],
+      "currency": {"sp": 5, "gp": 1},
+      "conditions": [],
+      "position": "B2",
+      "notes": {
+        "hp_roll": 4,
+        "hp_con_mod": 3,
+        "hp_formula": "1d6_roll(4) + CON_mod(3) = 7",
+        "stat_rolls_raw": [16, 12, 7, 12, 12, 16],
+        "stat_assignment_priority": "INT=16, CON=16, DEX=12, WIS=12, CHA=12, STR=7"
+      }
+    },
+    {
+      "id": "pc_stone",
+      "name": "Stone Bauer",
+      "class": "fighter",
+      "level": 1,
+      "ability_scores": {
+        "str": 17,
+        "dex": 14,
+        "con": 17,
+        "int": 17,
+        "wis": 12,
+        "cha": 12
+      },
+      "ability_modifiers": {
+        "str": 3,
+        "dex": 2,
+        "con": 3,
+        "int": 3,
+        "wis": 1,
+        "cha": 1
+      },
+      "saving_throw_proficiencies": ["str", "con"],
+      "hit_die": "d10",
+      "hit_dice": {"die": "d10", "total": 1, "remaining": 1},
+      "max_hp": 4,
+      "current_hp": 4,
+      "armor_class": 19,
+      "speed": 30,
+      "initiative_bonus": 2,
+      "proficiency_bonus": 2,
+      "fighting_style": "Defense",
+      "features": [
+        {
+          "name": "second_wind",
+          "recharge": "short",
+          "uses_total": 1,
+          "uses_remaining": 1,
+          "die": "1d10+1",
+          "description": "Bonus action: regain 1d10 + fighter level HP"
+        }
+      ],
+      "equipment": [
+        "chain_mail",
+        "shield",
+        "longsword",
+        "handaxe",
+        "handaxe",
+        "explorers_pack"
+      ],
+      "currency": {"sp": 5, "gp": 0},
+      "conditions": [],
+      "position": "F4",
+      "notes": {
+        "hp_roll": 1,
+        "hp_con_mod": 3,
+        "hp_formula": "1d10_roll(1) + CON_mod(3) = 4",
+        "stat_rolls_raw": [14, 12, 17, 12, 17, 17],
+        "stat_assignment_priority": "STR=17, CON=17, INT=17, DEX=14, WIS=12, CHA=12",
+        "ac_breakdown": "chain_mail(16) + shield(2) + Defense_fighting_style(1) = 19"
+      }
+    }
+  ]
+}

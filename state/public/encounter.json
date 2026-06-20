@@ -1,0 +1,107 @@
+{
+  "scene_id": "goblin_treasury",
+  "scene_name": "Goblin Treasury",
+  "round": 1,
+  "initiative_order": [
+    {
+      "id": "pc_stone",
+      "name": "Stone Bauer",
+      "initiative_roll": 12,
+      "initiative_bonus": 2,
+      "initiative_total": 14,
+      "is_pc": true
+    },
+    {
+      "id": "pc_aldric",
+      "name": "Aldric Sootmantle",
+      "initiative_roll": 10,
+      "initiative_bonus": 1,
+      "initiative_total": 11,
+      "is_pc": true
+    },
+    {
+      "id": "gruk",
+      "name": "Gruk",
+      "initiative_roll": 3,
+      "initiative_bonus": 2,
+      "initiative_total": 5,
+      "is_pc": false
+    }
+  ],
+  "turn_pointer": "pc_stone",
+  "combatants": [
+    {
+      "id": "gruk",
+      "name": "Gruk",
+      "type": "monster",
+      "apparent_condition": "bloodied — fled",
+      "position": null,
+      "visible": false,
+      "defeated": false,
+      "fled": true,
+      "fled_via": "crawl_hole_F4"
+    },
+    {
+      "id": "pc_aldric",
+      "name": "Aldric Sootmantle",
+      "type": "pc",
+      "position": "B2",
+      "defeated": false
+    },
+    {
+      "id": "pc_stone",
+      "name": "Stone Bauer",
+      "type": "pc",
+      "position": "F4",
+      "defeated": false
+    }
+  ],
+  "hazards": [
+    {
+      "id": "flagstone_trap",
+      "location": "E3",
+      "type": "pressure_plate",
+      "attack_bonus": 4,
+      "damage_formula": "1d8",
+      "damage_type": "piercing",
+      "armed": true,
+      "triggered": false,
+      "visible_to_players": false,
+      "trigger_condition": "any creature steps onto E3"
+    }
+  ],
+  "loot": [
+    {
+      "id": "iron_chest_F4",
+      "location": "F4",
+      "locked": false,
+      "lock_dc": 14,
+      "looted": true,
+      "visible": true,
+      "contents": {
+        "silver_pieces": 10,
+        "gold_pieces": 1,
+        "items": [
+          {
+            "name": "Potion of Healing",
+            "effect": "2d4+2 HP restored",
+            "charges": 1
+          },
+          {
+            "name": "folded_note",
+            "description": "handwritten note — contents TBD by DM"
+          }
+        ]
+      }
+    }
+  ],
+  "exits": [
+    {
+      "id": "passage_back_to_guard_post",
+      "cells": ["C1", "D1"],
+      "destination": "Guard Post Chamber (Room 2)",
+      "direction": "north"
+    }
+  ],
+  "scene_status": "cleared"
+}

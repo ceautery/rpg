@@ -1,0 +1,51 @@
+{
+  "scene_id": "goblin_treasury",
+  "scene_name": "Goblin Treasury",
+  "prose": "The south door from the guard post opens on a short, descending passage — six feet of rough-cut stone that drops two steps before leveling into the next chamber. The smell changes immediately: copper and tallow and something sweeter beneath both, the particular musk of hoarded things kept in the dark too long.\n\nThe treasury is a low, wide room, roughly thirty feet across and twenty deep, with a ceiling that slopes down toward the far wall until a tall man would have to duck. Flagstones here — not packed earth — cover the floor in uneven slabs, some slightly raised at their edges, others sunken, the mortar between them eroded to black gaps. Two iron cressets on the east and west walls hold actual torches, not stubs: this room is maintained. Someone lives here.\n\nAt the far end, against the south wall, sits a squat iron chest, banded in black iron and fitted with a heavy padlock. Around it, loose and unconsidered — the way a crow's nest looks — are scattered bones, bent copper coins, a cracked clay jug, and scraps of cloth that might once have been banners or just rags. The wealth of the undercroft, such as it is.\n\nAnd in front of the chest, standing rather than crouching — standing deliberately, because he wants to be seen — is Gruk.",
+  "lighting": "bright (iron cresset torches on east and west walls)",
+  "map_public": [
+    "     A    B    C    D    E    F",
+    "   +----+----+----+----+----+----+",
+    " 1 | #  | #  | >  | >  | #  | #  |",
+    "   +----+----+----+----+----+----+",
+    " 2 | #  | A  | .  | .  | .  | #  |",
+    "   +----+----+----+----+----+----+",
+    " 3 | #  | .  | S  | .  | .  | #  |",
+    "   +----+----+----+----+----+----+",
+    " 4 | #  | #  | #  | #  | #  |G$ |",
+    "   +----+----+----+----+----+----+",
+    "",
+    "  >  Entry passage (C1-D1, north wall)",
+    "  A  Aldric Sootmantle — B2",
+    "  S  Stone Bauer — C3",
+    "  G  Gruk (goblin boss) — F4",
+    "  $  Iron chest — F4 (with Gruk)"
+  ],
+  "visible_creatures": [
+    {
+      "id": "gruk",
+      "name": "Gruk",
+      "type": "goblin",
+      "description": "A heavyset goblin in patchwork iron-ring armor and a crooked iron cap. Shortbow in hand, two javelins leaning against the chest behind him. Standing openly. Not hiding.",
+      "apparent_condition": "unhurt",
+      "position": "F4",
+      "visible": true
+    }
+  ],
+  "visible_objects": [
+    {
+      "id": "iron_chest_F4",
+      "description": "A small iron chest, heavily banded, fitted with a padlock. Old and dented but solid. The most cared-for object in the room.",
+      "position": "F4",
+      "locked": true
+    }
+  ],
+  "npc_dialogue": [
+    "Gruk: 'I hear Skrix fall. I hear Vreck fall. Very quiet now, very quick. You are not rats.'",
+    "Gruk: 'I am Gruk. I took this hole from the last ones who had it. Whatever you want from it — you take it from me.'"
+  ],
+  "exits": [
+    {"id": "passage_back_to_guard_post", "direction": "north", "cells": ["C1", "D1"], "description": "The low passage back north to the guard post chamber"}
+  ],
+  "initiative": "Stone (14) → Aldric (11) → Gruk (5). Stone acts first."
+}

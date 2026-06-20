@@ -1,0 +1,54 @@
+{"formula": "1d20", "rolls": [20], "modifier": 0, "total": 20, "vs": null, "success": null, "reason": "boot-check", "actor": "world-engine", "ts": "2026-06-20T17:41:34.224869Z"}
+{"formula": "2d6+3", "rolls": [5, 4], "modifier": 3, "total": 12, "vs": null, "success": null, "reason": "goblin shortbow damage", "actor": "world-engine", "ts": "2026-06-20T17:41:45.771541Z"}
+{"formula": "1d20+4", "rolls": [17], "modifier": 4, "total": 21, "vs": {"ac": 15}, "success": true, "reason": "goblin shortbow vs Lyra", "actor": "world-engine", "ts": "2026-06-20T17:41:45.804534Z"}
+{"formula": "1d20+2", "rolls": [15], "modifier": 2, "total": 17, "vs": {"dc": 13}, "success": true, "reason": "Lyra DEX save vs pit", "actor": "world-engine", "ts": "2026-06-20T17:41:45.834244Z"}
+{"formula": "1d20+5", "rolls": {"kept": [20], "discarded": [3]}, "modifier": 5, "total": 25, "vs": null, "success": null, "reason": "Lyra sneak attack with advantage", "actor": "world-engine", "ts": "2026-06-20T17:41:45.865258Z"}
+{"formula": "1d20+5", "rolls": {"kept": [8], "discarded": [10]}, "modifier": 5, "total": 13, "vs": null, "success": null, "reason": "attack while blinded", "actor": "world-engine", "ts": "2026-06-20T17:41:45.895332Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [6, 5, 4], "dropped": [1]}, "modifier": 0, "total": 15, "vs": null, "success": null, "reason": "stat gen STR", "actor": "world-engine", "ts": "2026-06-20T17:41:45.926441Z"}
+{"formula": "1d20+5", "rolls": [4], "modifier": 5, "total": 9, "vs": null, "success": null, "reason": "seeded roll", "actor": "world-engine", "ts": "2026-06-20T17:41:45.957604Z"}
+{"formula": "1d20+5", "rolls": [4], "modifier": 5, "total": 9, "vs": null, "success": null, "reason": "seeded roll replay", "actor": "world-engine", "ts": "2026-06-20T17:41:45.989093Z"}
+{"formula": "1d20", "rolls": [19], "modifier": 0, "total": 19, "vs": null, "success": null, "reason": "boot-check", "actor": "orchestrator", "ts": "2026-06-20T17:47:41.213026Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [6, 5, 5], "dropped": [1]}, "modifier": 0, "total": 16, "vs": null, "success": null, "reason": "stat gen roll 1 - Aldric Sootmantle", "actor": "world-engine", "ts": "2026-06-20T17:48:35.989919Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [5, 4, 3], "dropped": [2]}, "modifier": 0, "total": 12, "vs": null, "success": null, "reason": "stat gen roll 2 - Aldric Sootmantle", "actor": "world-engine", "ts": "2026-06-20T17:48:37.826763Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [5, 1, 1], "dropped": [1]}, "modifier": 0, "total": 7, "vs": null, "success": null, "reason": "stat gen roll 3 - Aldric Sootmantle", "actor": "world-engine", "ts": "2026-06-20T17:48:39.676147Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [5, 4, 3], "dropped": [1]}, "modifier": 0, "total": 12, "vs": null, "success": null, "reason": "stat gen roll 4 - Aldric Sootmantle", "actor": "world-engine", "ts": "2026-06-20T17:48:41.254637Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [5, 4, 3], "dropped": [3]}, "modifier": 0, "total": 12, "vs": null, "success": null, "reason": "stat gen roll 5 - Aldric Sootmantle", "actor": "world-engine", "ts": "2026-06-20T17:48:42.909171Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [6, 6, 4], "dropped": [2]}, "modifier": 0, "total": 16, "vs": null, "success": null, "reason": "stat gen roll 6 - Aldric Sootmantle", "actor": "world-engine", "ts": "2026-06-20T17:48:44.406093Z"}
+{"formula": "1d6", "rolls": [4], "modifier": 0, "total": 4, "vs": null, "success": null, "reason": "wizard HP roll level 1 - Aldric Sootmantle", "actor": "world-engine", "ts": "2026-06-20T17:48:46.039980Z"}
+{"formula": "2d6", "rolls": [2, 4], "modifier": 0, "total": 6, "vs": null, "success": null, "reason": "Skrix HP", "actor": "world-engine", "ts": "2026-06-20T17:51:07.445780Z"}
+{"formula": "1d20+2", "rolls": [13], "modifier": 2, "total": 15, "vs": null, "success": null, "reason": "Skrix initiative (DEX +2)", "actor": "world-engine", "ts": "2026-06-20T17:51:08.880787Z"}
+{"formula": "1d20+1", "rolls": [13], "modifier": 1, "total": 14, "vs": null, "success": null, "reason": "Aldric initiative (DEX +1)", "actor": "world-engine", "ts": "2026-06-20T17:51:10.107112Z"}
+{"formula": "1d4+1", "rolls": [4], "modifier": 1, "total": 5, "vs": null, "success": null, "reason": "mm_dart_1 vs skrix", "actor": "world-engine", "ts": "2026-06-20T17:57:00.717964Z"}
+{"formula": "1d4+1", "rolls": [4], "modifier": 1, "total": 5, "vs": null, "success": null, "reason": "mm_dart_2 vs skrix", "actor": "world-engine", "ts": "2026-06-20T17:57:05.790384Z"}
+{"formula": "1d4+1", "rolls": [2], "modifier": 1, "total": 3, "vs": null, "success": null, "reason": "mm_dart_3 vs skrix", "actor": "world-engine", "ts": "2026-06-20T17:57:06.961141Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [5, 5, 4], "dropped": [1]}, "modifier": 0, "total": 14, "vs": null, "success": null, "reason": "stone_bauer_stat_roll_1", "actor": "world-engine", "ts": "2026-06-20T18:24:33.843829Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [5, 4, 3], "dropped": [1]}, "modifier": 0, "total": 12, "vs": null, "success": null, "reason": "stone_bauer_stat_roll_2", "actor": "world-engine", "ts": "2026-06-20T18:24:35.091669Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [6, 6, 5], "dropped": [1]}, "modifier": 0, "total": 17, "vs": null, "success": null, "reason": "stone_bauer_stat_roll_3", "actor": "world-engine", "ts": "2026-06-20T18:24:36.329500Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [5, 4, 3], "dropped": [1]}, "modifier": 0, "total": 12, "vs": null, "success": null, "reason": "stone_bauer_stat_roll_4", "actor": "world-engine", "ts": "2026-06-20T18:24:37.544568Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [6, 6, 5], "dropped": [2]}, "modifier": 0, "total": 17, "vs": null, "success": null, "reason": "stone_bauer_stat_roll_5", "actor": "world-engine", "ts": "2026-06-20T18:24:38.771735Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [6, 6, 5], "dropped": [5]}, "modifier": 0, "total": 17, "vs": null, "success": null, "reason": "stone_bauer_stat_roll_6", "actor": "world-engine", "ts": "2026-06-20T18:24:40.132766Z"}
+{"formula": "1d10", "rolls": [1], "modifier": 0, "total": 1, "vs": null, "success": null, "reason": "stone_bauer_hp_roll_level1", "actor": "world-engine", "ts": "2026-06-20T18:24:45.748302Z"}
+{"formula": "2d6", "rolls": [1, 5], "modifier": 0, "total": 6, "vs": null, "success": null, "reason": "Vreck HP", "actor": "world-engine", "ts": "2026-06-20T18:27:07.372513Z"}
+{"formula": "1d20+2", "rolls": [18], "modifier": 2, "total": 20, "vs": null, "success": null, "reason": "Vreck initiative", "actor": "world-engine", "ts": "2026-06-20T18:27:12.593017Z"}
+{"formula": "1d20+1", "rolls": [13], "modifier": 1, "total": 14, "vs": null, "success": null, "reason": "Aldric initiative", "actor": "world-engine", "ts": "2026-06-20T18:27:13.921080Z"}
+{"formula": "1d20+2", "rolls": [20], "modifier": 2, "total": 22, "vs": null, "success": null, "reason": "Stone initiative", "actor": "world-engine", "ts": "2026-06-20T18:27:15.869422Z"}
+{"formula": "1d20+4", "rolls": [10], "modifier": 4, "total": 14, "vs": {"ac": 19}, "success": false, "reason": "Vreck readied shortbow vs Stone", "actor": "world-engine", "ts": "2026-06-20T18:36:28.218307Z"}
+{"formula": "1d20+5", "rolls": [14], "modifier": 5, "total": 19, "vs": {"ac": 20}, "success": false, "reason": "Stone handaxe throw vs Vreck", "actor": "world-engine", "ts": "2026-06-20T18:36:32.706564Z"}
+{"formula": "1d20+6", "rolls": [1], "modifier": 6, "total": 7, "vs": null, "success": null, "reason": "Vreck Hide (Stealth) check", "actor": "world-engine", "ts": "2026-06-20T18:36:37.110467Z"}
+{"formula": "1d20+5", "rolls": [11], "modifier": 5, "total": 16, "vs": {"ac": 20}, "success": false, "reason": "Aldric fire bolt vs Vreck at D3 (barrel cover AC 20)", "actor": "world-engine", "ts": "2026-06-20T18:36:43.459615Z"}
+{"formula": "1d20+5", "rolls": [3], "modifier": 5, "total": 8, "vs": {"ac": 15}, "success": false, "reason": "Stone longsword vs Vreck AC 15", "actor": "world-engine", "ts": "2026-06-20T18:42:22.303075Z"}
+{"formula": "1d20+4", "rolls": [9], "modifier": 4, "total": 13, "vs": {"ac": 19}, "success": false, "reason": "Vreck scimitar vs Stone AC 19", "actor": "world-engine", "ts": "2026-06-20T18:42:26.202446Z"}
+{"formula": "1d4+1", "rolls": [3], "modifier": 1, "total": 4, "vs": null, "success": null, "reason": "mm_dart_1 vs Vreck round2", "actor": "world-engine", "ts": "2026-06-20T18:42:35.510504Z"}
+{"formula": "1d4+1", "rolls": [3], "modifier": 1, "total": 4, "vs": null, "success": null, "reason": "mm_dart_2 vs Vreck round2", "actor": "world-engine", "ts": "2026-06-20T18:42:35.547716Z"}
+{"formula": "1d4+1", "rolls": [1], "modifier": 1, "total": 2, "vs": null, "success": null, "reason": "mm_dart_3 vs Vreck round2", "actor": "world-engine", "ts": "2026-06-20T18:42:35.581134Z"}
+{"formula": "1d20", "rolls": [3], "modifier": 0, "total": 3, "vs": null, "success": null, "reason": "initiative_gruk", "actor": "world-engine", "ts": "2026-06-20T19:01:28.270195Z"}
+{"formula": "1d20", "rolls": [10], "modifier": 0, "total": 10, "vs": null, "success": null, "reason": "initiative_aldric", "actor": "world-engine", "ts": "2026-06-20T19:01:35.851766Z"}
+{"formula": "1d20", "rolls": [12], "modifier": 0, "total": 12, "vs": null, "success": null, "reason": "initiative_stone", "actor": "world-engine", "ts": "2026-06-20T19:01:37.069796Z"}
+{"formula": "3d6", "rolls": [3, 3, 4], "modifier": 0, "total": 10, "vs": null, "success": null, "reason": "loot_silver", "actor": "world-engine", "ts": "2026-06-20T19:01:42.699540Z"}
+{"formula": "1d4", "rolls": [1], "modifier": 0, "total": 1, "vs": null, "success": null, "reason": "loot_gold", "actor": "world-engine", "ts": "2026-06-20T19:01:44.045958Z"}
+{"formula": "1d20+4", "rolls": [12], "modifier": 4, "total": 16, "vs": null, "success": null, "reason": "r_trap_attack", "actor": "world-engine", "ts": "2026-06-20T19:29:22.203886Z"}
+{"formula": "1d20+5", "rolls": [1], "modifier": 5, "total": 6, "vs": null, "success": null, "reason": "r_stone_atk", "actor": "world-engine", "ts": "2026-06-20T19:29:31.928464Z"}
+{"formula": "1d4+1", "rolls": [1], "modifier": 1, "total": 2, "vs": null, "success": null, "reason": "r_mm1", "actor": "world-engine", "ts": "2026-06-20T19:29:38.996800Z"}
+{"formula": "1d4+1", "rolls": [3], "modifier": 1, "total": 4, "vs": null, "success": null, "reason": "r_mm2", "actor": "world-engine", "ts": "2026-06-20T19:29:40.439185Z"}
+{"formula": "1d4+1", "rolls": [4], "modifier": 1, "total": 5, "vs": null, "success": null, "reason": "r_mm3", "actor": "world-engine", "ts": "2026-06-20T19:29:41.858088Z"}
+{"formula": "1d20+5", "rolls": [13], "modifier": 5, "total": 18, "vs": null, "success": null, "reason": "stone_athletics_force_chest", "actor": "world-engine", "ts": "2026-06-20T19:40:57.915712Z"}

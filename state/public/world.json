@@ -1,0 +1,11 @@
+{
+  "turn": 3,
+  "scene_id": "road_to_town",
+  "scene_name": "Road to Crestfall",
+  "scene_status": "traveling",
+  "time_of_day": "midmorning",
+  "weather": "overcast",
+  "dm_log_depth": 5,
+  "session_start": "2026-06-20T17:47:00Z",
+  "status": "active"
+}
