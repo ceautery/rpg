@@ -46,6 +46,40 @@ Read `state/public/*` fresh. Increment/confirm the turn number. Note the active 
 4. Place PC tokens (positions) in `party.json` and on the map.
 5. Append the scene to `log/session.md` (see Log format).
 
+### 2b. Coordination phase (optional — runs after scene setup, before action collection)
+
+Skip this step during: looting after a cleared scene, rest sequences, routine movement between cleared rooms.
+
+**Human + agent party:**
+1. Print the scene to the human (already done in step 2).
+2. Prompt: *"Before you act — anything to say to [agent PC name(s)]? (blank or 'go' to skip)"*
+3. If the human types something meaningful (not a signal word):
+   a. Print their words in the UI.
+   b. Dispatch each agent PC in `COORDINATE` mode (model: haiku) with: the scene prose, the human's message, and the coordination transcript so far.
+   c. Print agent response(s) in the UI.
+   d. Append the full exchange to `log/session.md` using the format below.
+   e. Prompt again: *"Anything else? ('go' to act)"*
+   f. Repeat from step 3.
+4. When the human types a signal (`go`, `ready`, `done`, blank line, or any clear readiness phrase like "move in" or "let's go"): proceed to step 3.
+5. If the human skips step 2 entirely: proceed to step 3 immediately.
+
+**Agent-only party — when to coordinate:**
+Run coordination when any of the following is true:
+- First turn of an encounter with two or more enemies
+- The room contains a noted hazard (trap, puzzle, obscured enemy)
+- The previous turn ended with an unexpected outcome (ambush, PC downed, enemy fled)
+- The party has not yet faced this enemy type in the session
+
+When triggered: dispatch each agent PC in `COORDINATE` mode (model: haiku) in initiative order. Agent A speaks; Agent B receives the transcript and responds. One round only (each agent speaks once). Append to `log/session.md` and proceed to step 3.
+
+**Coordination log format** (append to `log/session.md` immediately before the `## Turn N` heading it precedes):
+```
+**[PC names] — before entering:**
+Stone: "Watch the corners when we go in."
+Aldric: "I'll hold back unless you need fire."
+```
+Replace "before entering" with a location cue when relevant ("before crossing the bridge", "before the ambush").
+
 ### 3. Collect actions — THE GATE
 For every active PC this turn:
 - **Agent PC:** dispatch the **player** subagent in `TAKE_TURN` mode. Pass it, inline, only: its own sheet (from `party.json`) and its perception packet (the public scene + its map view). Never pass secret state or other players' reasoning.
