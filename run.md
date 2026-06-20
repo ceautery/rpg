@@ -204,6 +204,13 @@ Use the world-engine subagent. MODE: RESOLVE.
 Mechanic requests: <json[]>. Roll each via dice.py and return rolls + results JSON.
 ```
 
+**World-engine (pregen-structure):** model: sonnet
+```
+Use the world-engine subagent. MODE: PREGEN_STRUCTURE.
+Config: <campaign/config.json contents>.
+Generate the dungeon room graph. Write campaign/dungeon.json with room ids, types, and connections only — no encounter data yet.
+```
+
 ---
 
 ## Rest procedure
