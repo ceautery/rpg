@@ -87,6 +87,13 @@ Also end if the human asks to quit. Because all state is on disk, quitting is sa
 - A packet never contains: monster stat blocks, true/hidden HP, undiscovered traps or secret doors, plot intentions, or another player's private action before it's resolved.
 - MVP fog-of-war is coarse (whole current room is "perceived"). Tightening to line-of-sight is a later enhancement; note it but don't build it yet.
 
+## In-world language (log and human-facing output)
+The session log is the human's window into the fiction. Mechanical numbers belong in state files, not in prose or dialogue. When you append to `log/session.md` or present text to the human:
+- Creature conditions → use the vocabulary from `dm.md` (unhurt / scratched / bloodied / badly wounded / near death)
+- HP totals → never in prose; fine in a terse end-of-turn status line formatted as `Stone: 4/4 HP` (status lines are clearly out-of-fiction scorekeeping, not narration)
+- AC, roll totals, spell slot counts → fine in the **Rolls** block (that's the replay record), nowhere else
+- The human player's own character sheet you print at their prompt → numbers are fine there; it's metagame reference, not fiction
+
 ---
 
 ## Log format (`log/session.md`, append-only)
