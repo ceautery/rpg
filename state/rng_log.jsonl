@@ -52,3 +52,90 @@
 {"formula": "1d4+1", "rolls": [3], "modifier": 1, "total": 4, "vs": null, "success": null, "reason": "r_mm2", "actor": "world-engine", "ts": "2026-06-20T19:29:40.439185Z"}
 {"formula": "1d4+1", "rolls": [4], "modifier": 1, "total": 5, "vs": null, "success": null, "reason": "r_mm3", "actor": "world-engine", "ts": "2026-06-20T19:29:41.858088Z"}
 {"formula": "1d20+5", "rolls": [13], "modifier": 5, "total": 18, "vs": null, "success": null, "reason": "stone_athletics_force_chest", "actor": "world-engine", "ts": "2026-06-20T19:40:57.915712Z"}
+{"formula": "1d20", "rolls": [16], "modifier": 0, "total": 16, "vs": null, "success": null, "reason": "boot-check", "actor": "world-engine", "ts": "2026-06-20T23:47:52.886396Z"}
+{"formula": "1d4", "rolls": [2], "modifier": 0, "total": 2, "vs": null, "success": null, "reason": "room_type_r02", "actor": "world-engine", "ts": "2026-06-20T23:48:26.030810Z"}
+{"formula": "1d4", "rolls": [4], "modifier": 0, "total": 4, "vs": null, "success": null, "reason": "room_type_r03", "actor": "world-engine", "ts": "2026-06-20T23:48:26.065666Z"}
+{"formula": "1d4", "rolls": [3], "modifier": 0, "total": 3, "vs": null, "success": null, "reason": "room_type_r04", "actor": "world-engine", "ts": "2026-06-20T23:48:26.095775Z"}
+{"formula": "1d4", "rolls": [3], "modifier": 0, "total": 3, "vs": null, "success": null, "reason": "room_type_r05", "actor": "world-engine", "ts": "2026-06-20T23:48:26.126129Z"}
+{"formula": "1d4", "rolls": [4], "modifier": 0, "total": 4, "vs": null, "success": null, "reason": "room_type_r06", "actor": "world-engine", "ts": "2026-06-20T23:48:26.155924Z"}
+{"formula": "1d4", "rolls": [4], "modifier": 0, "total": 4, "vs": null, "success": null, "reason": "room_type_r07", "actor": "world-engine", "ts": "2026-06-20T23:48:26.186265Z"}
+{"formula": "1d6", "rolls": [3], "modifier": 0, "total": 3, "vs": null, "success": null, "reason": "loop_check_r03", "actor": "world-engine", "ts": "2026-06-20T23:48:32.577808Z"}
+{"formula": "1d6", "rolls": [5], "modifier": 0, "total": 5, "vs": null, "success": null, "reason": "loop_check_r04", "actor": "world-engine", "ts": "2026-06-20T23:48:32.612966Z"}
+{"formula": "1d6", "rolls": [1], "modifier": 0, "total": 1, "vs": null, "success": null, "reason": "loop_check_r05", "actor": "world-engine", "ts": "2026-06-20T23:48:32.646357Z"}
+{"formula": "1d6", "rolls": [2], "modifier": 0, "total": 2, "vs": null, "success": null, "reason": "loop_check_r06", "actor": "world-engine", "ts": "2026-06-20T23:48:32.679053Z"}
+{"formula": "1d6", "rolls": [6], "modifier": 0, "total": 6, "vs": null, "success": null, "reason": "loop_check_r07", "actor": "world-engine", "ts": "2026-06-20T23:48:32.710919Z"}
+{"formula": "1d6", "rolls": [1], "modifier": 0, "total": 1, "vs": null, "success": null, "reason": "loop_check_r08", "actor": "world-engine", "ts": "2026-06-20T23:48:32.742875Z"}
+{"formula": "1d6", "rolls": [5], "modifier": 0, "total": 5, "vs": null, "success": null, "reason": "loop_target_r07", "actor": "world-engine", "ts": "2026-06-20T23:48:38.725418Z"}
+{"formula": "1d2", "rolls": [2], "modifier": 0, "total": 2, "vs": null, "success": null, "reason": "r01_entrance_patrol_count", "actor": "world-engine", "ts": "2026-06-20T23:49:44.775866Z"}
+{"formula": "1d2", "rolls": [1], "modifier": 0, "total": 1, "vs": null, "success": null, "reason": "r01_entrance_monster_pick_from_2", "actor": "world-engine", "ts": "2026-06-20T23:49:45.997851Z"}
+{"formula": "1d6", "rolls": [3], "modifier": 0, "total": 3, "vs": null, "success": null, "reason": "r01_loot_roll", "actor": "world-engine", "ts": "2026-06-20T23:49:51.490837Z"}
+{"formula": "1d3+1", "rolls": [2], "modifier": 1, "total": 3, "vs": null, "success": null, "reason": "r02_corridor_monster_count", "actor": "world-engine", "ts": "2026-06-20T23:49:55.817050Z"}
+{"formula": "1d6", "rolls": [6], "modifier": 0, "total": 6, "vs": null, "success": null, "reason": "r02_loot_roll", "actor": "world-engine", "ts": "2026-06-20T23:49:57.228835Z"}
+{"formula": "1d6", "rolls": [3], "modifier": 0, "total": 3, "vs": null, "success": null, "reason": "r02_trap_roll", "actor": "world-engine", "ts": "2026-06-20T23:49:58.519410Z"}
+{"formula": "1d6", "rolls": [5], "modifier": 0, "total": 5, "vs": null, "success": null, "reason": "r02_corridor_monster_pick_from_6", "actor": "world-engine", "ts": "2026-06-20T23:50:04.346034Z"}
+{"formula": "1d6", "rolls": [2], "modifier": 0, "total": 2, "vs": null, "success": null, "reason": "r03_vault_main_monster_pick_from_6", "actor": "world-engine", "ts": "2026-06-20T23:50:12.832968Z"}
+{"formula": "1d2", "rolls": [2], "modifier": 0, "total": 2, "vs": null, "success": null, "reason": "r03_vault_guard_count", "actor": "world-engine", "ts": "2026-06-20T23:50:14.494685Z"}
+{"formula": "1d2", "rolls": [2], "modifier": 0, "total": 2, "vs": null, "success": null, "reason": "r03_vault_guard_type_pick", "actor": "world-engine", "ts": "2026-06-20T23:50:17.760536Z"}
+{"formula": "1d6", "rolls": [3], "modifier": 0, "total": 3, "vs": null, "success": null, "reason": "r03_loot_roll", "actor": "world-engine", "ts": "2026-06-20T23:50:20.422752Z"}
+{"formula": "1d6", "rolls": [6], "modifier": 0, "total": 6, "vs": null, "success": null, "reason": "r03_trap_roll", "actor": "world-engine", "ts": "2026-06-20T23:50:22.264949Z"}
+{"formula": "2d10", "rolls": [1, 6], "modifier": 0, "total": 7, "vs": null, "success": null, "reason": "r03_loot_gold_gp", "actor": "world-engine", "ts": "2026-06-20T23:50:27.771641Z"}
+{"formula": "1d3+1", "rolls": [2], "modifier": 1, "total": 3, "vs": null, "success": null, "reason": "r04_chamber_monster_count", "actor": "world-engine", "ts": "2026-06-20T23:50:36.264792Z"}
+{"formula": "1d6", "rolls": [2], "modifier": 0, "total": 2, "vs": null, "success": null, "reason": "r04_chamber_monster_pick_from_6", "actor": "world-engine", "ts": "2026-06-20T23:50:37.919067Z"}
+{"formula": "1d6", "rolls": [1], "modifier": 0, "total": 1, "vs": null, "success": null, "reason": "r04_loot_roll", "actor": "world-engine", "ts": "2026-06-20T23:50:39.189550Z"}
+{"formula": "1d6", "rolls": [6], "modifier": 0, "total": 6, "vs": null, "success": null, "reason": "r04_trap_roll", "actor": "world-engine", "ts": "2026-06-20T23:50:40.631932Z"}
+{"formula": "1d3+1", "rolls": [2], "modifier": 1, "total": 3, "vs": null, "success": null, "reason": "r05_chamber_monster_count", "actor": "world-engine", "ts": "2026-06-20T23:50:49.725105Z"}
+{"formula": "1d6", "rolls": [4], "modifier": 0, "total": 4, "vs": null, "success": null, "reason": "r05_chamber_monster_pick_from_6", "actor": "world-engine", "ts": "2026-06-20T23:50:58.292485Z"}
+{"formula": "1d6", "rolls": [3], "modifier": 0, "total": 3, "vs": null, "success": null, "reason": "r05_loot_roll", "actor": "world-engine", "ts": "2026-06-20T23:50:59.722206Z"}
+{"formula": "1d6", "rolls": [2], "modifier": 0, "total": 2, "vs": null, "success": null, "reason": "r05_trap_roll", "actor": "world-engine", "ts": "2026-06-20T23:51:01.265910Z"}
+{"formula": "1d4+10", "rolls": [1], "modifier": 10, "total": 11, "vs": null, "success": null, "reason": "r05_trap_dc", "actor": "world-engine", "ts": "2026-06-20T23:51:09.912180Z"}
+{"formula": "1d8", "rolls": [3], "modifier": 0, "total": 3, "vs": null, "success": null, "reason": "r05_trap_damage", "actor": "world-engine", "ts": "2026-06-20T23:51:11.302292Z"}
+{"formula": "2d10", "rolls": [10, 4], "modifier": 0, "total": 14, "vs": null, "success": null, "reason": "r05_loot_gold_gp", "actor": "world-engine", "ts": "2026-06-20T23:51:12.930818Z"}
+{"formula": "1d3", "rolls": [1], "modifier": 0, "total": 1, "vs": null, "success": null, "reason": "r04_consumable_pick_common_potions", "actor": "world-engine", "ts": "2026-06-20T23:51:22.968144Z"}
+{"formula": "1d6", "rolls": [5], "modifier": 0, "total": 5, "vs": null, "success": null, "reason": "r06_vault_main_monster_pick_from_6", "actor": "world-engine", "ts": "2026-06-20T23:51:30.340647Z"}
+{"formula": "1d2", "rolls": [1], "modifier": 0, "total": 1, "vs": null, "success": null, "reason": "r06_vault_guard_count", "actor": "world-engine", "ts": "2026-06-20T23:51:31.814614Z"}
+{"formula": "1d2", "rolls": [1], "modifier": 0, "total": 1, "vs": null, "success": null, "reason": "r06_vault_guard_type_pick", "actor": "world-engine", "ts": "2026-06-20T23:51:33.213758Z"}
+{"formula": "1d6", "rolls": [4], "modifier": 0, "total": 4, "vs": null, "success": null, "reason": "r06_loot_roll", "actor": "world-engine", "ts": "2026-06-20T23:51:35.795400Z"}
+{"formula": "1d6", "rolls": [6], "modifier": 0, "total": 6, "vs": null, "success": null, "reason": "r06_trap_roll", "actor": "world-engine", "ts": "2026-06-20T23:51:37.823196Z"}
+{"formula": "2d10", "rolls": [10, 9], "modifier": 0, "total": 19, "vs": null, "success": null, "reason": "r06_loot_gold_gp", "actor": "world-engine", "ts": "2026-06-20T23:51:43.660892Z"}
+{"formula": "1d6", "rolls": [6], "modifier": 0, "total": 6, "vs": null, "success": null, "reason": "r07_vault_main_monster_pick_from_6", "actor": "world-engine", "ts": "2026-06-20T23:51:48.474324Z"}
+{"formula": "1d2", "rolls": [2], "modifier": 0, "total": 2, "vs": null, "success": null, "reason": "r07_vault_guard_count", "actor": "world-engine", "ts": "2026-06-20T23:51:51.956150Z"}
+{"formula": "1d2", "rolls": [1], "modifier": 0, "total": 1, "vs": null, "success": null, "reason": "r07_vault_guard_type_pick", "actor": "world-engine", "ts": "2026-06-20T23:51:54.922993Z"}
+{"formula": "1d6", "rolls": [6], "modifier": 0, "total": 6, "vs": null, "success": null, "reason": "r07_loot_roll", "actor": "world-engine", "ts": "2026-06-20T23:51:56.357816Z"}
+{"formula": "1d6", "rolls": [3], "modifier": 0, "total": 3, "vs": null, "success": null, "reason": "r07_trap_roll", "actor": "world-engine", "ts": "2026-06-20T23:51:57.892153Z"}
+{"formula": "1d3", "rolls": [3], "modifier": 0, "total": 3, "vs": null, "success": null, "reason": "r08_boss_monster_pick_from_3", "actor": "world-engine", "ts": "2026-06-20T23:52:06.702592Z"}
+{"formula": "1d6", "rolls": [6], "modifier": 0, "total": 6, "vs": null, "success": null, "reason": "r08_boss_loot_gold_multiplier", "actor": "world-engine", "ts": "2026-06-20T23:52:08.129241Z"}
+{"formula": "1d12", "rolls": [1], "modifier": 0, "total": 1, "vs": null, "success": null, "reason": "r08_boss_magic_item_pick_from_12_wands", "actor": "world-engine", "ts": "2026-06-20T23:52:48.685280Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [5, 5, 5], "dropped": [3]}, "modifier": 0, "total": 15, "vs": null, "success": null, "reason": "Maren stat roll 1", "actor": "world-engine", "ts": "2026-06-20T23:58:32.875820Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [5, 4, 4], "dropped": [1]}, "modifier": 0, "total": 13, "vs": null, "success": null, "reason": "Maren stat roll 2", "actor": "world-engine", "ts": "2026-06-20T23:58:34.302084Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [5, 5, 3], "dropped": [1]}, "modifier": 0, "total": 13, "vs": null, "success": null, "reason": "Maren stat roll 3", "actor": "world-engine", "ts": "2026-06-20T23:58:36.128817Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [5, 4, 3], "dropped": [3]}, "modifier": 0, "total": 12, "vs": null, "success": null, "reason": "Maren stat roll 4", "actor": "world-engine", "ts": "2026-06-20T23:58:37.460771Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [6, 6, 4], "dropped": [3]}, "modifier": 0, "total": 16, "vs": null, "success": null, "reason": "Maren stat roll 5", "actor": "world-engine", "ts": "2026-06-20T23:58:39.201698Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [4, 3, 3], "dropped": [2]}, "modifier": 0, "total": 10, "vs": null, "success": null, "reason": "Maren stat roll 6", "actor": "world-engine", "ts": "2026-06-20T23:58:41.034153Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [6, 5, 1], "dropped": [1]}, "modifier": 0, "total": 12, "vs": null, "success": null, "reason": "Sable stat roll 1", "actor": "world-engine", "ts": "2026-06-20T23:58:45.726765Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [5, 4, 3], "dropped": [2]}, "modifier": 0, "total": 12, "vs": null, "success": null, "reason": "Sable stat roll 2", "actor": "world-engine", "ts": "2026-06-20T23:58:47.493102Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [4, 4, 4], "dropped": [2]}, "modifier": 0, "total": 12, "vs": null, "success": null, "reason": "Sable stat roll 3", "actor": "world-engine", "ts": "2026-06-20T23:58:48.820342Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [6, 6, 4], "dropped": [2]}, "modifier": 0, "total": 16, "vs": null, "success": null, "reason": "Sable stat roll 4", "actor": "world-engine", "ts": "2026-06-20T23:58:50.464147Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [6, 6, 3], "dropped": [1]}, "modifier": 0, "total": 15, "vs": null, "success": null, "reason": "Sable stat roll 5", "actor": "world-engine", "ts": "2026-06-20T23:58:51.691318Z"}
+{"formula": "4d6kh3", "rolls": {"kept": [5, 5, 3], "dropped": [2]}, "modifier": 0, "total": 13, "vs": null, "success": null, "reason": "Sable stat roll 6", "actor": "world-engine", "ts": "2026-06-20T23:58:53.119876Z"}
+{"formula": "1d8", "rolls": [2], "modifier": 0, "total": 2, "vs": null, "success": null, "reason": "Maren HP level 2 (1d8+CON mod)", "actor": "world-engine", "ts": "2026-06-20T23:58:58.452024Z"}
+{"formula": "1d8", "rolls": [6], "modifier": 0, "total": 6, "vs": null, "success": null, "reason": "Maren HP level 3 (1d8+CON mod)", "actor": "world-engine", "ts": "2026-06-20T23:59:00.177082Z"}
+{"formula": "1d10", "rolls": [2], "modifier": 0, "total": 2, "vs": null, "success": null, "reason": "Sable HP level 2 (1d10+CON mod)", "actor": "world-engine", "ts": "2026-06-20T23:59:01.623983Z"}
+{"formula": "1d10", "rolls": [3], "modifier": 0, "total": 3, "vs": null, "success": null, "reason": "Sable HP level 3 (1d10+CON mod)", "actor": "world-engine", "ts": "2026-06-20T23:59:03.014796Z"}
+{"formula": "1d8+2", "rolls": [6], "modifier": 2, "total": 8, "vs": null, "success": null, "reason": "skeleton_1 hp roll", "actor": "world-engine", "ts": "2026-06-21T00:02:13.402788Z"}
+{"formula": "1d8+2", "rolls": [7], "modifier": 2, "total": 9, "vs": null, "success": null, "reason": "skeleton_2 hp roll", "actor": "world-engine", "ts": "2026-06-21T00:02:21.914185Z"}
+{"formula": "1d20+1", "rolls": [7], "modifier": 1, "total": 8, "vs": null, "success": null, "reason": "maren initiative", "actor": "world-engine", "ts": "2026-06-21T00:02:32.059013Z"}
+{"formula": "1d20+1", "rolls": [16], "modifier": 1, "total": 17, "vs": null, "success": null, "reason": "sable initiative", "actor": "world-engine", "ts": "2026-06-21T00:02:32.093455Z"}
+{"formula": "1d20+2", "rolls": [19], "modifier": 2, "total": 21, "vs": null, "success": null, "reason": "skeleton_1 initiative", "actor": "world-engine", "ts": "2026-06-21T00:02:32.124066Z"}
+{"formula": "1d20+2", "rolls": [17], "modifier": 2, "total": 19, "vs": null, "success": null, "reason": "skeleton_2 initiative", "actor": "world-engine", "ts": "2026-06-21T00:02:32.154747Z"}
+{"formula": "1d20+5", "rolls": [4], "modifier": 5, "total": 9, "vs": {"ac": 18}, "success": false, "reason": "req_1_skeleton_1_attacks_pc_maren", "actor": "world-engine", "ts": "2026-06-21T00:09:53.289249Z"}
+{"formula": "1d20+5", "rolls": [9], "modifier": 5, "total": 14, "vs": {"ac": 18}, "success": false, "reason": "req_2_skeleton_2_attacks_pc_sable", "actor": "world-engine", "ts": "2026-06-21T00:09:56.872868Z"}
+{"formula": "1d20+5", "rolls": [4], "modifier": 5, "total": 9, "vs": {"ac": 14}, "success": false, "reason": "req_3_pc_sable_attacks_skeleton_2_longsword", "actor": "world-engine", "ts": "2026-06-21T00:09:59.645888Z"}
+{"formula": "1d20-1", "rolls": [4], "modifier": -1, "total": 3, "vs": {"dc": 13}, "success": false, "reason": "req_4_skeleton_1_wisdom_save_turn_undead", "actor": "world-engine", "ts": "2026-06-21T00:10:04.564858Z"}
+{"formula": "1d20-1", "rolls": [7], "modifier": -1, "total": 6, "vs": {"dc": 13}, "success": false, "reason": "req_4_skeleton_2_wisdom_save_turn_undead", "actor": "world-engine", "ts": "2026-06-21T00:10:09.065527Z"}
+{"formula": "1d20+3", "rolls": [2], "modifier": 3, "total": 5, "vs": null, "success": null, "reason": "req_r2_1_maren_opp_attack_skeleton_1", "actor": "world-engine", "ts": "2026-06-21T00:15:06.750594Z"}
+{"formula": "1d20+5", "rolls": [18], "modifier": 5, "total": 23, "vs": null, "success": null, "reason": "req_r2_2_sable_opp_attack_skeleton_2", "actor": "world-engine", "ts": "2026-06-21T00:15:06.785755Z"}
+{"formula": "1d8+3", "rolls": [6], "modifier": 3, "total": 9, "vs": null, "success": null, "reason": "req_r2_2_sable_slashing_damage", "actor": "world-engine", "ts": "2026-06-21T00:15:06.815839Z"}
+{"formula": "3d8", "rolls": [3, 5, 7], "modifier": 0, "total": 15, "vs": null, "success": null, "reason": "req_r2_2_sable_divine_smite_radiant", "actor": "world-engine", "ts": "2026-06-21T00:15:06.846197Z"}
+{"formula": "1d6+1", "rolls": [5], "modifier": 1, "total": 6, "vs": null, "success": null, "reason": "req_r2_1_maren_bludgeoning_damage", "actor": "world-engine", "ts": "2026-06-21T00:15:06.875571Z"}
+{"formula": "1d20-1", "rolls": [20], "modifier": -1, "total": 19, "vs": {"dc": 13}, "success": true, "reason": "req_r2_3_skeleton_1_wis_save_toll_the_dead", "actor": "world-engine", "ts": "2026-06-21T00:15:10.838452Z"}
+{"formula": "1d8", "rolls": [6], "modifier": 0, "total": 6, "vs": null, "success": null, "reason": "req_r2_3_toll_the_dead_necrotic_damage_1d8_unused_save_passed", "actor": "world-engine", "ts": "2026-06-21T00:15:19.134307Z"}

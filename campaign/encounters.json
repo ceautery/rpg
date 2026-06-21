@@ -1,0 +1,42 @@
+{
+  "enc_r01": [
+    {"monster": "Skeleton", "count": 2, "cr": "1/4", "ac": 14, "hp": 13}
+  ],
+  "loot_r01": [],
+  "enc_r02": [
+    {"monster": "Ghoul", "count": 3, "cr": "1", "ac": 12, "hp": 22}
+  ],
+  "loot_r02": [],
+  "enc_r03": [
+    {"monster": "Specter", "count": 1, "cr": "1", "ac": 12, "hp": 22},
+    {"monster": "Zombie",  "count": 2, "cr": "1/4", "ac": 8,  "hp": 15}
+  ],
+  "loot_r03": [{"item": "gold", "amount_gp": 7}],
+  "enc_r04": [
+    {"monster": "Zombie", "count": 3, "cr": "1/4", "ac": 8, "hp": 15}
+  ],
+  "loot_r04": [{"item": "Potion of Climbing", "count": 1, "rarity": "common"}],
+  "trap_r04": null,
+  "enc_r05": [
+    {"monster": "Warhorse Skeleton", "count": 3, "cr": "1/2", "ac": 13, "hp": 22}
+  ],
+  "loot_r05": [{"item": "gold", "amount_gp": 14}],
+  "trap_r05": {"dc": 11, "damage_die": "1d8", "save": "dex"},
+  "enc_r06": [
+    {"monster": "Ghoul",    "count": 1, "cr": "1",   "ac": 12, "hp": 22},
+    {"monster": "Skeleton", "count": 1, "cr": "1/4", "ac": 14, "hp": 13}
+  ],
+  "loot_r06": [{"item": "gold", "amount_gp": 19}],
+  "enc_r07": [
+    {"monster": "Specter",  "count": 1, "cr": "1",   "ac": 12, "hp": 22},
+    {"monster": "Skeleton", "count": 2, "cr": "1/4", "ac": 14, "hp": 13}
+  ],
+  "loot_r07": [],
+  "enc_r08": [
+    {"monster": "Wight", "count": 1, "cr": "3", "ac": 14, "hp": 82}
+  ],
+  "loot_r08": [
+    {"item": "gold", "amount_gp": 60},
+    {"item": "Wand of Binding", "count": 1, "rarity": "rare"}
+  ]
+}

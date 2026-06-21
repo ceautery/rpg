@@ -1,0 +1,11 @@
+{
+  "actor": "pc_sable",
+  "turn": 1,
+  "intent": "attack",
+  "action": "I advance toward the nearer skeleton and bring my longsword down in a wide arc, pouring holy wrath into the blow",
+  "target": "skeleton_2",
+  "weapon_or_spell": "longsword with Divine Smite (1st level spell slot, 3d8 radiant vs undead)",
+  "movement": "move south toward skeleton_2 as far as needed to reach melee range",
+  "bonus_action": null,
+  "notes": "Using Divine Smite on hit to maximize damage against undead. If movement doesn't bring me into melee, will close the distance; if I reach melee, will attack and expend the slot on impact."
+}

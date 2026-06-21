@@ -1,107 +1,53 @@
 {
-  "scene_id": "goblin_treasury",
-  "scene_name": "Goblin Treasury",
-  "round": 1,
+  "room": "r01",
+  "scene": "The Sunken Vault — Entrance",
+  "round": 2,
+  "turn_pointer": 4,
   "initiative_order": [
-    {
-      "id": "pc_stone",
-      "name": "Stone Bauer",
-      "initiative_roll": 12,
-      "initiative_bonus": 2,
-      "initiative_total": 14,
-      "is_pc": true
-    },
-    {
-      "id": "pc_aldric",
-      "name": "Aldric Sootmantle",
-      "initiative_roll": 10,
-      "initiative_bonus": 1,
-      "initiative_total": 11,
-      "is_pc": true
-    },
-    {
-      "id": "gruk",
-      "name": "Gruk",
-      "initiative_roll": 3,
-      "initiative_bonus": 2,
-      "initiative_total": 5,
-      "is_pc": false
-    }
+    {"slot": 0, "id": "skeleton_1", "initiative": 21, "type": "monster"},
+    {"slot": 1, "id": "skeleton_2", "initiative": 19, "type": "monster"},
+    {"slot": 2, "id": "sable",      "initiative": 17, "type": "pc"},
+    {"slot": 3, "id": "maren",      "initiative": 8,  "type": "pc"}
   ],
-  "turn_pointer": "pc_stone",
   "combatants": [
     {
-      "id": "gruk",
-      "name": "Gruk",
+      "id": "maren",
+      "type": "pc",
+      "ac": 18,
+      "max_hp": 22,
+      "current_hp": 22,
+      "position": "B5",
+      "conditions": [],
+      "initiative": 8
+    },
+    {
+      "id": "sable",
+      "type": "pc",
+      "ac": 18,
+      "max_hp": 21,
+      "current_hp": 21,
+      "position": "F7",
+      "conditions": [],
+      "initiative": 17
+    },
+    {
+      "id": "skeleton_1",
       "type": "monster",
-      "apparent_condition": "bloodied — fled",
-      "position": null,
-      "visible": false,
-      "defeated": false,
-      "fled": true,
-      "fled_via": "crawl_hole_F4"
+      "ac": 14,
+      "position": "fled_r02",
+      "conditions": ["frightened"],
+      "initiative": 21,
+      "note": "fled through D7 archway into r02; 8 HP remaining"
     },
     {
-      "id": "pc_aldric",
-      "name": "Aldric Sootmantle",
-      "type": "pc",
-      "position": "B2",
-      "defeated": false
-    },
-    {
-      "id": "pc_stone",
-      "name": "Stone Bauer",
-      "type": "pc",
-      "position": "F4",
-      "defeated": false
+      "id": "skeleton_2",
+      "type": "monster",
+      "ac": 14,
+      "position": "destroyed",
+      "conditions": ["destroyed"],
+      "initiative": 19,
+      "note": "destroyed by Sable Divine Smite (24 damage)"
     }
   ],
-  "hazards": [
-    {
-      "id": "flagstone_trap",
-      "location": "E3",
-      "type": "pressure_plate",
-      "attack_bonus": 4,
-      "damage_formula": "1d8",
-      "damage_type": "piercing",
-      "armed": true,
-      "triggered": false,
-      "visible_to_players": false,
-      "trigger_condition": "any creature steps onto E3"
-    }
-  ],
-  "loot": [
-    {
-      "id": "iron_chest_F4",
-      "location": "F4",
-      "locked": false,
-      "lock_dc": 14,
-      "looted": true,
-      "visible": true,
-      "contents": {
-        "silver_pieces": 10,
-        "gold_pieces": 1,
-        "items": [
-          {
-            "name": "Potion of Healing",
-            "effect": "2d4+2 HP restored",
-            "charges": 1
-          },
-          {
-            "name": "folded_note",
-            "description": "handwritten note — contents TBD by DM"
-          }
-        ]
-      }
-    }
-  ],
-  "exits": [
-    {
-      "id": "passage_back_to_guard_post",
-      "cells": ["C1", "D1"],
-      "destination": "Guard Post Chamber (Room 2)",
-      "direction": "north"
-    }
-  ],
-  "scene_status": "cleared"
+  "status": "cleared"
 }

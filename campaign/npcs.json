@@ -1,0 +1,23 @@
+[
+  {
+    "id": "npc_01",
+    "name": "Brother Edwyn",
+    "room": "r04",
+    "goal": "Survive and reseal the vault's inner ward before whatever broke it open returns for what it left behind",
+    "disposition": "Frightened and injured but clear-headed; will share what he knows about who hired him to investigate and what name appeared in the Crestfall temple records"
+  },
+  {
+    "id": "npc_02",
+    "name": "Sera Dobb",
+    "room": "r06",
+    "goal": "Recover a specific item from the vault's grave goods — a sealed iron coffer she believes contains evidence her uncle hid here years ago — and leave before anyone connects her to the broken ward",
+    "disposition": "Calculating and self-possessed; will not volunteer information about her family name, and will lie smoothly if pressed"
+  },
+  {
+    "id": "npc_03",
+    "name": "Vrath",
+    "room": "r08",
+    "goal": "Destroy the living who have entered his tomb and reclaim the grave goods scattered throughout the vault by whoever woke him",
+    "disposition": "Implacable; does not parley; retains enough of the warlord's tactical mind to position and wait rather than charge"
+  }
+]

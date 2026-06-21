@@ -1,9 +1,0 @@
-{
-  "turn": 2,
-  "actor": "pc_stone",
-  "intent": "attack",
-  "description": "Stone doesn't hesitate — charges straight through the arch and toward the goblin. The moment he's in range he pivots, yanks a handaxe from his belt, and hurls it at the goblin behind the barrel.",
-  "target": "vreck",
-  "movement": "through arch (B1), then toward Vreck — stops when in handaxe range",
-  "uses": "handaxe (thrown, 1d6+3 slashing, normal range 20 ft)"
-}

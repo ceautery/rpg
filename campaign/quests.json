@@ -1,0 +1,33 @@
+[
+  {
+    "id": "q01",
+    "title": "The Sunken Vault",
+    "hook": "A lay-brother named Edwyn descended into a crypt beneath the road to Crestfall three days ago to reseal a broken ward and has not come back. The village headman at the road's edge asks the party to find him — and to close whatever was opened down there before it sends more dead walking into the road at night.",
+    "objectives": [
+      {"id": "q01a", "desc": "Find Brother Edwyn and ensure he is alive", "completed": false},
+      {"id": "q01b", "desc": "Destroy or drive off whatever animates the dead in the vault's depths", "completed": false},
+      {"id": "q01c", "desc": "Return to the headman and confirm the road is safe", "completed": false}
+    ],
+    "reward": "300 XP, 30 gp from the village headman's emergency fund, and Brother Edwyn's gratitude — he carries temple records that mention the Dobb name"
+  },
+  {
+    "id": "q02",
+    "title": "The Scattered Dead",
+    "hook": "Edwyn, if rescued, mentions that the grave goods in the vault's side-rooms have been rifled by someone who came down before him. A leather satchel left behind in the east vault is not his.",
+    "objectives": [
+      {"id": "q02a", "desc": "Identify whose satchel was left behind in the east vault", "completed": false},
+      {"id": "q02b", "desc": "Determine what was taken from the vault and by whom", "completed": false}
+    ],
+    "reward": "150 XP and a lead on the Dobb name — the satchel contains a torn bill of lading from a Crestfall merchant addressed to a buyer who signed only with initials"
+  },
+  {
+    "id": "q03",
+    "title": "Wrath of the Interred",
+    "hook": "The carved warnings in the antechamber are legible to anyone who can read the old script — and they name the warlord Vrath by title and deed, listing what he was buried with and why the ward was constructed to hold him in. The same text notes that the ward could be re-established if the crescent stone is restored.",
+    "objectives": [
+      {"id": "q03a", "desc": "Recover or destroy the Wand of Binding found among Vrath's grave goods — it was placed there to ensure he could never bind the living to his service again", "completed": false},
+      {"id": "q03b", "desc": "Find a way to restore the broken ward stone in the antechamber", "completed": false}
+    ],
+    "reward": "200 XP; the Wand of Binding is a tool of considerable power — returning it to the temple earns favour, keeping it invites questions"
+  }
+]

@@ -1,9 +1,0 @@
-{
-  "turn": 1,
-  "actor": "pc_aldric",
-  "intent": "cast",
-  "description": "From the darkness at my back, I raise my arcane focus and spit the syllables of Magic Missile under my breath — three crackling darts of force arcing through the dim cellar air straight at the goblin's chest. 'Put. The book. Down.' I keep my voice low and flat.",
-  "target": "goblin",
-  "uses": "magic_missile (1st-level spell slot)",
-  "ooc_note": "Using Magic Missile specifically because it auto-hits regardless of cover or my position in darkness, no attack roll to disadvantage. Spending one of my two 1st-level slots. If the goblin drops the grimoire before or after my turn, I'd like to interact with the object as a free action to grab it if within reach."
-}

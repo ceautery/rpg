@@ -275,3 +275,84 @@ They walk.
 *SRD content © Creative Commons Attribution 4.0. Source: SRD 5.2 (srd-2024), Open5e API.*
 
 ---
+## Campaign Generation — The Sunken Vault (8 rooms, level 3)
+2026-06-20T23:48:03Z
+*Campaign ready: 8 rooms · 3 NPCs · 3 quests.*
+
+---
+
+# Session — The Sunken Vault
+
+*Ruleset: SRD 5.2 (srd-2024, CC-BY 4.0)*
+*Party: Maren Ashveil (agent · Cleric 3 · Grave Domain) · Sable Vorn (agent · Paladin 3 · Oath of Devotion)*
+*Session start: 2026-06-20*
+
+---
+
+## Scene — Entrance (r01)
+
+A stone threshold, old enough that the mason's marks on its lintel have been worn to shallow grooves by centuries of wind and creeping moss. The sealing stone that once blocked the entrance has been levered aside and left canted against the wall — someone pried it open weeks ago and never replaced it. The smell that rises from below is ancient and cold, the particular rot of a place that has been closed off from the living world for a very long time and has just been reminded that the world exists.
+
+Two skeletons stand animate within the threshold — one at C4, one at F4. Both are hostile.
+
+**Initiative:** skeleton_1 (21) · skeleton_2 (19) · Sable (17) · Maren (8)
+
+**Maren and Sable — before entering:**
+Sable: "The bones stir—undead. Your turning faith may drive them back. I'll meet the closer one; watch for any that get past me."
+Maren: "I'll stand ready. If they press through, my faith will turn them—or I'll mend what they wound. Go."
+
+---
+
+## Turn 1, Round 1 — Entrance (r01)
+
+**Actions:**
+- skeleton_1: closes to B3, shortsword at Maren — MISS (roll 9 vs AC 18)
+- skeleton_2: closes to F3, shortsword at Sable — MISS (roll 14 vs AC 18)
+- Sable: longsword at skeleton_2 — MISS (roll 9 vs AC 14)
+- Maren: Channel Divinity — Turn Undead DC 13; skeleton_1 WIS save 3 FAIL, skeleton_2 WIS save 6 FAIL — both frightened
+
+**Outcome:**
+
+The two skeletons come on without hesitation, bone feet scraping stone with a sound like dry sticks dragged across gravel. Skeleton_1 closes the gap to Maren fast, shortsword swinging in a flat arc at her midsection — but the blade catches nothing, skipping wide as she shifts her weight just enough. Across the chamber, skeleton_2 rushes Sable at the same moment, its swing timed with the same mechanical purpose, and Sable turns on her heel so the blade passes behind her shoulder with an inch to spare.
+
+Sable answers with her longsword, pivoting into a cut aimed at the skeleton's ribcage. The blow glances off — the angle wrong, the edge finding a gap between ribs but not biting deep enough to matter. She pulls the sword back and resets her footing. The skeleton does not react. It simply stands there, empty sockets pointed at her throat.
+
+For a heartbeat the room is just clatter and stone and two fighters facing two things that should not be standing.
+
+Then Maren acts.
+
+She does not step back from the skeleton still crowding her — she steps into it. Her free hand closes around the wooden holy symbol at her chest and she lifts it, arm extended, voice dropping to something low and absolute. There are words in it, old ones, the kind that carry weight the way iron does. The light in the chamber seems to pull toward her for just a moment, and when it releases, it releases wrong — too cold, too still, as if the air itself has stopped to listen.
+
+Both skeletons stop moving.
+
+It is not a hesitation. It is not confusion. skeleton_1, blade still raised, begins to back away from Maren, slowly at first, then faster, its bones clattering against each other as it turns south. skeleton_2 does the same — away from Sable, away from the light, retreating toward the arch that leads deeper into the vault. Whatever animates them has recognized something it cannot stand to face. They are not defeated. They are fleeing, and they cannot help it.
+
+*Round 2. Skeletons must flee — opportunity attacks possible as they pass.*
+
+---
+
+## Turn 1, Round 2 — Entrance (r01)
+
+**Actions:**
+- skeleton_1: flees south through D7 archway into r02 — Maren OA (mace): MISS (roll 5 vs AC 14)
+- skeleton_2: flees south — Sable OA (longsword + Divine Smite): HIT (roll 23 vs AC 14), 9 slashing + 15 radiant (3d8: [3,5,7]) = **24 total → DESTROYED** (9 HP)
+- Sable: pursues south 30 ft to archway
+- Maren: pursues, Toll the Dead vs skeleton_1 — skeleton_1 WIS save roll 20 (natural 20) → SAVES, no damage
+
+**Outcome:**
+
+The faith holds. Both skeletons break at the same moment — not in stages, not with any pretense of resolve — they simply turn and run, whatever compels them to stand and fight utterly overridden by something older and more absolute. Bone feet clatter on stone in a retreating rhythm, the hollow rattle of two things fleeing what they cannot face.
+
+Maren moves with them, mace already swinging as the first skeleton pushes past her toward the south arch. She is close, she is ready, and she misses clean — the head of the mace sweeps through the air behind the skeleton's spine as it ducks and angles past, the momentum of her swing carrying her wrist wide. The skeleton does not slow. It does not even register the near miss. It crashes through the archway at D7 and is swallowed by the passage beyond.
+
+Sable does not miss.
+
+The second skeleton is halfway past her when her longsword comes around in a short, tight arc, and then the radiance of her oath ignites along the blade in the same motion — not fire, not heat, something quieter than either, a white-gold light that has no business being this far underground. The blow takes the skeleton mid-flight and the radiance does what the steel alone could not: the thing comes apart. Not dramatically. It simply ceases to hold together, the bones scattering in a loose clatter across the flagstones, ribs and finger bones and the skull rolling to a stop against the south wall. The shortsword lands last, flat and flat, with a sound like a coin dropped on a table.
+
+Maren is already moving deeper into the chamber, arm extended, lips moving. The dark cantrip she sends after the fleeing skeleton finds only stone — the bones are through the arch and into the corridor by the time the sound reaches them, and whatever luck or emptiness protects the thing, it outran her words tonight. The toll rings and goes unanswered.
+
+The entrance chamber falls quiet. One skeleton is gone to pieces on the floor. One is somewhere in the passage beyond the arch, still running, still afraid. Sable stands at the threshold, sword still glowing faintly at the edge. Maren stops a few paces back, breath steady, holy symbol still warm in her hand. The air rising from r02 is cold and smells of old linen and the particular stillness of a place that has been broken open and not yet finished with its answer.
+
+---
+
+*r01 cleared. Maren: 22/22 HP, Channel Divinity spent. Sable: 21/21 HP, 1st-level slot spent (1 remaining). skeleton_2 destroyed. skeleton_1 fled into r02 (8 HP, frightened).*

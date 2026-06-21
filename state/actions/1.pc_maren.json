@@ -1,0 +1,10 @@
+{
+  "actor": "pc_maren",
+  "turn": 1,
+  "intent": "cast",
+  "action": "Maren raises her holy symbol and speaks words of binding power, channeling the authority of her faith to turn the undead away. The amulet glows with pale light as she commands the skeletons to flee.",
+  "target": "skeleton_1, skeleton_2",
+  "weapon_or_spell": "Turn Undead (Channel Divinity)",
+  "bonus_action": null,
+  "notes": "Turn Undead forces WIS save DC 13. Both skeletons are undead; if they fail, they are frightened and must use their movement to flee for 1 minute. Contingency: if somehow both skeletons are immune or have already dealt severe damage to Sable before this resolves, I can pivot to Healing Word (bonus action) to stabilize her, then Toll the Dead as action."
+}
