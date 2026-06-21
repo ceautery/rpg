@@ -1,46 +1,56 @@
-ROOM: r02 — Corridor, The Sunken Vault
-Round 2 (ghoul_1 baned, ghoul_2/3 frightened and fleeing)
+Room r03 — The Offering Chamber (Vault)
+The Sunken Vault — CLEARED (Round 3)
 
      A    B    C    D    E    F    G    H
    +----+----+----+----+----+----+----+----+
- 1 | #  | #  | #  | +M | +S | #  | #  | #  |   <- M=Maren D1 (15/22 HP), S=Sable E1
+ 1 | #  | #  | #  | +M | +  | #  | #  | #  |   <- North arch (to r02) M=Maren D1
    +----+----+----+----+----+----+----+----+
- 2 | #  | n  | .  | g  | .  | .  | n  | #  |   <- ghoul_1(g) D2 [BANED] adjacent to Maren
+ 2 | #  | s  | .  | .  | .  | S  | .  | #  |   <- Sable(S) F2
    +----+----+----+----+----+----+----+----+
- 3 | #  | n  | .  | .  | .  | .  | n  | #  |
+ 3 | #  | s  | .  | .  | PW | .  | s  | #  |   <- Spiritual Weapon(PW) E3 [all enemies gone]
    +----+----+----+----+----+----+----+----+
- 4 | #  | n  | .  | .  | .  | i  | n  | #  |   <- ghoul_2(i) F4 [FRIGHTENED — fleeing south]
+ 4 | #  | .  | .  | .  | .  | .  | .  | #  |
    +----+----+----+----+----+----+----+----+
- 5 | #  | n  | .  | .  | .  | h  | n  | #  |   <- ghoul_3(h) F5 [FRIGHTENED — fleeing south]
+ 5 | #  | s  | .  | .  | .  | s  | .  | #  |
    +----+----+----+----+----+----+----+----+
- 6 | #  | n  | .  | .  | .  | .  | n  | #  |
+ 6 | #  | .  | .  | .  | .  | .  | .  | #  |
    +----+----+----+----+----+----+----+----+
  7 | #  | #  | .  | .  | .  | .  | #  | #  |
    +----+----+----+----+----+----+----+----+
- 8 | #  | #  | #  | +1 | +  | #  | #  | #  |   <- skeleton_1(1) D8 [FRIGHTENED — at r03 arch]
+ 8 | #  | #  | #  | +  | +  | #  | #  | #  |   <- South arch (to r04) — all fled units exited here
    +----+----+----+----+----+----+----+----+
 
 LEGEND
-  #  stone wall / burial niche (impassable)
-  n  burial niche
-  +  archway (north D1/E1 → r01; south D8/E8 → r03)
-  M  Maren (PC) — D1, AC 18, HP 15/22
-  S  Sable (PC) — E1, AC 18, HP 21/21
-  g  ghoul_1 (Undead, BANED) — D2
-  i  ghoul_2 (Undead, FRIGHTENED) — F4
-  h  ghoul_3 (Undead, FRIGHTENED) — F5
-  1  skeleton_1 (Undead, FRIGHTENED×2) — D8
+  #  stone wall (impassable)
+  s  stone shelf / rubble debris (difficult terrain)
+  .  stone floor
+  +  archway / passage
+  M  Maren (PC)          — D1, AC 18, HP 15/22, max_hp 22
+  S  Sable (PC)          — F2, AC 18, HP 18/21
+  PW Spiritual Weapon    — E3 (no concentration; bonus action to move+attack)
 
-ACTIVE EFFECTS
-  Bane (Maren, concentration): ghoul_1 — -1d4 to all attacks and saves
-  Turn the Unholy (Sable): ghoul_2, ghoul_3, skeleton_1 — frightened, must flee from Sable
+*** ROOM CLEARED — Round 3 ***
 
-INITIATIVE ORDER (Round 2)
-  1. ghoul_1    — 22  (D2, BANED — adjacent to Maren)
-  2. Sable      — 20  (E1)
-  3. skeleton_1 — 18  (D8, fleeing into r03)
-  4. ghoul_3    — 15  (F5, fleeing south)
-  5. ghoul_2    —  7  (F4, fleeing south)
-  6. Maren      —  5  (D1, concentrating on Bane)
+DESTROYED THIS ENCOUNTER
+  ghoul_1   — destroyed round 1
+  zombie_2  — destroyed round 2 slot 1 (Sable longsword 9 slashing; Undead Fortitude failed 12 vs DC 14)
+  zombie_1  — destroyed round 3 slot 3 (Maren Spiritual Weapon 9 force; Fortitude #2 failed 10 vs DC 14)
+
+FLED TO r04
+  skeleton_1  — frightened x2 (fled round 1 slot 0)
+  ghoul_3     — frightened    (fled round 1 slot 1)
+  ghoul_2     — frightened    (fled round 1 slot 5)
+  specter_1   — bloodied 13/33 HP (fled round 3 slot 0 — through south wall to r04)
+
+ROUND 3 RESOLUTION
+  Slot 0 — specter_1: FLED through south wall to r04 (no attack; full movement)
+  Slot 1 — Sable longsword vs zombie_1: 16+5=21 vs AC 8 — HIT; dmg 4+3=7 slashing
+             zombie_1 at 0 HP; Undead Fortitude #1: 11+3=14 vs DC 12 — PASS; survives at 1 HP
+  Slot 2 — zombie_1 Slam vs Sable: 6+3=9 vs AC 18 — MISS; no damage
+  Slot 3 — Maren Spiritual Weapon (bonus) vs zombie_1: 8+4=12 vs AC 8 — HIT; dmg 7+2=9 force
+             zombie_1 at 0 HP; Undead Fortitude #2: 7+3=10 vs DC 14 — FAIL; DESTROYED
+           Maren Sacred Flame (action): zombie_1 already destroyed; no valid target; held
 
 Scale: 1 cell = 5 ft
+Coordinates: columns A-H (left to right), rows 1-8 (top to bottom)
+North arch at D1/E1. South arch at D8/E8.

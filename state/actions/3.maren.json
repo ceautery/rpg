@@ -1,0 +1,31 @@
+{
+  "turn": 3,
+  "round": 1,
+  "actor": "maren",
+  "initiative_slot": 6,
+  "move": "stay at D1",
+  "action": {
+    "type": "spell",
+    "spell": "Sacred Flame",
+    "level": "cantrip",
+    "target": "specter_1",
+    "save": "DEX DC 13",
+    "damage_dice": "1d8",
+    "damage_type": "radiant",
+    "range": "60 ft"
+  },
+  "bonus_action": {
+    "type": "spell",
+    "spell": "Spiritual Weapon",
+    "level": 2,
+    "slot_expended": true,
+    "weapon_position": "D3",
+    "target": "specter_1",
+    "attack_bonus": 4,
+    "damage_dice": "1d8+2",
+    "damage_type": "force",
+    "note": "Weapon placed at D3 (adjacent to specter at D4); melee spell attack on cast"
+  },
+  "contingency": "If zombie_1 is in melee with Maren on her turn, redirect Sacred Flame to zombie_1; Spiritual Weapon still attacks specter_1",
+  "notes": "2nd-level slot expended for Spiritual Weapon. Spiritual Weapon does not require concentration."
+}

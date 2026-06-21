@@ -429,6 +429,99 @@ The corridor is quiet. The tattered burial linens settle. Maren lowers her hand,
 
 ---
 
-*Session paused — validation complete through r02.*
+---
+
+## Scene — The Offering Chamber (r03)
+
+*The Sunken Vault*
+
+The party steps through the southern arch from the burial corridor and into a chamber that was built for a different kind of care. This room received the offering goods of the honoured dead — clay urns of oil, bundles of dried herbs, small figures of hammered tin. The urns have all been knocked from their shelves and shattered; the herbs are black dust; the tin figures are scattered across the floor like dropped coins. A cold that has nothing to do with the season sits in the corners of this room and does not disperse. The darkness here feels watched.
+
+At the far end of the room, pressed against the south wall and the archway that leads deeper into the vault complex, three shapes cower — the skeleton and two ghouls that fled ahead of them, still gripped by the terror the party levelled in the corridor behind. They do not turn. They do not advance. Whatever holds them in the grip of that fear roots them to the south wall as surely as chains.
+
+But the room has other inhabitants. Two zombies lurch forward from the debris-strewn flanks — slow, relentless, blank-eyed, their movements the mechanical shamble of bodies that have forgotten they were ever alive. And above the central dais, hovering where no solid thing should hover, is something else entirely: a smear of grey-white light in roughly human shape, translucent and faintly luminous, with no fixed features except two points of cold radiance where eyes would be. It hangs in the air and regards the party the way a hunger regards a meal.
+
+**Initiative (Round 1):**
+
+| # | Combatant | Initiative |
+|---|-----------|-----------|
+| 1 | skeleton_1 | 18 (frightened × 2 — will flee) |
+| 2 | ghoul_3 | 15 (frightened — will flee) |
+| 3 | specter_1 | 11 (DEX tiebreak over Sable) |
+| 4 | Sable | 11 |
+| 5 | zombie_1 | 9 |
+| 6 | ghoul_2 | 7 (frightened — will flee) |
+| 7 | Maren | 3 |
+| 8 | zombie_2 | −1 |
+
+## Turn 3, Round 1 — Offering Chamber (r03)
+
+**Actions:**
+- skeleton_1, ghoul_3, ghoul_2: frightened — all flee through south arch into r04 (no roll needed)
+- specter_1: Life Drain vs Maren — MISS (2+4=6 vs AC 18)
+- Sable: moves to F2, longsword vs zombie_2 — HIT (3+5=8 vs AC 8): 6 slashing → zombie_2 at 2/8 HP
+- zombie_1: moves to E3, Slam vs Sable — HIT (18+3=21 vs AC 18): 3 bludgeoning → Sable 18/21 HP
+- Maren: Spiritual Weapon appears at D3, attacks specter — HIT (13+4=17 vs AC 12): 3 force; Sacred Flame vs specter — DEX save 9+2=11 FAIL (DC 13): 4 radiant → specter 26/33 HP
+- zombie_2: Slam vs Sable — MISS (4+3=7 vs AC 18)
+
+*Oracle confirmed: SRD 2024 zombie has no Multiattack — 1 Slam per turn only.*
+
+**Outcome:**
+
+The chamber erupts before a single word of warning can pass between them. Skeleton and ghouls alike burst for the south arch the instant the air turns hostile — what passes for instinct in the unliving apparently wants no part of what is gathering in this room. They pour through the opening in a clatter of bone and raking claws and vanish into the darkness beyond, the last ghoul trailing close behind before the first blow is even struck. Whatever waits in that preparation chamber, it is now full of frightened dead.
+
+The specter moves with terrible quiet. It drifts from the center of the offering chamber in a slow, purposeful glide and descends toward Maren, one translucent hand reaching for her throat. The cold of it is perceptible — a breath of something utterly without warmth — but the grasp finds nothing to hold. The touch passes through her like smoke through a cracked window, and Maren stands unharmed, shaken perhaps, but whole. The specter's pale form twists with something that might, on a living face, have been frustration.
+
+Sable does not give it time to try again. She crosses the flagstones in three long strides and drives her longsword into the nearer zombie — a clean, brutal swing that opens a long gash across the thing's chest, black ichor spreading through the grey rot of its burial wrappings. The zombie shudders, lurches sideways, barely finding its footing, but does not go down. An instant later its companion staggers in from the side and clubs Sable across the ribs — she takes the hit, rolls with it, and plants her feet again, jaw set, giving nothing. The second zombie swings wide, its rotted arm finding only air.
+
+Then Maren speaks. A shimmer of light gathers at her outstretched hand and a weapon of pure radiance snaps into being — hovering, humming faintly, orbiting the specter before lancing into it. The spirit recoils from the force of the blow, its edges blurring. Without pausing, Maren turns her palm upward and calls down a column of pale sacred light directly onto the specter's drifting form. It cannot move fast enough. The light takes it full, and the specter's outline stutters and contracts, visibly diminished now, its cold glow less steady than it was a moment ago.
+
+The chamber settles into a brittle, suspended stillness. The southern arch yawns empty where three undead fled. The specter hangs at the room's centre — between Maren and safety, between Maren and anything else — its translucent gaze tracking her with a patience that does not tire and does not blink. Sable stands her ground in the middle of the room, two zombies within arm's reach, the nearest one a single good hit from falling. The radiant weapon drifts and waits. Everyone breathes. The room does not.
+
+---
+
+*Round 1: Maren 15/22 HP, Sable 18/21 HP. specter_1 26/33 HP. zombie_1 7/7 HP (E3). zombie_2 2/8 HP (F3). Spiritual Weapon active at D3. Three frightened undead fled to r04.*
+
+## Turn 3, Round 2 — Offering Chamber (r03)
+
+**Actions:**
+- specter_1: Life Drain vs Maren — MISS (4+4=8 vs AC 18) — second miss in a row
+- Sable: longsword vs zombie_2 — HIT (19+5=24 vs AC 8): 9 slashing → zombie_2 at 0 HP; Undead Fortitude FAILS (9+3=12 vs DC 14) → zombie_2 DESTROYED
+- zombie_1: Slam vs Sable — MISS (natural 1)
+- Maren: Spiritual Weapon vs specter — HIT (8+4=12 vs AC 12): 10 force; Sacred Flame vs specter — DEX save 5+2=7 FAIL (DC 13): 3 radiant → specter 13/33 HP
+- zombie_2: DESTROYED — slot vacant
+
+**Outcome:**
+
+The specter reaches for Maren a second time — that same awful cold, that same reaching absence of warmth extending toward her face and throat. And again it finds nothing. The translucent hand sweeps through the air where she stands and closes on empty space, the gesture of a drowning thing grasping at light. Maren does not even flinch now. She has seen it try twice. She knows what it cannot do.
+
+Sable answers the silence by putting it to use. She pivots hard, all her weight committed, and drives her longsword into the wounded zombie at her flank — the one that has been barely holding itself together since the first blow landed. The strike is decisive. The blade catches it across the shoulder and the thing crumples completely, wrappings and rotten bone and dark ichor settling into a heap at her feet that does not stir. It does not claw back up. It simply ends. Sable pulls her sword clear and resets, and the zombie at E3 swings at her in the same moment — a looping, telegraphed blow that passes so wide she barely tracks it, its dead arm cutting through nothing but air.
+
+Then Maren presses the attack. The radiant weapon she called into being is already in motion, orbiting back toward the specter like a hunting hawk returning to the strike, and it drives into the spirit with a force that should not be possible for something made of light alone. The specter contracts — visibly, sharply — its edges pulling inward, its cold radiance guttering and flickering like a candle in a sudden wind. Before it can steady itself, Maren raises her palm and calls down the sacred flame a second time, and that pale column finds the spirit again, burning into whatever passes for its substance. The specter's form blurs and writhes, the two points of cold light where its eyes should be stuttering in and out. It is still here. But it is diminished to something recognizable as desperation — a shape that has been struck and struck again by the very faith it sought to consume, and which is beginning to understand that it cannot reach the woman before her doing destroys it entirely.
+
+---
+
+*Round 2: Maren 15/22 HP (unharmed), Sable 18/21 HP (unharmed). specter_1 13/33 HP (D2). zombie_1 7/7 HP (E3). zombie_2 DESTROYED. Specter missed Maren twice.*
+
+## Turn 3, Round 3 — Offering Chamber (r03)
+
+**Actions:**
+- specter_1: FLEES through south wall into r04 (incorporeal movement — no roll; exits r03 at 13/33 HP)
+- Sable: longsword vs zombie_1 — HIT (16+5=21 vs AC 8): 7 slashing → zombie_1 at 0 HP; Undead Fortitude SUCCEEDS (11+3=14 vs DC 12) → zombie_1 survives at 1 HP
+- zombie_1: Slam vs Sable — MISS (6+3=9 vs AC 18)
+- Maren: Spiritual Weapon moves to E3, attacks zombie_1 — HIT (8+4=12 vs AC 8): 9 force → zombie_1 at 0 HP; Undead Fortitude #2 FAILS (7+3=10 vs DC 14) → zombie_1 DESTROYED
+- Maren: Sacred Flame forming — zombie_1 already destroyed; held
+
+**Outcome:**
+
+The specter does not announce its retreat. There is no shriek, no parting threat, no final lunge. It simply turns — if a thing without a face can be said to turn — and moves south at a drift that builds to something faster than a walking pace. The cold follows it, trailing like a wake, and then the south wall swallows it whole. Stone, mortar, centuries of burial masonry: none of it slows the passage by a fraction of a second. One moment the specter is there, guttering and diminished at the room's centre. The next moment it is gone, and the cold is only cold again, and the room is very quiet.
+
+Sable does not let the quiet last. She is already closing on the last zombie when the specter vanishes through the wall — the one still at E3, still reaching, still unable to put its dead arm where it matters. Her longsword drives in hard, a single committed blow that would have felled most things outright. The zombie takes it and somehow does not fall. Something in the ruin of it refuses. It drops to one knee, one arm still extended toward her, fingers curling with a patience that has no origin in living muscle, and Sable sees the thing gather itself and realises with a cold, flat recognition that it means to keep going. Then Maren's radiant weapon arrives — the one she has been holding in the air above the flagstones since she first called it, patient as its mistress — and drives into the zombie from the opposite flank. The force of that second blow breaks whatever held the thing together. The zombie folds, and this time when it hits the floor it stays there, and the room has nothing left to reach for them.
+
+Maren holds the light a moment longer than she needs to — there is a flame already forming in her upturned palm, old habit, the shape of a prayer she learned before she learned to hesitate — and then she lets it go. It dissipates without ceremony. The scattered tin figures lie where they have always lain. The shattered urns have not moved. The cold in the corners has not warmed. But nothing in this room stirs, and nothing in this room is looking at them anymore. Sable lowers her sword and faces the south arch. Whatever went through that wall is through it and waiting, and it did not go alone. The frightened dead are ahead of them in the preparation chamber — the skeleton, the ghouls, the specter now among them — gathered in the dark like a thing that has been given time to collect itself. Maren moves to stand at Sable's shoulder. The arch is open. The room beyond is silent in the particular way that silence is never empty.
+
+---
+
+*r03 cleared. Maren: 15/22 HP, CD spent, 3×1st + 1×2nd spell slots, Spiritual Weapon active (~7 rounds). Sable: 18/21 HP, 0 spell slots, CD spent, Lay on Hands 15 HP pool. specter_1 fled to r04 at 13/33 HP. skeleton_1 (8 HP, frightened ×2), ghoul_2 (24 HP, frightened), ghoul_3 (22 HP, frightened) all in r04.*
 
 *SRD content © Creative Commons Attribution 4.0. Source: SRD 5.2 (srd-2024), Open5e API.*

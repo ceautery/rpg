@@ -1,23 +1,61 @@
 {
-  "room": "r02",
-  "scene": "The Sunken Vault — Corridor",
-  "round": 2,
-  "turn_pointer": 6,
+  "room": "r03",
+  "scene": "The Sunken Vault — Offering Chamber",
+  "round": 3,
+  "turn_pointer": 4,
+  "status": "cleared",
+  "cleared_round": 3,
   "initiative_order": [
-    {"slot": 0, "id": "ghoul_1",    "initiative": 22, "type": "monster"},
-    {"slot": 1, "id": "sable",      "initiative": 20, "type": "pc"},
-    {"slot": 2, "id": "skeleton_1", "initiative": 18, "type": "monster"},
-    {"slot": 3, "id": "ghoul_3",    "initiative": 15, "type": "monster"},
-    {"slot": 4, "id": "ghoul_2",    "initiative":  7, "type": "monster"},
-    {"slot": 5, "id": "maren",      "initiative":  5, "type": "pc"}
+    {"slot": 0, "id": "specter_1",  "initiative": 11, "type": "monster", "outcome": "fled_to_r04"},
+    {"slot": 1, "id": "sable",      "initiative": 11, "type": "pc"},
+    {"slot": 2, "id": "zombie_1",   "initiative":  9, "type": "monster", "outcome": "destroyed"},
+    {"slot": 3, "id": "maren",      "initiative":  3, "type": "pc"}
+  ],
+  "fled_to_r04": [
+    {"id": "skeleton_1", "initiative": 18, "note": "fled round1 slot0 — frightened x2"},
+    {"id": "ghoul_3",    "initiative": 15, "note": "fled round1 slot1 — frightened"},
+    {"id": "ghoul_2",    "initiative":  7, "note": "fled round1 slot5 — frightened"},
+    {"id": "specter_1",  "initiative": 11, "note": "fled round3 slot0 — bloodied (13/33 HP); will be encountered in r04 with skeleton_1, ghoul_2, ghoul_3"}
+  ],
+  "destroyed": [
+    {"id": "zombie_2", "destroyed_round": 2, "destroyed_slot": 1,
+     "note": "Sable longsword 9 slashing; Undead Fortitude failed (12 vs DC 14)"},
+    {"id": "zombie_1", "destroyed_round": 3, "destroyed_slot": 3,
+     "note": "Maren Spiritual Weapon 9 force; Undead Fortitude #2 failed (10 vs DC 14). Had survived Fortitude #1 (14 vs DC 12) after Sable longsword 7 slashing."}
   ],
   "combatants": [
-    {"id": "maren",     "type": "pc",      "ac": 18, "max_hp": 22, "current_hp": 15, "position": "D1",          "conditions": [], "initiative": 5},
-    {"id": "sable",     "type": "pc",      "ac": 18, "max_hp": 21, "current_hp": 21, "position": "E2",          "conditions": [], "initiative": 20},
-    {"id": "ghoul_1",   "type": "monster", "ac": 12, "position": "destroyed",      "conditions": ["destroyed"],  "initiative": 22, "note": "destroyed R2 by Sable + Maren (23+7 damage)"},
-    {"id": "ghoul_2",   "type": "monster", "ac": 12, "position": "fled_r03",       "conditions": ["frightened"], "initiative": 7,  "note": "fled to r03 while frightened"},
-    {"id": "ghoul_3",   "type": "monster", "ac": 12, "position": "fled_r03",       "conditions": ["frightened"], "initiative": 15, "note": "fled to r03 while frightened"},
-    {"id": "skeleton_1","type": "monster", "ac": 14, "position": "fled_r03",       "conditions": ["frightened"], "initiative": 18, "note": "fled to r03 while doubly frightened"}
-  ],
-  "status": "cleared"
+    {
+      "id": "maren",
+      "type": "pc",
+      "ac": 18,
+      "max_hp": 22,
+      "current_hp": 15,
+      "hp_max_reduction": 0,
+      "position": "D1",
+      "conditions": [],
+      "initiative": 3,
+      "resources": {
+        "spell_slots_used": {"1": 1, "2": 1},
+        "channel_divinity_used": true,
+        "spiritual_weapon_active": true,
+        "spiritual_weapon_position": "E3",
+        "sacred_flame_cast_r3": true,
+        "sacred_flame_r3_note": "zombie_1 destroyed by Spiritual Weapon before Sacred Flame resolved; no valid target"
+      }
+    },
+    {
+      "id": "sable",
+      "type": "pc",
+      "ac": 18,
+      "max_hp": 21,
+      "current_hp": 18,
+      "position": "F2",
+      "conditions": [],
+      "initiative": 11,
+      "resources": {
+        "spell_slots_used": {"1": 2},
+        "channel_divinity_used": true
+      }
+    }
+  ]
 }

@@ -1,0 +1,18 @@
+{
+  "turn": 3,
+  "round": 1,
+  "actor": "sable",
+  "initiative_slot": 3,
+  "move": "E1 → F2 (adjacent to zombie_2 at F3; cannot enter F3 — occupied)",
+  "action": {
+    "type": "attack",
+    "weapon": "longsword",
+    "target": "zombie_2",
+    "attack_bonus": 5,
+    "damage_dice": "1d8+3",
+    "damage_type": "slashing"
+  },
+  "bonus_action": null,
+  "reaction": "held — may intercept if specter moves toward Maren",
+  "notes": "Sable intended F3 but zombie_2 occupies that square. Move adjusted to F2 (adjacent). No spell slots, no Channel Divinity."
+}

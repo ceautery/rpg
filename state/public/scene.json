@@ -1,28 +1,32 @@
 {
-  "room_id": "r02",
-  "title": "The Sunken Vault — Corridor",
-  "description": "The passage stretches some forty feet, cut low and narrow into the bedrock, with burial niches carved into both walls at shoulder height. Each niche was sealed with a fitted stone tablet, but most of those tablets lie broken on the floor, shoved outward from within. The linen wrappings that once shrouded the occupants have been dragged into the corridor and lie in pale, tattered drifts — as if the dead dressed themselves in darkness and then discarded what they no longer needed. The air does not move.",
+  "room_id": "r03",
+  "title": "The Sunken Vault — Offering Chamber",
+  "description": "This side-vault was built to receive the offering goods of the honoured dead — clay urns of oil, bundles of dried herbs, small figures of hammered tin. The urns have all been knocked from their shelves and shattered; the herbs are black dust; the tin figures are scattered across the floor like dropped coins. A cold that has nothing to do with the season sits in the corners of this room and does not disperse. The darkness here feels watched.",
   "visible_creatures": [
-    {"id": "ghoul_1", "name": "Ghoul", "position": "C3", "apparent_state": "animate, hostile — close"},
-    {"id": "ghoul_2", "name": "Ghoul", "position": "D4", "apparent_state": "animate, hostile"},
-    {"id": "ghoul_3", "name": "Ghoul", "position": "F3", "apparent_state": "animate, hostile"},
-    {"id": "skeleton_1", "name": "Skeleton", "position": "D6", "apparent_state": "fleeing south, frightened"}
+    {"id": "specter_1", "name": "Specter", "position": "D4", "apparent_state": "hovering, incorporeal, hostile"},
+    {"id": "zombie_1",  "name": "Zombie",  "position": "C3", "apparent_state": "animate, hostile"},
+    {"id": "zombie_2",  "name": "Zombie",  "position": "F3", "apparent_state": "animate, hostile"},
+    {"id": "ghoul_2",   "name": "Ghoul",   "position": "C7", "apparent_state": "cowering at south wall, frightened"},
+    {"id": "ghoul_3",   "name": "Ghoul",   "position": "F7", "apparent_state": "cowering at south wall, frightened"},
+    {"id": "skeleton_1","name": "Skeleton","position": "D7", "apparent_state": "pressed against south wall, terrified"}
   ],
   "exits": [
-    {"direction": "north", "room_id": "r01", "description": "archway back to the entrance"},
-    {"direction": "south", "room_id": "r03", "description": "archway ahead into the offering vault"}
+    {"direction": "north", "room_id": "r02", "description": "archway back to the burial corridor"},
+    {"direction": "south", "room_id": "r04", "description": "archway ahead to the preparation chamber"}
   ],
   "npc_dialogue": [],
   "combat": {
     "active": true,
     "round": 1,
     "initiative_order": [
-      {"slot": 0, "id": "ghoul_1",    "initiative": 22},
-      {"slot": 1, "id": "sable",      "initiative": 20},
-      {"slot": 2, "id": "skeleton_1", "initiative": 18},
-      {"slot": 3, "id": "ghoul_3",    "initiative": 15},
-      {"slot": 4, "id": "ghoul_2",    "initiative": 7},
-      {"slot": 5, "id": "maren",      "initiative": 5}
+      {"slot": 0, "id": "skeleton_1", "initiative": 18},
+      {"slot": 1, "id": "ghoul_3",    "initiative": 15},
+      {"slot": 2, "id": "specter_1",  "initiative": 11},
+      {"slot": 3, "id": "sable",      "initiative": 11},
+      {"slot": 4, "id": "zombie_1",   "initiative": 9},
+      {"slot": 5, "id": "ghoul_2",    "initiative": 7},
+      {"slot": 6, "id": "maren",      "initiative": 3},
+      {"slot": 7, "id": "zombie_2",   "initiative": -1}
     ]
   }
 }

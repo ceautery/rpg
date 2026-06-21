@@ -1,0 +1,15 @@
+{
+  "turn": 3, "round": 3, "actor": "maren", "initiative_slot": 3,
+  "move": "none — hold D1",
+  "action": {
+    "type": "spell", "spell": "Sacred Flame", "level": "cantrip",
+    "target": "specter_1", "save": "DEX DC 13", "damage_dice": "1d8", "damage_type": "radiant",
+    "contingency": "if specter_1 already destroyed, redirect to zombie_1"
+  },
+  "bonus_action": {
+    "type": "spell_attack", "spell": "Spiritual Weapon (active, already at D2)",
+    "weapon_move": "none needed (co-located with specter at D2)",
+    "target": "specter_1", "attack_bonus": 4, "damage_dice": "1d8+2", "damage_type": "force",
+    "contingency": "if specter_1 destroyed, move weapon 20 ft to E3 and attack zombie_1"
+  }
+}

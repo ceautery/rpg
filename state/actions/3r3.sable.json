@@ -1,0 +1,10 @@
+{
+  "turn": 3, "round": 3, "actor": "sable", "initiative_slot": 1,
+  "move": "none — hold F2",
+  "action": {
+    "type": "attack", "weapon": "longsword", "target": "zombie_1",
+    "attack_bonus": 5, "damage_dice": "1d8+3", "damage_type": "slashing",
+    "note": "zombie_1 at 7 HP, AC 8. Non-radiant — Undead Fortitude applies if reduced to 0."
+  },
+  "bonus_action": null
+}
