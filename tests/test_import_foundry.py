@@ -5,7 +5,7 @@ from pathlib import Path
 import sys
 sys.path.insert(0, str(Path(__file__).parent.parent / 'scripts'))
 
-from import_foundry import load_module, strip_html
+from import_foundry import load_module, strip_html, classify_actors, infer_room_type, build_rooms, build_config
 
 
 def make_module_dir(tmp_path, actors="", journals="", items="", scenes="", tables="", world=None):
@@ -97,3 +97,130 @@ def test_load_module_raises_on_missing_data_dir(tmp_path):
     bad.mkdir()
     with pytest.raises(ValueError, match="No data/actors.db"):
         load_module(str(bad))
+
+
+# --- Shared fixtures for classify_actors, infer_room_type, build_rooms, build_config ---
+
+ACTOR_MONSTER = {
+    "_id": "am1", "name": "Kobold", "type": "npc",
+    "token": {"disposition": -1},
+    "data": {
+        "details": {"cr": "1/8", "biography": {"value": ""}},
+        "attributes": {"ac": {"value": 12}, "hp": {"max": 5}, "movement": {"walk": 30}},
+        "abilities": {"str": {"value": 7}, "dex": {"value": 15}, "con": {"value": 9},
+                      "int": {"value": 8}, "wis": {"value": 7}, "cha": {"value": 8}},
+    },
+    "items": [],
+}
+
+ACTOR_NPC = {
+    "_id": "an1", "name": "Kollias", "type": "npc",
+    "token": {"disposition": 1},
+    "data": {
+        "details": {"cr": None, "biography": {"value": "<p>A loyal guard.</p>"}},
+        "attributes": {"ac": {"value": 16}, "hp": {"max": 52}, "movement": {"walk": 30}},
+        "abilities": {"str": {"value": 16}, "dex": {"value": 12}, "con": {"value": 14},
+                      "int": {"value": 10}, "wis": {"value": 11}, "cha": {"value": 10}},
+    },
+    "items": [],
+}
+
+SCENE_1 = {
+    "_id": "sc1", "name": "Entrance Hall", "navOrder": 1,
+    "journal": "j1",
+    "tokens": [
+        {"_id": "t1", "actorId": "am1"},
+        {"_id": "t2", "actorId": "am1"},
+    ],
+}
+
+JOURNAL_1 = {
+    "_id": "j1", "name": "Entrance Hall",
+    "content": "<p>A wide stone hall.</p>",
+}
+
+
+# --- classify_actors ---
+
+def test_classify_actors_monster_by_disposition():
+    monsters, npcs = classify_actors({"am1": ACTOR_MONSTER})
+    assert "am1" in monsters
+    assert "am1" not in npcs
+
+def test_classify_actors_npc_by_disposition():
+    monsters, npcs = classify_actors({"an1": ACTOR_NPC})
+    assert "an1" in npcs
+    assert "an1" not in monsters
+
+def test_classify_actors_no_cr_is_npc():
+    actor = dict(ACTOR_MONSTER)
+    actor = {**ACTOR_MONSTER, "_id": "ax1",
+             "data": {**ACTOR_MONSTER["data"],
+                      "details": {"cr": None, "biography": {"value": ""}}},
+             "token": {"disposition": -1}}
+    monsters, npcs = classify_actors({"ax1": actor})
+    assert "ax1" in npcs  # no CR means NPC even if hostile disposition
+
+def test_classify_actors_mixed():
+    monsters, npcs = classify_actors({"am1": ACTOR_MONSTER, "an1": ACTOR_NPC})
+    assert "am1" in monsters and "an1" in npcs
+
+
+# --- infer_room_type ---
+
+def test_infer_room_type_entrance():
+    assert infer_room_type("Entrance Hall", "") == "entrance"
+
+def test_infer_room_type_boss():
+    assert infer_room_type("The Dragon's Lair", "") == "boss"
+
+def test_infer_room_type_vault():
+    assert infer_room_type("Treasury Vault", "") == "vault"
+
+def test_infer_room_type_corridor():
+    assert infer_room_type("Dark Corridor", "") == "corridor"
+
+def test_infer_room_type_default_chamber():
+    assert infer_room_type("Meeting Room", "") == "chamber"
+
+def test_infer_room_type_checks_content():
+    assert infer_room_type("Side Room", "the boss waits here") == "boss"
+
+
+# --- build_rooms + build_config ---
+
+def test_build_rooms_basic():
+    monsters = {"am1": ACTOR_MONSTER}
+    rooms = build_rooms([SCENE_1], {"j1": JOURNAL_1}, monsters)
+    assert len(rooms) == 1
+    r = rooms[0]
+    assert r["id"] == "r01"
+    assert r["type"] == "entrance"
+    assert r["room_type"] == "combat"
+    assert r["description"] == "A wide stone hall."
+    assert r["encounter"] == "enc_r01"
+    assert r["loot"] == "loot_r01"
+    assert r["trap"] is None
+    assert r["spotlight"] is None
+
+def test_build_rooms_connections_sequential():
+    scene2 = {**SCENE_1, "_id": "sc2", "name": "Back Room", "navOrder": 2,
+              "journal": None, "tokens": []}
+    rooms = build_rooms([SCENE_1, scene2], {"j1": JOURNAL_1}, {})
+    assert "r02" in rooms[0]["connections"]
+    assert "r01" in rooms[1]["connections"]
+
+def test_build_rooms_social_if_no_hostile_tokens():
+    scene = {**SCENE_1, "tokens": [{"_id": "t1", "actorId": "an1"}]}
+    npcs = {"an1": ACTOR_NPC}
+    # npcs are not in monsters_by_id — so no hostile tokens
+    rooms = build_rooms([scene], {"j1": JOURNAL_1}, {})
+    assert rooms[0]["room_type"] == "social"
+
+def test_build_config():
+    world = {"title": "Kobold Cauldron", "description": "A fiery adventure."}
+    cfg = build_config(world, room_count=5)
+    assert cfg["name"] == "Kobold Cauldron"
+    assert cfg["theme"] == "A fiery adventure."
+    assert cfg["room_count"] == 5
+    assert cfg["party_level"] == 3
