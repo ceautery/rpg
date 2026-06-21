@@ -220,9 +220,9 @@ The scrape of iron on stone fades. The torches in their cressets burn on, indiff
 
 Stone stands at the south end of the room, longsword extended, in front of a displaced iron chest and an empty square of black nothing in the southeast wall.
 
-**Stone:** *"Missed a goblin with my whole body. And it had one hit point."* He sheathes the longsword. *"There's a chest. Gruk took the key with him."*
+**Stone:** *"Missed a goblin with my whole body. And it was barely standing."* He sheathes the longsword. *"There's a chest. Gruk took the key with him."*
 
-**Aldric:** *"He was at one HP. He made the correct decision."* He crouches near E3 and examines the slot in the east wall. *"Pressure plate here — mechanism is spent. Mind the flagstones on the way back regardless. I would want to be certain there is only one."* He looks at the chest. *"Lock or force. Your preference."*
+**Aldric:** *"He was nearly finished. He made the correct decision."* He crouches near E3 and examines the slot in the east wall. *"Pressure plate here — mechanism is spent. Mind the flagstones on the way back regardless. I would want to be certain there is only one."* He looks at the chest. *"Lock or force. Your preference."*
 
 ---
 
@@ -368,7 +368,7 @@ Three ghouls wait in the corridor — one close, to the west (C3), one in the mi
 **Initiative:** ghoul_1 (22) · Sable (20) · skeleton_1 (18, fleeing) · ghoul_3 (15) · ghoul_2 (7) · Maren (5)
 
 **Maren and Sable — entering the corridor:**
-Sable: "The nearest one strikes before we do—brace yourself! I'll turn them if the light holds, else we meet them at the walls."
+Sable: "That one moves fast—it'll reach us first. Brace yourself! I'll turn them if the light holds, else we meet them at the walls."
 Maren: "Sable, strike hard—I'll keep you standing. Watch for their claws."
 
 ---
