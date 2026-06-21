@@ -47,7 +47,13 @@
     "connections": ["r04", "r06", "r07"],
     "encounter": {"table_ref": "enc_r05"},
     "loot": {"table_ref": "loot_r05"},
-    "trap": {"table_ref": "trap_r05"}
+    "trap": {"table_ref": "trap_r05"},
+    "spotlight": {
+      "pc": "sable",
+      "trigger": "divine_sense",
+      "condition": "room contains undead",
+      "dm_hint": "Sable's Divine Sense detects the three skeletal warhorses as undead the moment she crosses the threshold — wrongness and old death, before anyone sees the bones move. Give her a line of warning to the party; she is the one who knows what they are walking into."
+    }
   },
   {
     "id": "r06",
@@ -67,7 +73,13 @@
     "connections": ["r06", "r05", "r08"],
     "encounter": {"table_ref": "enc_r07"},
     "loot": {"table_ref": "loot_r07"},
-    "trap": null
+    "trap": null,
+    "spotlight": {
+      "pc": "maren",
+      "trigger": "cleric_lore",
+      "condition": "inscribed warnings on walls",
+      "dm_hint": "The wall inscriptions are in an old ecclesiastical dialect — Maren recognises it immediately from her training. She can read the full warning to the party: the name Vrath, what he was in life, what the ward held in check, and what was promised to anyone who broke it. She is the party's only reader of this room. Give her a moment to translate while the others watch."
+    }
   },
   {
     "id": "r08",

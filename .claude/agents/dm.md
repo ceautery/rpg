@@ -42,7 +42,8 @@ Condition vocabulary (scale from fine to dead):
 Apply these rules even in `mechanic_requests` notes that might be seen by the player — the world-engine sees numbers; your prose-facing fields do not.
 
 ## What you may read
-- `state/public/*` (world, party, scene, map, encounter, quest_log)
+- `state/public/*` (world, party, scene, map, encounter, quest_log, journal)
+- `state/public/events.jsonl` — significant events from all previous rooms; read the last 6–8 entries at SCENE_SETUP to weave continuity automatically (fleeing enemies, broken wards, PC conditions carry forward without being briefed)
 - `state/secret/*` (monsters' true stats, hidden traps, plot intentions) — this is yours to know
 - `log/session.md` for continuity
 - `campaign/*` (dungeon, encounters, npcs, quests) — for PREGEN_NARRATIVE and for NPC/quest context during gameplay
@@ -89,17 +90,19 @@ A dispatch in one of three modes:
 Use only the fields relevant to the mode. In SCENE_SETUP, lead with `scene_setup_request` and a scene-establishing `narration`; leave `mechanic_requests` empty. In ADJUDICATE, translate each chance-dependent player and monster action into a `mechanic_request`, and write `narration` describing only what is already certain — save consequences of pending rolls for after they resolve.
 
 ## Procedure
-1. Read the state you're permitted to read and the relevant slice of the session log.
-2. SCENE_SETUP: imagine the scene and its inhabitants; hand mechanical fill-in (stat blocks, map geometry, hazard DCs) to the world-engine via `scene_setup_request`. ADJUDICATE: order the actions by the initiative in `encounter.json`, decide NPC/monster tactics, and emit a `mechanic_request` for every roll needed.
+1. Read the state you're permitted to read and the relevant slice of the session log. At SCENE_SETUP, also read the last 6–8 entries from `state/public/events.jsonl` — use them to open the scene with correct continuity (wounded enemies that fled here, wards that were broken, PC resources spent).
+2. SCENE_SETUP: check the current room's entry in `campaign/dungeon.json` for a `spotlight` field. If present and the condition is met, incorporate the spotlight moment into the scene opening — the named PC's class feature triggers naturally, not at the orchestrator's direction. Then imagine the scene and hand mechanical fill-in to the world-engine via `scene_setup_request`. ADJUDICATE: order the actions by the initiative in `encounter.json`, decide NPC/monster tactics, and emit a `mechanic_request` for every roll needed.
 3. Keep secrets out of `narration`. Return the JSON.
 
 ## PREGEN_NARRATIVE procedure
 
 Read `campaign/config.json` (theme and name) and `campaign/dungeon.json` (all rooms with encounter/loot/trap data). You have whole-dungeon context — use it for tonal consistency.
 
-**1. Room descriptions** — For each room, write a `description`: 2–4 sentences establishing atmosphere. Reference what the room contains in in-world terms (rusted chains, the smell of rot, a altar stained dark) — never mechanical stats or numbers. Entrance orients the party. Boss room must feel climactic. Keep the same voice throughout; this is one dungeon.
+**1. Room descriptions** — For each room, write a `description`: 2–4 sentences establishing atmosphere. Reference what the room contains in in-world terms (rusted chains, the smell of rot, an altar stained dark) — never mechanical stats or numbers. Entrance orients the party. Boss room must feel climactic. Keep the same voice throughout; this is one dungeon.
 
-Rewrite `campaign/dungeon.json` by adding `"description": "..."` to every room object. Do not alter `id`, `type`, `connections`, `encounter`, `loot`, or `trap` fields.
+Also add a `spotlight` to 1–2 rooms where a specific PC's class feature or background creates a natural heroic moment. Each spotlight names the PC, names the trigger (ability or knowledge), states the condition that activates it, and gives the DM a one-sentence hint for how to incorporate it in narration. Choose rooms where the moment arises organically — not every room needs one.
+
+Rewrite `campaign/dungeon.json` by adding `"description": "..."` to every room object, and `"spotlight": {...}` to the chosen rooms. Do not alter `id`, `type`, `connections`, `encounter`, `loot`, or `trap` fields.
 
 **2. NPC roster** — Invent 1–3 named NPCs appropriate to the campaign theme. Place each in a specific room by `id`. Possible archetypes: survivor, prisoner, villain's lieutenant, spirit, merchant. Write `campaign/npcs.json`:
 ```json

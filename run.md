@@ -147,6 +147,18 @@ After each room clears, append one entry per PC to `state/public/journal.json`. 
 
 These entries are passed to player agents in future TAKE_TURN and COORDINATE dispatches so characters feel continuous across rooms.
 
+### 8b. Append to events.jsonl (on significant events)
+Append one JSON line to `state/public/events.jsonl` whenever something consequential happens that could affect a future scene. The DM reads this at every SCENE_SETUP to automatically pick up continuity — no manual briefing needed.
+
+**When to append:** enemy flees to a specific room, enemy killed, PC downed, NPC makes a promise or threat, trap triggered, ward broken, quest objective completed, room cleared.
+
+**Format:**
+```json
+{"turn": 4, "room": "r04", "type": "room_cleared|enemy_fled|enemy_destroyed|pc_downed|trap_triggered|npc_event|quest_update", "actors": ["specter_1"], "detail": "Fiction summary of what happened and what it means for future rooms. No mechanical numbers — use condition vocabulary."}
+```
+
+Write `actors` only when a specific creature or NPC is involved. The `detail` field is what the DM reads; make it actionable (where did the fleeing enemy go, what condition is it in, what should the DM expect).
+
 ---
 
 ## Perception packet rules (the anti-metagaming wall)
@@ -221,7 +233,10 @@ Sheet: <json>. You may spend 0 to <N> Hit Dice. Return {"hit_dice_to_spend": N}.
 **DM (scene setup):** model: sonnet
 ```
 Use the dm subagent. MODE: SCENE_SETUP.
-World state: <json>. Goal: <description>. Return the directive JSON.
+World state: <json>. Goal: <description>.
+Recent events (last 6-8 lines of state/public/events.jsonl): <paste entries>.
+Spotlight (from dungeon.json for this room, if present): <paste spotlight object or "none">.
+Read state/public/* and state/secret/* as needed. Return the directive JSON.
 ```
 
 **DM (adjudicate):** model: sonnet

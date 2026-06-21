@@ -16,6 +16,7 @@
 |---|---|
 | `state/public/party.json`, `encounter.json` (applied results) | orchestrator |
 | `state/public/world.json`, `quest_log.json`, `scene.json`, `journal.json` | orchestrator |
+| `state/public/events.jsonl` | orchestrator (appends on significant events) |
 | `state/public/map.txt`, `encounter.json` (mechanical scaffold) | world-engine |
 | `state/secret/monsters.json` | world-engine |
 | `state/secret/hidden.json` | DM (when orchestrator authorizes) |
@@ -24,7 +25,7 @@
 | `log/session.md` | orchestrator |
 | `cache/*` | oracle.py |
 | `campaign/config.json` | User |
-| `campaign/dungeon.json` | world-engine (PREGEN_STRUCTURE → PREGEN_POPULATE), then DM (PREGEN_NARRATIVE) — sequential pre-gen dispatches only |
+| `campaign/dungeon.json` | world-engine (PREGEN_STRUCTURE → PREGEN_POPULATE), then DM (PREGEN_NARRATIVE adds `description` + `spotlight`) — sequential pre-gen dispatches only |
 | `campaign/encounters.json` | world-engine (PREGEN_POPULATE) |
 | `campaign/npcs.json` | DM (PREGEN_NARRATIVE) |
 | `campaign/quests.json` | DM (PREGEN_NARRATIVE); orchestrator toggles `completed` flags only |
