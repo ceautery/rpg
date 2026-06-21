@@ -224,3 +224,88 @@ def test_build_config():
     assert cfg["theme"] == "A fiery adventure."
     assert cfg["room_count"] == 5
     assert cfg["party_level"] == 3
+
+
+# --- build_encounters ---
+
+from import_foundry import build_encounters
+
+ACTOR_CUSTOM = {
+    "_id": "ac1", "name": "Booze Server Kobold", "type": "npc",
+    "token": {"disposition": -1},
+    "data": {
+        "details": {"cr": "1/8", "biography": {"value": ""}},
+        "attributes": {"ac": {"value": 12}, "hp": {"max": 5}, "movement": {"walk": 30}},
+        "abilities": {"str": {"value": 7}, "dex": {"value": 15}, "con": {"value": 9},
+                      "int": {"value": 8}, "wis": {"value": 7}, "cha": {"value": 8}},
+    },
+    "items": [
+        {
+            "name": "Dagger", "type": "weapon",
+            "data": {
+                "actionType": "mwak",
+                "attackBonus": 4,
+                "damage": {"parts": [["1d4+2", "piercing"]]},
+            },
+        }
+    ],
+}
+
+SCENE_WITH_TOKENS = {
+    "_id": "sc1", "name": "Entrance", "navOrder": 1,
+    "journal": None,
+    "tokens": [
+        {"_id": "t1", "actorId": "am1"},
+        {"_id": "t2", "actorId": "am1"},
+        {"_id": "t3", "actorId": "ac1"},
+    ],
+}
+
+ROOMS_1 = [{"id": "r01", "encounter": "enc_r01", "loot": "loot_r01"}]
+
+
+def test_build_encounters_groups_same_actor():
+    actors = {"am1": ACTOR_MONSTER, "ac1": ACTOR_CUSTOM}
+    enc = build_encounters([SCENE_WITH_TOKENS], actors, ROOMS_1)
+    monsters = enc["enc_r01"]
+    kobold = next(m for m in monsters if m["monster"] == "kobold")
+    assert kobold["count"] == 2
+
+def test_build_encounters_extracts_cr_ac_hp():
+    actors = {"am1": ACTOR_MONSTER}
+    scene = {**SCENE_WITH_TOKENS, "tokens": [{"_id": "t1", "actorId": "am1"}]}
+    enc = build_encounters([scene], actors, ROOMS_1)
+    m = enc["enc_r01"][0]
+    assert m["cr"] == "1/8"
+    assert m["ac"] == 12
+    assert m["hp"] == 5
+
+def test_build_encounters_includes_foundry_stats():
+    actors = {"ac1": ACTOR_CUSTOM}
+    scene = {**SCENE_WITH_TOKENS, "tokens": [{"_id": "t1", "actorId": "ac1"}]}
+    enc = build_encounters([scene], actors, ROOMS_1)
+    m = enc["enc_r01"][0]
+    assert "foundry_stats" in m
+    assert m["foundry_stats"]["abilities"]["dex"] == 15
+    assert m["foundry_stats"]["speed"] == 30
+
+def test_build_encounters_extracts_weapon_attacks():
+    actors = {"ac1": ACTOR_CUSTOM}
+    scene = {**SCENE_WITH_TOKENS, "tokens": [{"_id": "t1", "actorId": "ac1"}]}
+    enc = build_encounters([scene], actors, ROOMS_1)
+    attacks = enc["enc_r01"][0]["foundry_stats"]["attacks"]
+    assert len(attacks) == 1
+    assert attacks[0]["name"] == "Dagger"
+    assert attacks[0]["damage"] == "1d4+2"
+
+def test_build_encounters_loot_placeholder_when_no_items():
+    actors = {"am1": ACTOR_MONSTER}
+    scene = {**SCENE_WITH_TOKENS, "tokens": [{"_id": "t1", "actorId": "am1"}]}
+    enc = build_encounters([scene], actors, ROOMS_1)
+    assert enc["loot_r01"] == [{"item": "gold", "amount_gp": 0}]
+
+def test_build_encounters_empty_scene():
+    scene = {**SCENE_WITH_TOKENS, "tokens": []}
+    enc = build_encounters([scene], {}, ROOMS_1)
+    assert enc["enc_r01"] == []
+    assert enc["loot_r01"] == [{"item": "gold", "amount_gp": 0}]

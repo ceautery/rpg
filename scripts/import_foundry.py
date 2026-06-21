@@ -175,6 +175,84 @@ def build_config(world: dict, room_count: int) -> dict:
 
 
 # ---------------------------------------------------------------------------
+# Encounter builder
+# ---------------------------------------------------------------------------
+
+def _slugify(name: str) -> str:
+    return re.sub(r'[^a-z0-9]+', '-', name.lower()).strip('-')
+
+
+def _extract_foundry_stats(actor: dict) -> dict:
+    data = actor.get('data', {})
+    attrs = data.get('attributes', {})
+    abilities_raw = data.get('abilities', {})
+    abilities = {k: v.get('value', 10) for k, v in abilities_raw.items()}
+
+    attacks = []
+    for item in actor.get('items', []):
+        idata = item.get('data', {})
+        if item.get('type') in ('weapon', 'feat') and idata.get('actionType'):
+            parts = idata.get('damage', {}).get('parts', [])
+            attacks.append({
+                'name': item.get('name', 'Attack'),
+                'attack_bonus': idata.get('attackBonus', 0),
+                'damage': parts[0][0] if parts else '1',
+                'type': parts[0][1] if parts else 'bludgeoning',
+            })
+
+    movement = attrs.get('movement', {})
+    speed = movement.get('walk', 30) if isinstance(movement, dict) else 30
+
+    return {
+        'abilities': abilities,
+        'speed': speed,
+        'attacks': attacks,
+    }
+
+
+def build_encounters(scenes: list, actors: dict, rooms: list) -> dict:
+    """Build encounters.json dict from scene token placements."""
+    result = {}
+    for i, scene in enumerate(scenes):
+        room = rooms[i]
+        enc_key = room['encounter']
+        loot_key = room['loot']
+
+        # Group tokens by actorId, count instances
+        counts: dict[str, int] = {}
+        for token in scene.get('tokens', []):
+            aid = token.get('actorId')
+            if aid and aid in actors:
+                counts[aid] = counts.get(aid, 0) + 1
+
+        monsters = []
+        for aid, count in counts.items():
+            actor = actors[aid]
+            data = actor.get('data', {})
+            attrs = data.get('attributes', {})
+
+            ac_field = attrs.get('ac', {})
+            ac = ac_field.get('value') or ac_field.get('flat') or 10
+            hp = attrs.get('hp', {}).get('max', 1)
+            cr = data.get('details', {}).get('cr', '0')
+
+            entry = {
+                'monster': _slugify(actor.get('name', 'unknown')),
+                'count': count,
+                'cr': cr,
+                'ac': ac,
+                'hp': hp,
+                'foundry_stats': _extract_foundry_stats(actor),
+            }
+            monsters.append(entry)
+
+        result[enc_key] = monsters
+        result[loot_key] = [{'item': 'gold', 'amount_gp': 0}]
+
+    return result
+
+
+# ---------------------------------------------------------------------------
 # Placeholder main (expanded in Task 6)
 # ---------------------------------------------------------------------------
 
