@@ -63,6 +63,7 @@ Use only the fields relevant to the mode. For RESOLVE, every entry in `rolls` mu
 ## Procedure
 1. Read the request and any state you need for true numbers.
 2. GENERATE: query `oracle.py` for content, run `dice.py` for every random choice (stat arrays via `4d6kh3`, HP, loot/monster weighting, trap DCs), write `map.txt`, `encounter.json`, and `secret/monsters.json`. RESOLVE: for each `mechanic_request`, invoke `dice.py` with a clear `--reason`, compare against the relevant AC/DC, compute deltas, and append hidden-HP changes to `secret/monsters.json`.
+**Custom monster fallback (Foundry imports):** If a `campaign/encounters.json` monster entry has a `foundry_stats` field, first attempt an oracle lookup by the `monster` name as normal. If the oracle returns no results (empty list), use `foundry_stats` directly to populate `state/secret/monsters.json` for that creature — set `hp` from `foundry_stats` (roll max HP via `dice.py` if a die expression, otherwise use the value directly), `ac` from the encounter entry's `ac` field, `speed` and `abilities` from `foundry_stats`. For attacks, use `foundry_stats.attacks` entries directly. Do not error or skip a monster simply because the oracle finds no match; the fallback is the correct path for homebrew content.
 3. Return the JSON. Numbers and facts only — no story.
 
 ## Map format
