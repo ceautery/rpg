@@ -14,7 +14,10 @@ from typing import Optional
 # ---------------------------------------------------------------------------
 
 def strip_html(html: Optional[str]) -> str:
-    return re.sub(r'<[^>]+>', '', html or '').strip()
+    text = re.sub(r'<[^>]+>', '', html or '').strip()
+    # Collapse Foundry entity refs like @Actor[id]{Name} → Name
+    text = re.sub(r'@\w+\[[^\]]*\]\{([^}]+)\}', r'\1', text)
+    return text
 
 
 # ---------------------------------------------------------------------------
@@ -85,7 +88,8 @@ def classify_actors(actors: dict) -> tuple[dict, dict]:
     for aid, actor in actors.items():
         cr = (actor.get('data') or {}).get('details', {}).get('cr')
         disposition = (actor.get('token') or {}).get('disposition', 0)
-        if cr and disposition != 1:
+        has_cr = cr is not None and str(cr).strip() not in ('', 'null')
+        if has_cr and disposition != 1:
             monsters[aid] = actor
         else:
             npcs[aid] = actor
@@ -184,6 +188,26 @@ def _slugify(name: str) -> str:
     return re.sub(r'[^a-z0-9]+', '-', name.lower()).strip('-')
 
 
+def _resolve_mod(formula: str, action_type: str, abilities: dict) -> str:
+    """Replace Foundry @mod placeholder with a computed integer modifier."""
+    if '@mod' not in formula:
+        return formula
+    str_mod = (abilities.get('str', 10) - 10) // 2
+    dex_mod = (abilities.get('dex', 10) - 10) // 2
+    if action_type in ('mwak', 'mpak'):
+        mod = max(str_mod, dex_mod)
+    elif action_type == 'rwak':
+        mod = dex_mod
+    else:
+        mod = 0
+    result = formula.replace('@mod', str(mod)).replace(' ', '')
+    # Clean up double signs: +-N → -N, --N → +N
+    result = re.sub(r'\+\+', '+', result)
+    result = re.sub(r'\+-', '-', result)
+    result = re.sub(r'--', '+', result)
+    return result
+
+
 def _extract_foundry_stats(actor: dict) -> dict:
     data = actor.get('data', {})
     attrs = data.get('attributes', {})
@@ -195,10 +219,12 @@ def _extract_foundry_stats(actor: dict) -> dict:
         idata = item.get('data', {})
         if item.get('type') in ('weapon', 'feat') and idata.get('actionType'):
             parts = idata.get('damage', {}).get('parts', [])
+            damage_formula = parts[0][0] if parts else '1'
+            damage_formula = _resolve_mod(damage_formula, idata.get('actionType', ''), abilities)
             attacks.append({
                 'name': item.get('name', 'Attack'),
                 'attack_bonus': idata.get('attackBonus', 0),
-                'damage': parts[0][0] if parts else '1',
+                'damage': damage_formula,
                 'type': parts[0][1] if parts else 'bludgeoning',
             })
 
@@ -244,6 +270,7 @@ def build_encounters(scenes: list, actors: dict, rooms: list) -> dict:
                 'cr': cr,
                 'ac': ac,
                 'hp': hp,
+                'custom': True,
                 'foundry_stats': _extract_foundry_stats(actor),
             }
             monsters.append(entry)

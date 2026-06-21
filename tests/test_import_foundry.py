@@ -5,7 +5,7 @@ from pathlib import Path
 import sys
 sys.path.insert(0, str(Path(__file__).parent.parent / 'scripts'))
 
-from import_foundry import load_module, strip_html, classify_actors, infer_room_type, build_rooms, build_config
+from import_foundry import load_module, strip_html, classify_actors, infer_room_type, build_rooms, build_config, _resolve_mod, _extract_foundry_stats
 
 
 def make_module_dir(tmp_path, actors="", journals="", items="", scenes="", tables="", world=None):
@@ -50,6 +50,32 @@ def test_strip_html_plain_text():
 def test_strip_html_nested():
     assert strip_html("<div><p>Deep <em>text</em></p></div>") == "Deep text"
 
+def test_strip_html_removes_foundry_entity_refs():
+    raw = 'Defeat @Actor[bLtWSRvO9Q1SmhCF]{Tuckerthranx} and his minions.'
+    assert strip_html(raw) == 'Defeat Tuckerthranx and his minions.'
+
+def test_strip_html_removes_item_refs():
+    raw = 'Find the @Item[abc123]{Red Claw Regalia}.'
+    assert strip_html(raw) == 'Find the Red Claw Regalia.'
+
+
+# --- _resolve_mod ---
+
+def test_resolve_mod_melee_replaces_with_str_or_dex():
+    abilities = {'str': 16, 'dex': 12, 'con': 14, 'int': 10, 'wis': 10, 'cha': 10}
+    assert _resolve_mod('1d8+@mod', 'mwak', abilities) == '1d8+3'
+
+def test_resolve_mod_ranged_uses_dex():
+    abilities = {'str': 7, 'dex': 15, 'con': 9, 'int': 8, 'wis': 7, 'cha': 8}
+    assert _resolve_mod('1d4+@mod', 'rwak', abilities) == '1d4+2'
+
+def test_resolve_mod_negative_modifier():
+    abilities = {'str': 7, 'dex': 7, 'con': 9, 'int': 8, 'wis': 7, 'cha': 8}
+    assert _resolve_mod('1d6+@mod', 'mwak', abilities) == '1d6-2'
+
+def test_resolve_mod_no_mod_unchanged():
+    abilities = {'str': 10, 'dex': 10, 'con': 10, 'int': 10, 'wis': 10, 'cha': 10}
+    assert _resolve_mod('1d6+2', 'mwak', abilities) == '1d6+2'
 
 # --- load_module from directory ---
 
@@ -309,6 +335,46 @@ def test_build_encounters_empty_scene():
     enc = build_encounters([scene], {}, ROOMS_1)
     assert enc["enc_r01"] == []
     assert enc["loot_r01"] == [{"item": "gold", "amount_gp": 0}]
+
+def test_build_encounters_sets_custom_true():
+    actors = {'am1': ACTOR_MONSTER}
+    scene = {**SCENE_WITH_TOKENS, 'tokens': [{'_id': 't1', 'actorId': 'am1'}]}
+    enc = build_encounters([scene], actors, ROOMS_1)
+    assert enc['enc_r01'][0]['custom'] is True
+
+def test_extract_foundry_stats_resolves_mod_in_attacks():
+    actor = {
+        **ACTOR_CUSTOM,
+        'items': [{
+            'name': 'Dagger', 'type': 'weapon',
+            'data': {
+                'actionType': 'mwak',
+                'attackBonus': 4,
+                'damage': {'parts': [['1d4+@mod', 'piercing']]},
+            },
+        }],
+    }
+    stats = _extract_foundry_stats(actor)
+    # ACTOR_CUSTOM has dex 15 → dex mod +2; str 7 → str mod -2; mwak uses max = +2
+    assert '@mod' not in stats['attacks'][0]['damage']
+    assert stats['attacks'][0]['damage'] == '1d4+2'
+
+
+# --- classify_actors CR=0 edge cases ---
+
+def test_classify_actors_cr_zero_hostile_is_monster():
+    actor = {**ACTOR_MONSTER, '_id': 'az1',
+             'data': {**ACTOR_MONSTER['data'],
+                      'details': {**ACTOR_MONSTER['data']['details'], 'cr': 0}}}
+    monsters, npcs = classify_actors({'az1': actor})
+    assert 'az1' in monsters
+
+def test_classify_actors_cr_zero_string_hostile_is_monster():
+    actor = {**ACTOR_MONSTER, '_id': 'az2',
+             'data': {**ACTOR_MONSTER['data'],
+                      'details': {**ACTOR_MONSTER['data']['details'], 'cr': '0'}}}
+    monsters, npcs = classify_actors({'az2': actor})
+    assert 'az2' in monsters
 
 
 # --- classify_journals ---
