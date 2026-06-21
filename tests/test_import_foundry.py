@@ -377,3 +377,63 @@ def test_classify_journals_ids_are_sequential():
     quests, _, _ = classify_journals(journals, linked_ids=set())
     ids = [q["id"] for q in quests]
     assert "q01" in ids and "q02" in ids
+
+
+# --- build_npcs and build_named_items ---
+
+from import_foundry import build_npcs, build_named_items
+
+ITEM_1 = {
+    "_id": "item1", "name": "Red Claw Regalia", "type": "equipment",
+    "data": {
+        "description": {"value": "<p>A gilded breastplate.</p>"},
+        "price": 250,
+    },
+}
+
+SCENE_WITH_NPC = {
+    "_id": "sc1", "name": "Tavern", "navOrder": 1,
+    "journal": None,
+    "tokens": [{"_id": "t1", "actorId": "an1"}],
+}
+
+ROOMS_WITH_ID = [{"id": "r01"}]
+
+
+def test_build_npcs_maps_name_and_id():
+    npcs = build_npcs({"an1": ACTOR_NPC}, [SCENE_WITH_NPC], ROOMS_WITH_ID)
+    assert len(npcs) == 1
+    assert npcs[0]["name"] == "Kollias"
+    assert npcs[0]["id"] == "kollias"
+
+def test_build_npcs_room_from_token_placement():
+    npcs = build_npcs({"an1": ACTOR_NPC}, [SCENE_WITH_NPC], ROOMS_WITH_ID)
+    assert npcs[0]["room"] == "r01"
+
+def test_build_npcs_goal_from_biography():
+    npcs = build_npcs({"an1": ACTOR_NPC}, [SCENE_WITH_NPC], ROOMS_WITH_ID)
+    assert npcs[0]["goal"] == "A loyal guard."
+
+def test_build_npcs_disposition_friendly():
+    npcs = build_npcs({"an1": ACTOR_NPC}, [SCENE_WITH_NPC], ROOMS_WITH_ID)
+    assert npcs[0]["disposition"] == "friendly"
+
+def test_build_npcs_null_room_when_not_placed():
+    npcs = build_npcs({"an1": ACTOR_NPC}, [], [])
+    assert npcs[0]["room"] is None
+
+def test_build_named_items_basic():
+    items = build_named_items({"item1": ITEM_1})
+    assert len(items) == 1
+    it = items[0]
+    assert it["name"] == "Red Claw Regalia"
+    assert it["id"] == "red-claw-regalia"
+    assert it["description"] == "A gilded breastplate."
+    assert it["value"] == 250
+    assert it["in_room"] is None
+    assert it["secret"] is None
+    assert it["investigation_dc"] is None
+
+def test_build_named_items_type():
+    items = build_named_items({"item1": ITEM_1})
+    assert items[0]["type"] == "equipment"

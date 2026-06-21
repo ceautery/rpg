@@ -347,6 +347,69 @@ def classify_journals(journals: dict, linked_ids: set) -> tuple[list, list, list
 
 
 # ---------------------------------------------------------------------------
+# NPC extractor
+# ---------------------------------------------------------------------------
+
+_DISPOSITION_MAP = {1: 'friendly', 0: 'neutral', -1: 'hostile'}
+
+
+def build_npcs(npcs_by_id: dict, scenes: list, rooms: list) -> list[dict]:
+    """Map friendly actors to npcs.json entries."""
+    # Build actor_id → room_id lookup from token placements
+    actor_room: dict[str, str] = {}
+    for i, scene in enumerate(scenes):
+        rid = rooms[i]['id'] if i < len(rooms) else None
+        for token in scene.get('tokens', []):
+            aid = token.get('actorId')
+            if aid and rid and aid not in actor_room:
+                actor_room[aid] = rid
+
+    result = []
+    for aid, actor in npcs_by_id.items():
+        data = actor.get('data', {})
+        bio_html = data.get('details', {}).get('biography', {}).get('value', '')
+        bio_text = strip_html(bio_html)
+        # First sentence (including the terminating punctuation)
+        match = re.match(r'^([^.!?]*[.!?])', bio_text)
+        goal = match.group(1).strip() if match else (bio_text.split()[0] if bio_text else '')
+
+        disposition_int = (actor.get('token') or {}).get('disposition', 1)
+        disposition = _DISPOSITION_MAP.get(disposition_int, 'neutral')
+
+        result.append({
+            'id': _slugify(actor.get('name', aid)),
+            'name': actor.get('name', aid),
+            'room': actor_room.get(aid),
+            'goal': goal,
+            'disposition': disposition,
+        })
+    return result
+
+
+# ---------------------------------------------------------------------------
+# Named item extractor
+# ---------------------------------------------------------------------------
+
+def build_named_items(items: dict) -> list[dict]:
+    """Map items.db entries to named_items.json entries."""
+    result = []
+    for iid, item in items.items():
+        data = item.get('data', {})
+        desc_html = data.get('description', {}).get('value', '')
+        result.append({
+            'id': _slugify(item.get('name', iid)),
+            'name': item.get('name', iid),
+            'type': item.get('type', 'loot'),
+            'in_room': None,
+            'description': strip_html(desc_html),
+            'secret': None,
+            'investigation_dc': None,
+            'value': data.get('price'),
+        })
+    return result
+
+
+# ---------------------------------------------------------------------------
 # Placeholder main (expanded in Task 6)
 # ---------------------------------------------------------------------------
 
