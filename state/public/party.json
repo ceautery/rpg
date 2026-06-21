@@ -8,7 +8,7 @@
     "background": "Acolyte",
     "ability_scores": {"str": 13, "dex": 12, "con": 15, "int": 13, "wis": 16, "cha": 10},
     "ability_modifiers": {"str": 1, "dex": 1, "con": 2, "int": 1, "wis": 3, "cha": 0},
-    "max_hp": 22, "current_hp": 22,
+    "max_hp": 22, "current_hp": 15,
     "hit_dice": {"total": 3, "remaining": 3, "die": "d8"},
     "proficiency_bonus": 2, "ac": 18, "speed": 30,
     "saving_throws": {"str": 1, "dex": 1, "con": 2, "int": 1, "wis": 5, "cha": 2},
@@ -20,7 +20,7 @@
     ],
     "spellcasting": {
       "ability": "WIS", "spell_save_dc": 13, "spell_attack_bonus": 5,
-      "slots": {"1": {"total": 4, "used": 0}, "2": {"total": 2, "used": 0}},
+      "slots": {"1": {"total": 4, "used": 1}, "2": {"total": 2, "used": 0}},
       "cantrips": ["Spare the Dying", "Toll the Dead", "Guidance", "Sacred Flame"],
       "prepared": ["Bane", "False Life", "Gentle Repose", "Ray of Enfeeblement", "Cure Wounds", "Healing Word", "Inflict Wounds", "Spiritual Weapon"]
     },
@@ -52,11 +52,11 @@
       {"name": "Fighting Style: Defense"},
       {"name": "Divine Smite", "note": "2d8 radiant per slot level, +1d8 vs undead"},
       {"name": "Divine Health"},
-      {"name": "Channel Divinity", "uses_total": 1, "uses_remaining": 1, "options": ["Sacred Weapon", "Turn the Unholy DC11"]}
+      {"name": "Channel Divinity", "uses_total": 1, "uses_remaining": 0, "options": ["Sacred Weapon", "Turn the Unholy DC11"]}
     ],
     "spellcasting": {
       "ability": "CHA", "spell_save_dc": 11, "spell_attack_bonus": 3,
-      "slots": {"1": {"total": 2, "used": 1}},
+      "slots": {"1": {"total": 2, "used": 2}},
       "prepared": ["Protection from Evil and Good", "Sanctuary", "Bless", "Cure Wounds", "Detect Evil and Good"]
     },
     "inventory": [
@@ -67,6 +67,6 @@
     ],
     "currency": {"gp": 0}, "conditions": [],
     "death_saves": {"successes": 0, "failures": 0},
-    "position": "F2", "player_type": "agent"
+    "position": "E2", "player_type": "agent"
   }
 ]

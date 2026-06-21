@@ -1,0 +1,12 @@
+{
+  "actor": "pc_maren",
+  "turn": 2,
+  "round": 1,
+  "intent": "cast",
+  "action": "Cast Bane on all three ghouls",
+  "target": "ghoul_1, ghoul_2, ghoul_3",
+  "weapon_or_spell": "Bane (1st-level, concentration, WIS save DC 13, -1d4 to attacks and saves for 1 min)",
+  "movement": "none",
+  "bonus_action": "none",
+  "notes": "Bane reduces ghoul attack rolls and saving throws by 1d4 each. Critical against paralysis threat. Contingency: if Sable is hurt, use Healing Word as bonus action and hold Bane as action."
+}

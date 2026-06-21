@@ -1,25 +1,46 @@
-The Sunken Vault — Room r01: Entrance (Round 2 — skeletons frightened)
-======================================================================
+ROOM: r02 — Corridor, The Sunken Vault
+Round 2 (ghoul_1 baned, ghoul_2/3 frightened and fleeing)
 
-     A   B   C   D   E   F   G   H
-  1  #   #   #   #   #   #   #   #
-  2  #   M   .   .   .   S   .   #
-  3  #   1   .   .   .   2   .   #
-  4  #   .   .   .   .   .   .   #
-  5  #   .   .   .   .   .   .   #
-  6  #   .   .   .   .   .   .   #
-  7  #   .   .   +   +   .   .   #
-  8  #   #   #   #   #   #   #   #
+     A    B    C    D    E    F    G    H
+   +----+----+----+----+----+----+----+----+
+ 1 | #  | #  | #  | +M | +S | #  | #  | #  |   <- M=Maren D1 (15/22 HP), S=Sable E1
+   +----+----+----+----+----+----+----+----+
+ 2 | #  | n  | .  | g  | .  | .  | n  | #  |   <- ghoul_1(g) D2 [BANED] adjacent to Maren
+   +----+----+----+----+----+----+----+----+
+ 3 | #  | n  | .  | .  | .  | .  | n  | #  |
+   +----+----+----+----+----+----+----+----+
+ 4 | #  | n  | .  | .  | .  | i  | n  | #  |   <- ghoul_2(i) F4 [FRIGHTENED — fleeing south]
+   +----+----+----+----+----+----+----+----+
+ 5 | #  | n  | .  | .  | .  | h  | n  | #  |   <- ghoul_3(h) F5 [FRIGHTENED — fleeing south]
+   +----+----+----+----+----+----+----+----+
+ 6 | #  | n  | .  | .  | .  | .  | n  | #  |
+   +----+----+----+----+----+----+----+----+
+ 7 | #  | #  | .  | .  | .  | .  | #  | #  |
+   +----+----+----+----+----+----+----+----+
+ 8 | #  | #  | #  | +1 | +  | #  | #  | #  |   <- skeleton_1(1) D8 [FRIGHTENED — at r03 arch]
+   +----+----+----+----+----+----+----+----+
 
-Legend:
-  #   stone wall
-  .   stone floor
-  +   archway / door to r02 (south)
-  M   Maren (PC)  — B2
-  S   Sable (PC)  — F2
-  1   skeleton_1  — B3  [FRIGHTENED — fleeing]
-  2   skeleton_2  — F3  [FRIGHTENED — fleeing]
+LEGEND
+  #  stone wall / burial niche (impassable)
+  n  burial niche
+  +  archway (north D1/E1 → r01; south D8/E8 → r03)
+  M  Maren (PC) — D1, AC 18, HP 15/22
+  S  Sable (PC) — E1, AC 18, HP 21/21
+  g  ghoul_1 (Undead, BANED) — D2
+  i  ghoul_2 (Undead, FRIGHTENED) — F4
+  h  ghoul_3 (Undead, FRIGHTENED) — F5
+  1  skeleton_1 (Undead, FRIGHTENED×2) — D8
+
+ACTIVE EFFECTS
+  Bane (Maren, concentration): ghoul_1 — -1d4 to all attacks and saves
+  Turn the Unholy (Sable): ghoul_2, ghoul_3, skeleton_1 — frightened, must flee from Sable
+
+INITIATIVE ORDER (Round 2)
+  1. ghoul_1    — 22  (D2, BANED — adjacent to Maren)
+  2. Sable      — 20  (E1)
+  3. skeleton_1 — 18  (D8, fleeing into r03)
+  4. ghoul_3    — 15  (F5, fleeing south)
+  5. ghoul_2    —  7  (F4, fleeing south)
+  6. Maren      —  5  (D1, concentrating on Bane)
 
 Scale: 1 cell = 5 ft
-North = top of grid
-South = bottom of grid (arch to r02 at D7/E7)

@@ -1,0 +1,13 @@
+{
+  "actor": "pc_sable",
+  "turn": 2,
+  "round": 1,
+  "intent": "cast",
+  "action": "Channel Divinity — Turn the Unholy",
+  "target": "ghoul_1, ghoul_2, ghoul_3, skeleton_1 (all undead within 30 feet)",
+  "weapon_or_spell": "Channel Divinity: Turn the Unholy (Wisdom save DC 11)",
+  "movement": null,
+  "bonus_action": null,
+  "divine_smite": false,
+  "notes": "All undead within 30 ft must make WIS save DC 11 or be frightened and flee for 1 minute."
+}

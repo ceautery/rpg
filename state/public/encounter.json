@@ -1,53 +1,23 @@
 {
-  "room": "r01",
-  "scene": "The Sunken Vault — Entrance",
+  "room": "r02",
+  "scene": "The Sunken Vault — Corridor",
   "round": 2,
-  "turn_pointer": 4,
+  "turn_pointer": 6,
   "initiative_order": [
-    {"slot": 0, "id": "skeleton_1", "initiative": 21, "type": "monster"},
-    {"slot": 1, "id": "skeleton_2", "initiative": 19, "type": "monster"},
-    {"slot": 2, "id": "sable",      "initiative": 17, "type": "pc"},
-    {"slot": 3, "id": "maren",      "initiative": 8,  "type": "pc"}
+    {"slot": 0, "id": "ghoul_1",    "initiative": 22, "type": "monster"},
+    {"slot": 1, "id": "sable",      "initiative": 20, "type": "pc"},
+    {"slot": 2, "id": "skeleton_1", "initiative": 18, "type": "monster"},
+    {"slot": 3, "id": "ghoul_3",    "initiative": 15, "type": "monster"},
+    {"slot": 4, "id": "ghoul_2",    "initiative":  7, "type": "monster"},
+    {"slot": 5, "id": "maren",      "initiative":  5, "type": "pc"}
   ],
   "combatants": [
-    {
-      "id": "maren",
-      "type": "pc",
-      "ac": 18,
-      "max_hp": 22,
-      "current_hp": 22,
-      "position": "B5",
-      "conditions": [],
-      "initiative": 8
-    },
-    {
-      "id": "sable",
-      "type": "pc",
-      "ac": 18,
-      "max_hp": 21,
-      "current_hp": 21,
-      "position": "F7",
-      "conditions": [],
-      "initiative": 17
-    },
-    {
-      "id": "skeleton_1",
-      "type": "monster",
-      "ac": 14,
-      "position": "fled_r02",
-      "conditions": ["frightened"],
-      "initiative": 21,
-      "note": "fled through D7 archway into r02; 8 HP remaining"
-    },
-    {
-      "id": "skeleton_2",
-      "type": "monster",
-      "ac": 14,
-      "position": "destroyed",
-      "conditions": ["destroyed"],
-      "initiative": 19,
-      "note": "destroyed by Sable Divine Smite (24 damage)"
-    }
+    {"id": "maren",     "type": "pc",      "ac": 18, "max_hp": 22, "current_hp": 15, "position": "D1",          "conditions": [], "initiative": 5},
+    {"id": "sable",     "type": "pc",      "ac": 18, "max_hp": 21, "current_hp": 21, "position": "E2",          "conditions": [], "initiative": 20},
+    {"id": "ghoul_1",   "type": "monster", "ac": 12, "position": "destroyed",      "conditions": ["destroyed"],  "initiative": 22, "note": "destroyed R2 by Sable + Maren (23+7 damage)"},
+    {"id": "ghoul_2",   "type": "monster", "ac": 12, "position": "fled_r03",       "conditions": ["frightened"], "initiative": 7,  "note": "fled to r03 while frightened"},
+    {"id": "ghoul_3",   "type": "monster", "ac": 12, "position": "fled_r03",       "conditions": ["frightened"], "initiative": 15, "note": "fled to r03 while frightened"},
+    {"id": "skeleton_1","type": "monster", "ac": 14, "position": "fled_r03",       "conditions": ["frightened"], "initiative": 18, "note": "fled to r03 while doubly frightened"}
   ],
   "status": "cleared"
 }

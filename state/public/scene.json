@@ -1,23 +1,28 @@
 {
-  "room_id": "r01",
-  "title": "The Sunken Vault — Entrance",
-  "description": "A stone threshold, old enough that the mason's marks on its lintel have been worn to shallow grooves by centuries of wind and creeping moss. The sealing stone that once blocked the entrance has been levered aside and left canted against the wall — someone pried it open weeks ago and never replaced it. The smell that rises from below is ancient and cold, the particular rot of a place that has been closed off from the living world for a very long time and has just been reminded that the world exists.",
+  "room_id": "r02",
+  "title": "The Sunken Vault — Corridor",
+  "description": "The passage stretches some forty feet, cut low and narrow into the bedrock, with burial niches carved into both walls at shoulder height. Each niche was sealed with a fitted stone tablet, but most of those tablets lie broken on the floor, shoved outward from within. The linen wrappings that once shrouded the occupants have been dragged into the corridor and lie in pale, tattered drifts — as if the dead dressed themselves in darkness and then discarded what they no longer needed. The air does not move.",
   "visible_creatures": [
-    {"id": "skeleton_1", "name": "Skeleton", "position": "C4", "apparent_state": "animate, hostile"},
-    {"id": "skeleton_2", "name": "Skeleton", "position": "F4", "apparent_state": "animate, hostile"}
+    {"id": "ghoul_1", "name": "Ghoul", "position": "C3", "apparent_state": "animate, hostile — close"},
+    {"id": "ghoul_2", "name": "Ghoul", "position": "D4", "apparent_state": "animate, hostile"},
+    {"id": "ghoul_3", "name": "Ghoul", "position": "F3", "apparent_state": "animate, hostile"},
+    {"id": "skeleton_1", "name": "Skeleton", "position": "D6", "apparent_state": "fleeing south, frightened"}
   ],
   "exits": [
-    {"direction": "south", "room_id": "r02", "description": "an archway leading deeper into the vault"}
+    {"direction": "north", "room_id": "r01", "description": "archway back to the entrance"},
+    {"direction": "south", "room_id": "r03", "description": "archway ahead into the offering vault"}
   ],
   "npc_dialogue": [],
   "combat": {
     "active": true,
     "round": 1,
     "initiative_order": [
-      {"slot": 0, "id": "skeleton_1", "initiative": 21},
-      {"slot": 1, "id": "skeleton_2", "initiative": 19},
-      {"slot": 2, "id": "sable",      "initiative": 17},
-      {"slot": 3, "id": "maren",      "initiative": 8}
+      {"slot": 0, "id": "ghoul_1",    "initiative": 22},
+      {"slot": 1, "id": "sable",      "initiative": 20},
+      {"slot": 2, "id": "skeleton_1", "initiative": 18},
+      {"slot": 3, "id": "ghoul_3",    "initiative": 15},
+      {"slot": 4, "id": "ghoul_2",    "initiative": 7},
+      {"slot": 5, "id": "maren",      "initiative": 5}
     ]
   }
 }

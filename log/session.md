@@ -356,3 +356,79 @@ The entrance chamber falls quiet. One skeleton is gone to pieces on the floor. O
 ---
 
 *r01 cleared. Maren: 22/22 HP, Channel Divinity spent. Sable: 21/21 HP, 1st-level slot spent (1 remaining). skeleton_2 destroyed. skeleton_1 fled into r02 (8 HP, frightened).*
+
+---
+
+## Scene — Corridor (r02)
+
+The passage stretches some forty feet, cut low and narrow into the bedrock, with burial niches carved into both walls at shoulder height. Each niche was sealed with a fitted stone tablet, but most of those tablets lie broken on the floor, shoved outward from within. The linen wrappings that once shrouded the occupants have been dragged into the corridor and lie in pale, tattered drifts — as if the dead dressed themselves in darkness and then discarded what they no longer needed. The air does not move.
+
+Three ghouls wait in the corridor — one close, to the west (C3), one in the middle (D4), one to the east (F3). The fleeing skeleton is visible further south (D6), still stumbling away. The ghouls have heard it coming. They were already awake.
+
+**Initiative:** ghoul_1 (22) · Sable (20) · skeleton_1 (18, fleeing) · ghoul_3 (15) · ghoul_2 (7) · Maren (5)
+
+**Maren and Sable — entering the corridor:**
+Sable: "The nearest one strikes before we do—brace yourself! I'll turn them if the light holds, else we meet them at the walls."
+Maren: "Sable, strike hard—I'll keep you standing. Watch for their claws."
+
+---
+
+## Turn 2, Round 1 — Corridor (r02)
+
+**Actions:**
+- ghoul_1: closes to D2, Bite 1 at Maren — MISS (11 vs AC 18); Bite 2 — HIT (22 vs AC 18), 7 damage (6 piercing + 1 necrotic) → Maren 22→15 HP
+- Sable: Channel Divinity — Turn the Unholy DC 11; ghoul_1 saves (16 — PASS); ghoul_2 fails (6); ghoul_3 fails (9); skeleton_1 fails (6) — two ghouls + skeleton frightened, ghoul_1 holds
+- skeleton_1: flees south D6→D8 (at r03 arch)
+- ghoul_3: frightened, flees to F5
+- ghoul_2: frightened, flees to F4
+- Maren: Bane (1st-level, concentration) on all 3 ghouls, DC 13; ghoul_1 fails (7 — BANED); ghoul_2 passes (16); ghoul_3 passes (16)
+
+**Outcome:**
+
+The ghoul at the west wall moves first.
+
+It crosses the gap to Maren in two quick, loping strides — too fast for something that moves the way it does, joints bending at wrong angles, fingers splayed — and its first bite snaps shut on empty air as she gets her shield up and the jaws skid off the iron rim with a sound like a trap closing on stone. But it does not stop. It does not hesitate. It comes back immediately, the second lunge lower and meaner, and this time it finds the junction between her pauldron strap and the side of her neck — not deep, not killing, but real. Maren's breath goes out hard through her teeth. She does not step back. She steps sideways, breaking the grip, and holds her ground in the corridor with a wound she is already deciding not to think about.
+
+Sable does not look at the blood. She lifts her holy symbol — the tarnished one, dark with age, that she has carried since before she knew what the oath meant — and she speaks. Not loudly. The words are not meant to carry; they are meant to land, and they do. The light that comes is not warm. It is the light of things held accountable, and it fills the corridor between the burial niches from wall to wall in a single cold pulse.
+
+Two of the ghouls bolt. The one in the middle passage and the one further east turn south with a sound halfway between a hiss and something more animal, claws scraping against the flagstones as they scramble away from the source of the light, from Sable's outstretched hand, putting distance between themselves and the thing that has made them afraid. They do not look back. At the south end of the corridor the skeleton, already fleeing, already running on nothing more than terror and old bone, reaches the dark arch at the corridor's end and pitches through it, a rattling silhouette vanishing into the passage beyond. The ghoul in the west — the one that just bit Maren — holds. Whatever the radiance does to its kin, it stands against it. It does not flee. It barely flinches. It turns its gray, sunken face toward Sable with the expression of something that has decided it is not done yet.
+
+Maren is already moving.
+
+She raises her free hand, holy symbol pressed against her chest, and she speaks words that sound less like prayer than like verdict. The Bane falls on the nearest ghoul like a weight — not visible, not loud, but present, the way a change in air pressure is present before a storm. The creature's limbs go subtly wrong. Something in the quality of its movement shifts, a barely perceptible hesitation in the reach and snap of it, as though its own body has begun to work slightly against its intent. It snarls. It does not know why, but it snarls.
+
+The corridor settles into the breathing space between one moment and the next. Two ghouls press south, putting as much stone between themselves and Sable as the passage allows. The skeleton is already through the arch and gone. The nearest ghoul stands at close quarters, cursed and rattled but still on its feet, still looking at the two women who have not run, still deciding that this is a fight it means to finish. Maren stands beside it, wounded and steady, chain mail dark where the bite grazed her. Sable holds the center of the corridor, her Channel spent, her sword not yet drawn.
+
+*Round 2. ghoul_1 acts first — baned, adjacent to Maren.*
+
+---
+
+## Turn 2, Round 2 — Corridor (r02)
+
+**Actions:**
+- ghoul_1: Bite 1 at Maren — MISS (10 after Bane penalty vs AC 18); Bite 2 — MISS (12 after Bane penalty vs AC 18)
+- Sable: moves to E2, longsword + Divine Smite (1st slot); HIT (18 vs AC 12): 9 slashing + 14 radiant ([3,3,8]×3d8) = 23 damage → ghoul_1 at 4/27 HP
+- skeleton_1, ghoul_3, ghoul_2: frightened, flee through D8/E8 arch into r03
+- Maren: Toll the Dead vs ghoul_1 (WIS save 9, DC 13 — FAIL): 1d12 = 7 necrotic (target missing HP) → ghoul_1 DESTROYED
+
+**Outcome:**
+
+The ghoul lunges at Maren twice in rapid succession, jaws snapping for her throat, then her wrist — and both times the bite skids off the hard lines of her armor with a sound like cracking knuckle-bone, leaving nothing but a smear of black ichor on the metal. The creature snarls, cheated. Maren does not flinch.
+
+Then Sable is moving. The longsword comes up in a two-handed grip and for an instant the blade seems to drink in something that is not torchlight — a deeper radiance, warm and pitiless, blooming outward from the steel like a held breath suddenly released. The strike drives into the ghoul with a crack of white-gold fire that throws hard shadows all the way down the corridor. The ghoul reels, half its torso scorched, barely keeping its feet, chest heaving with something that in a living creature you would call desperation.
+
+From the southern end of the passage comes the sound of claws and old bones scraping stone — fast, retreating. Ghoul_2, ghoul_3, and the skeleton do not turn to help their kin. Whatever holds them in this corridor has broken. They pour through the southern arch in a tangle, vanishing into the dark beyond.
+
+Maren raises one hand, palm outward toward the staggering ghoul. The air around her fingers goes cold and resonant, like the sustained note of a bell struck in an empty church. The pulse of necrotic force that leaves her hand is not loud — barely more than a breath — but the ghoul comes apart the moment it arrives. What held those bones and that rotten flesh together simply ceases. The creature folds to the floor and does not move again.
+
+The corridor is quiet. The tattered burial linens settle. Maren lowers her hand, and the only sounds that remain are the two of them breathing and the distant, fading scrape of fleeing dead somewhere ahead in the dark. The southern arch yawns open before the party — wide enough to walk through, blacker than the passage behind them, and from somewhere beyond it comes the faint, sour smell of older rot.
+
+---
+
+*r02 cleared. Maren: 15/22 HP, Bane concentration released, Channel Divinity spent. Sable: 21/21 HP, 0 spell slots, Channel Divinity spent. ghoul_1 destroyed. ghoul_2, ghoul_3, skeleton_1 fled into r03 (frightened). r03 ahead: Specter + 2 Zombies + 3 fleeing undead.*
+
+---
+
+*Session paused — validation complete through r02.*
+
+*SRD content © Creative Commons Attribution 4.0. Source: SRD 5.2 (srd-2024), Open5e API.*
