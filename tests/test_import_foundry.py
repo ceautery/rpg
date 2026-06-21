@@ -437,3 +437,52 @@ def test_build_named_items_basic():
 def test_build_named_items_type():
     items = build_named_items({"item1": ITEM_1})
     assert items[0]["type"] == "equipment"
+
+
+# --- run_import integration tests ---
+
+import subprocess
+from import_foundry import run_import
+
+KOBOLD_ZIP = Path(__file__).parent.parent / "tmp" / "kobold-cauldron.zip"
+
+
+def test_run_import_writes_all_campaign_files(tmp_path):
+    """Integration test against the kobold-cauldron module."""
+    if not KOBOLD_ZIP.exists():
+        pytest.skip("kobold-cauldron.zip not present")
+    run_import(str(KOBOLD_ZIP), campaign_dir=tmp_path, force=True)
+    for fname in ("config.json", "dungeon.json", "encounters.json",
+                  "npcs.json", "named_items.json", "quests.json", "foreshadowing.json"):
+        assert (tmp_path / fname).exists(), f"Missing {fname}"
+
+def test_run_import_dungeon_has_rooms(tmp_path):
+    if not KOBOLD_ZIP.exists():
+        pytest.skip("kobold-cauldron.zip not present")
+    run_import(str(KOBOLD_ZIP), campaign_dir=tmp_path, force=True)
+    rooms = json.loads((tmp_path / "dungeon.json").read_text())
+    assert len(rooms) == 7  # kobold-cauldron has 7 scenes
+
+def test_run_import_encounters_keyed_by_room(tmp_path):
+    if not KOBOLD_ZIP.exists():
+        pytest.skip("kobold-cauldron.zip not present")
+    run_import(str(KOBOLD_ZIP), campaign_dir=tmp_path, force=True)
+    enc = json.loads((tmp_path / "encounters.json").read_text())
+    assert "enc_r01" in enc
+    assert "loot_r01" in enc
+
+def test_run_import_monsters_have_foundry_stats(tmp_path):
+    if not KOBOLD_ZIP.exists():
+        pytest.skip("kobold-cauldron.zip not present")
+    run_import(str(KOBOLD_ZIP), campaign_dir=tmp_path, force=True)
+    enc = json.loads((tmp_path / "encounters.json").read_text())
+    all_monsters = [m for key in enc if key.startswith("enc_") for m in enc[key]]
+    assert all("foundry_stats" in m for m in all_monsters if m)
+
+def test_run_import_clobber_prompt(tmp_path, monkeypatch):
+    """Without --force and with existing data, prompt fires."""
+    (tmp_path / "dungeon.json").write_text('[{"id":"r01"}]')
+    monkeypatch.setattr("builtins.input", lambda _: "n")
+    with pytest.raises(SystemExit):
+        run_import(str(KOBOLD_ZIP) if KOBOLD_ZIP.exists() else "/nonexistent",
+                   campaign_dir=tmp_path, force=False)

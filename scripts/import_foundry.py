@@ -164,8 +164,10 @@ def build_rooms(scenes: list, journals: dict, monsters_by_id: dict) -> list[dict
 
 def build_config(world: dict, room_count: int) -> dict:
     description = world.get('description', '')
-    # First sentence only for theme
-    theme = re.split(r'[.!?]', strip_html(description))[0].strip()
+    # First sentence only for theme (include terminal punctuation)
+    plain = strip_html(description)
+    m = re.match(r'[^.!?]*[.!?]', plain)
+    theme = m.group(0).strip() if m else plain.strip()
     return {
         'name': world.get('title', 'Imported Campaign'),
         'theme': theme,
@@ -410,11 +412,93 @@ def build_named_items(items: dict) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
-# Placeholder main (expanded in Task 6)
+# Output writer
+# ---------------------------------------------------------------------------
+
+def _write_json(path: Path, data) -> None:
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False))
+
+
+def run_import(module_path: str, campaign_dir: Path = None, force: bool = False) -> None:
+    """Run the full import pipeline and write campaign/ files."""
+    if campaign_dir is None:
+        campaign_dir = Path(__file__).parent.parent / 'campaign'
+
+    # Clobber check
+    existing = campaign_dir / 'dungeon.json'
+    if existing.exists() and existing.stat().st_size > 2 and not force:
+        answer = input("Campaign data already exists in campaign/. Overwrite? [y/N]: ")
+        if answer.strip().lower() != 'y':
+            raise SystemExit("Import cancelled.")
+
+    # Phase 1: Load
+    data = load_module(module_path)
+    actors, journals, items, scenes, world = (
+        data['actors'], data['journals'], data['items'],
+        data['scenes'], data['world']
+    )
+
+    # Phase 2: Classify actors
+    monsters_by_id, npcs_by_id = classify_actors(actors)
+
+    # Phase 3: Build rooms + config
+    rooms = build_rooms(scenes, journals, monsters_by_id)
+    config = build_config(world, room_count=len(rooms))
+
+    # Phase 4: Build encounters
+    all_actors = {**monsters_by_id, **npcs_by_id}
+    encounters = build_encounters(scenes, all_actors, rooms)
+
+    # Phase 5: Classify journals
+    linked_ids = {scene.get('journal') for scene in scenes if scene.get('journal')}
+    quests, foreshadowing, lore = classify_journals(journals, linked_ids)
+
+    # Phase 6: Extract NPCs and items
+    npcs = build_npcs(npcs_by_id, scenes, rooms)
+    named_items = build_named_items(items)
+
+    # Phase 7: Write outputs
+    campaign_dir.mkdir(parents=True, exist_ok=True)
+    _write_json(campaign_dir / 'config.json', config)
+    _write_json(campaign_dir / 'dungeon.json', rooms)
+    _write_json(campaign_dir / 'encounters.json', encounters)
+    _write_json(campaign_dir / 'npcs.json', npcs)
+    _write_json(campaign_dir / 'named_items.json', named_items)
+    _write_json(campaign_dir / 'quests.json', quests)
+    _write_json(campaign_dir / 'foreshadowing.json', foreshadowing)
+    if lore:
+        _write_json(campaign_dir / 'lore.json', lore)
+
+    # Summary
+    custom = [m['monster'] for enc_list in encounters.values()
+              if isinstance(enc_list, list)
+              for m in enc_list if m.get('foundry_stats')]
+    print(f"\nImported \"{world.get('title', module_path)}\"")
+    print(f"  {len(rooms)} rooms, {len(actors)} actors "
+          f"({len(monsters_by_id)} monsters / {len(npcs_by_id)} NPCs), "
+          f"{len(items)} items")
+    print(f"  {len(quests)} quests, {len(foreshadowing)} foreshadowing seeds, "
+          f"{len(lore)} lore entries")
+    if custom:
+        print(f"  Monsters with foundry_stats: {', '.join(sorted(set(custom)))}")
+    print("  ⚠  connections defaulted to linear chain — review campaign/dungeon.json")
+    if config['party_level'] == 3:
+        print("  ⚠  party_level defaulted to 3 — no level data found in module")
+
+
+# ---------------------------------------------------------------------------
+# CLI entry point
 # ---------------------------------------------------------------------------
 
 def main():
-    pass
+    parser = argparse.ArgumentParser(
+        description="Import a Foundry VTT NeDB module into campaign/ files."
+    )
+    parser.add_argument('path', help='Path to module .zip or extracted directory')
+    parser.add_argument('--force', action='store_true',
+                        help='Overwrite existing campaign data without prompting')
+    args = parser.parse_args()
+    run_import(args.path, force=args.force)
 
 
 if __name__ == '__main__':
