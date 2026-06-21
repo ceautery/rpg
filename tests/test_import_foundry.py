@@ -309,3 +309,71 @@ def test_build_encounters_empty_scene():
     enc = build_encounters([scene], {}, ROOMS_1)
     assert enc["enc_r01"] == []
     assert enc["loot_r01"] == [{"item": "gold", "amount_gp": 0}]
+
+
+# --- classify_journals ---
+
+from import_foundry import classify_journals
+
+JOURNAL_QUEST = {
+    "_id": "jq1", "name": "Rescue the Prisoners",
+    "content": "<p>The party must rescue captives.</p><ul><li>Find them</li><li>Escape</li></ul><p>Reward: 200 gp for the effort.</p>",
+}
+JOURNAL_FORESHADOW = {
+    "_id": "jf1", "name": "A Dark Omen",
+    "content": "<p>A prophecy carved in stone foretells ruin.</p><p>The payoff comes later.</p>",
+}
+JOURNAL_LORE = {
+    "_id": "jl1", "name": "History of the Cauldron",
+    "content": "<p>The kobolds have held this distillery for three generations.</p>",
+}
+
+
+def test_classify_journals_skips_linked_ids():
+    journals = {"jq1": JOURNAL_QUEST}
+    quests, _, _ = classify_journals(journals, linked_ids={"jq1"})
+    assert quests == []
+
+def test_classify_journals_detects_quest():
+    journals = {"jq1": JOURNAL_QUEST}
+    quests, foreshadowing, lore = classify_journals(journals, linked_ids=set())
+    assert len(quests) == 1
+    assert quests[0]["title"] == "Rescue the Prisoners"
+
+def test_classify_journals_quest_hook_is_first_paragraph():
+    journals = {"jq1": JOURNAL_QUEST}
+    quests, _, _ = classify_journals(journals, linked_ids=set())
+    assert quests[0]["hook"] == "The party must rescue captives."
+
+def test_classify_journals_quest_objectives_from_list_items():
+    journals = {"jq1": JOURNAL_QUEST}
+    quests, _, _ = classify_journals(journals, linked_ids=set())
+    assert len(quests[0]["objectives"]) == 2
+    assert quests[0]["objectives"][0]["desc"] == "Find them"
+    assert quests[0]["objectives"][0]["completed"] is False
+
+def test_classify_journals_quest_default_reward():
+    journals = {"jq1": JOURNAL_QUEST}
+    quests, _, _ = classify_journals(journals, linked_ids=set())
+    # reward keys present even if parsing fails
+    assert "xp" in quests[0]["reward"]
+    assert "gold" in quests[0]["reward"]
+
+def test_classify_journals_detects_foreshadowing():
+    journals = {"jf1": JOURNAL_FORESHADOW}
+    _, foreshadowing, _ = classify_journals(journals, linked_ids=set())
+    assert len(foreshadowing) == 1
+    assert foreshadowing[0]["detail"] == "A prophecy carved in stone foretells ruin."
+    assert foreshadowing[0]["planted_in"] is None
+
+def test_classify_journals_lore_fallback():
+    journals = {"jl1": JOURNAL_LORE}
+    _, _, lore = classify_journals(journals, linked_ids=set())
+    assert len(lore) == 1
+    assert lore[0]["title"] == "History of the Cauldron"
+
+def test_classify_journals_ids_are_sequential():
+    journals = {"jq1": JOURNAL_QUEST, "jq2": {**JOURNAL_QUEST, "_id": "jq2"}}
+    quests, _, _ = classify_journals(journals, linked_ids=set())
+    ids = [q["id"] for q in quests]
+    assert "q01" in ids and "q02" in ids

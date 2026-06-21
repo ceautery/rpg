@@ -253,6 +253,100 @@ def build_encounters(scenes: list, actors: dict, rooms: list) -> dict:
 
 
 # ---------------------------------------------------------------------------
+# Journal classifier
+# ---------------------------------------------------------------------------
+
+_QUEST_KEYWORDS = {'quest', 'mission', 'objective', 'reward', 'bounty'}
+_FORESHADOW_KEYWORDS = {'secret', 'prophecy', 'omen', 'foreshadow', 'portent'}
+
+
+def _classify_entry(entry: dict) -> str:
+    text = (entry.get('name', '') + ' ' + strip_html(entry.get('content', ''))).lower()
+    if any(kw in text for kw in _QUEST_KEYWORDS):
+        return 'quest'
+    if any(kw in text for kw in _FORESHADOW_KEYWORDS):
+        return 'foreshadowing'
+    return 'lore'
+
+
+def _parse_list_items(html: str) -> list[str]:
+    items = re.findall(r'<li[^>]*>(.*?)</li>', html, re.IGNORECASE | re.DOTALL)
+    return [strip_html(item) for item in items if strip_html(item)]
+
+
+def _first_paragraph(html: str) -> str:
+    m = re.search(r'<p[^>]*>(.*?)</p>', html, re.IGNORECASE | re.DOTALL)
+    return strip_html(m.group(1)) if m else strip_html(html)
+
+
+def _map_to_quest(entry: dict, idx: int) -> dict:
+    content = entry.get('content', '')
+    hook = _first_paragraph(content)
+    list_items = _parse_list_items(content)
+    objectives = (
+        [{'id': f"q{idx:02d}_o{j + 1}", 'desc': desc, 'completed': False}
+         for j, desc in enumerate(list_items)]
+        if list_items else
+        [{'id': f"q{idx:02d}_o1", 'desc': 'See DM notes.', 'completed': False}]
+    )
+    # Naive gold parse: find first integer after "gp" mention
+    gold_match = re.search(r'(\d+)\s*gp', strip_html(content), re.IGNORECASE)
+    xp_match = re.search(r'(\d+)\s*xp', strip_html(content), re.IGNORECASE)
+    return {
+        'id': f"q{idx:02d}",
+        'title': entry.get('name', ''),
+        'hook': hook,
+        'objectives': objectives,
+        'reward': {
+            'xp': int(xp_match.group(1)) if xp_match else 0,
+            'gold': int(gold_match.group(1)) if gold_match else 0,
+            'narrative': '',
+        },
+    }
+
+
+def _map_to_foreshadowing(entry: dict, idx: int) -> dict:
+    content = entry.get('content', '')
+    paragraphs = re.findall(r'<p[^>]*>(.*?)</p>', content, re.IGNORECASE | re.DOTALL)
+    detail = strip_html(paragraphs[0]) if paragraphs else strip_html(content)
+    dm_hint = ' '.join(strip_html(p) for p in paragraphs[1:]) if len(paragraphs) > 1 else ''
+    return {
+        'id': f"fs{idx:02d}",
+        'detail': detail,
+        'planted_in': None,
+        'pays_off_in': None,
+        'payoff': '',
+        'dm_hint': dm_hint,
+    }
+
+
+def classify_journals(journals: dict, linked_ids: set) -> tuple[list, list, list]:
+    """Classify unlinked journals into quests, foreshadowing seeds, and lore."""
+    quests, foreshadowing, lore = [], [], []
+    q_idx = fs_idx = lore_idx = 1
+
+    for jid, entry in journals.items():
+        if jid in linked_ids:
+            continue
+        kind = _classify_entry(entry)
+        if kind == 'quest':
+            quests.append(_map_to_quest(entry, q_idx))
+            q_idx += 1
+        elif kind == 'foreshadowing':
+            foreshadowing.append(_map_to_foreshadowing(entry, fs_idx))
+            fs_idx += 1
+        else:
+            lore.append({
+                'id': f"lore_{lore_idx:02d}",
+                'title': entry.get('name', ''),
+                'content': strip_html(entry.get('content', '')),
+            })
+            lore_idx += 1
+
+    return quests, foreshadowing, lore
+
+
+# ---------------------------------------------------------------------------
 # Placeholder main (expanded in Task 6)
 # ---------------------------------------------------------------------------
 
