@@ -64,8 +64,12 @@ For all room types:
 2. For **combat** and **trap** rooms: look up `encounter.table_ref` in `campaign/encounters.json`. Dispatch **world-engine** in `GENERATE` mode with the explicit roster. World-engine rolls HP, writes `map.txt`, `encounter.json`, and `state/secret/monsters.json`.
    - For **trap** rooms: also pass the trap object `{dc, damage_die, save}` from `campaign/encounters.json[trap_ref]`. WE places it on the map and resolves entry (PC DEX saves) before any initiative is rolled.
 3. Build `state/public/scene.json` from: the pre-written `description`, the public map, visible creatures by name and apparent state (never numeric HP), exits from the room's `connections` list, and an empty `npc_dialogue` list. **Strip anything from `secret/`.**
-4. Place PC tokens in `party.json` and on the map.
-5. Append the scene to `log/session.md` (see Log format).
+4. Look up two things before dispatching DM:
+   - **Spotlight**: check the current room object in `dungeon.json` for a `spotlight` field.
+   - **Foreshadowing payoffs**: scan `campaign/foreshadowing.json` for seeds where `pays_off_in` matches `current_room_id`. Collect matching objects.
+   Include both in the SCENE_SETUP dispatch (see dispatch templates). If none, pass `"none"`.
+5. Place PC tokens in `party.json` and on the map.
+6. Append the scene to `log/session.md` (see Log format).
 
 **On room transition:** when the party moves to a connected room, update `current_room_id` in `state/public/world.json` to the destination room's `id`, then run scene setup (steps 1–5) for the new room.
 
@@ -236,15 +240,32 @@ Use the dm subagent. MODE: SCENE_SETUP.
 World state: <json>. Goal: <description>.
 Recent events (last 6-8 lines of state/public/events.jsonl): <paste entries>.
 Spotlight (from dungeon.json for this room, if present): <paste spotlight object or "none">.
+Foreshadowing (seeds from dungeon.json that pay off in this room, if any): <paste seed objects or "none">.
+Register: <eerie|tense|grim|quiet|desperate|triumphant>.
 Read state/public/* and state/secret/* as needed. Return the directive JSON.
 ```
 
 **DM (adjudicate):** model: sonnet
 ```
 Use the dm subagent. MODE: ADJUDICATE. Turn <n>. Initiative: <order>.
+Register: <eerie|tense|grim|quiet|desperate|triumphant>.
 Player actions: <json[]>. Resolved facts: <none | world-engine results json>.
 Return the directive JSON.
 ```
+
+### Choosing a register
+Pick the register that fits the moment, not the room:
+
+| Situation | Register |
+|---|---|
+| Entering a new room, threat not yet visible | `eerie` |
+| Combat round, threat active | `tense` |
+| Just cleared a room with losses or near-deaths | `grim` |
+| Just cleared a room cleanly; transition or rest | `quiet` |
+| PC downed or party resources nearly exhausted | `desperate` |
+| Major enemy destroyed or quest beat achieved | `triumphant` |
+
+A single session should move through several registers. If you've used `tense` three rooms in a row, the `quiet` after a clear is dramatically important — don't skip it.
 
 **World-engine (generate):** model: sonnet
 ```

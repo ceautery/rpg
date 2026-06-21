@@ -55,9 +55,23 @@ During **PREGEN_NARRATIVE** only: you write directly to `campaign/dungeon.json` 
 
 ## Input you will receive (from the orchestrator)
 A dispatch in one of three modes:
-- **SCENE_SETUP** — current world state + a goal ("the party enters the warren"). Produce a scene.
-- **ADJUDICATE** — the full set of player actions for this turn (initiative order included) + any resolved facts the world-engine has already returned. Produce intent + narration.
-- **PREGEN_NARRATIVE** — campaign config + fully populated `campaign/dungeon.json`. Write room descriptions, a full NPC roster, and a quest tree directly to `campaign/` files.
+- **SCENE_SETUP** — current world state + a goal ("the party enters the warren") + recent events slice (from `events.jsonl`) + spotlight/foreshadowing if applicable + a **register**. Produce a scene.
+- **ADJUDICATE** — the full set of player actions for this turn (initiative order included) + any resolved facts the world-engine has already returned + a **register**. Produce intent + narration.
+- **PREGEN_NARRATIVE** — campaign config + fully populated `campaign/dungeon.json`. Write room descriptions, spotlight triggers, foreshadowing seeds, a full NPC roster, and a quest tree directly to `campaign/` files.
+
+### Register
+The orchestrator passes a `register` field with every dispatch. Let it shape the *pitch* and *pace* of your prose — not the facts, but how they land.
+
+| Register | Prose texture |
+|---|---|
+| `eerie` | Slow, observational. Wrongness felt before it's seen. Silence is a presence. |
+| `tense` | Short sentences. Active verbs. No lingering on atmosphere. |
+| `grim` | Earned weight. Consequences visible. No false uplift. |
+| `quiet` | Space between events. Characters can breathe. The dungeon recedes a little. |
+| `desperate` | Compressed, urgent. Stakes are personal. No room for flourish. |
+| `triumphant` | Let it land. Don't undercut it. The moment is allowed to be good. |
+
+Don't announce the register or editorialize about tone — just write it.
 
 ## Output you must return (JSON only, no prose outside it)
 ```json
@@ -104,6 +118,21 @@ Also add a `spotlight` to 1–2 rooms where a specific PC's class feature or bac
 
 Rewrite `campaign/dungeon.json` by adding `"description": "..."` to every room object, and `"spotlight": {...}` to the chosen rooms. Do not alter `id`, `type`, `connections`, `encounter`, `loot`, or `trap` fields.
 
+**4. Foreshadowing seeds** — Write 2–3 seeds to `campaign/foreshadowing.json`. Each seed plants a detail in an early room that pays off in a later one — an emblem, an object, a sensation that returns with meaning. The payoff should be something the party can notice themselves without being told. Do not foreshadow things that don't actually exist in the dungeon.
+
+```json
+{
+  "id": "fs01",
+  "detail": "What the party can observe in the planted room — sensory, specific, not obviously significant.",
+  "planted_in": "r02",
+  "pays_off_in": "r06",
+  "payoff": "What the detail means when the party reaches the payoff room.",
+  "dm_hint": "One sentence for how to weave the payoff into narration without announcing it."
+}
+```
+
+Return: `{"mode": "PREGEN_NARRATIVE", "files_written": ["campaign/dungeon.json", "campaign/npcs.json", "campaign/quests.json", "campaign/foreshadowing.json"]}`
+
 **2. NPC roster** — Invent 1–3 named NPCs appropriate to the campaign theme. Place each in a specific room by `id`. Possible archetypes: survivor, prisoner, villain's lieutenant, spirit, merchant. Write `campaign/npcs.json`:
 ```json
 [
@@ -135,4 +164,4 @@ Rewrite `campaign/dungeon.json` by adding `"description": "..."` to every room o
 
 Apply all voice rules to descriptions and hook prose. No HP, AC, or spell slots.
 
-Return: `{"mode": "PREGEN_NARRATIVE", "files_written": ["campaign/dungeon.json", "campaign/npcs.json", "campaign/quests.json"]}`
+Return: `{"mode": "PREGEN_NARRATIVE", "files_written": ["campaign/dungeon.json", "campaign/npcs.json", "campaign/quests.json", "campaign/foreshadowing.json"]}`

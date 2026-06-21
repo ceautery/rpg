@@ -1,0 +1,26 @@
+[
+  {
+    "id": "fs01",
+    "detail": "Among the scattered tin figures in the offering vault (r03), three are shaped like warhorses with a heraldic emblem on their flanks — a spiral sun worked in crude hammer marks.",
+    "planted_in": "r03",
+    "pays_off_in": "r05",
+    "payoff": "The corroded iron chanfrons on the skeletal warhorses carry the same emblem — the party recognises Vrath's cavalry standard. The horses were his in life and are still his in death.",
+    "dm_hint": "At r05 scene setup, describe the chanfrons with the spiral-sun mark. Let whoever noticed the tin figures connect it without being told."
+  },
+  {
+    "id": "fs02",
+    "detail": "The emptied leather satchel in r06 has a hasty chalk mark on the inside flap — a directional arrow pointing south, toward r07.",
+    "planted_in": "r06",
+    "pays_off_in": "r07",
+    "payoff": "The satchel belongs to whoever broke the ward. The chalk arrow is their navigation mark. They knew exactly where they were going and went there deliberately.",
+    "dm_hint": "At r07, describe fresh tool marks on the broken standing stone — not age damage. The ward was broken recently and on purpose. Let the party understand that someone opened this before them."
+  },
+  {
+    "id": "fs03",
+    "detail": "The corridor walls grow colder with each room past r04 — not cold like winter, but cold like something pressing outward through the stone from further in.",
+    "planted_in": "r04",
+    "pays_off_in": "r08",
+    "payoff": "The cold has been emanating from the warlord's chamber the whole time. When the r08 door opens, it intensifies and resolves into a source: the Wight at the far end of the room, facing them, has been the cause of it since r04.",
+    "dm_hint": "Mention the deepening cold at r05 and r06 SCENE_SETUP. At r07 it should be notable. At r08 it becomes unmistakable — the party has been feeling this thing approach before they ever see it."
+  }
+]

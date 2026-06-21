@@ -27,6 +27,7 @@
 | `campaign/config.json` | User |
 | `campaign/dungeon.json` | world-engine (PREGEN_STRUCTURE → PREGEN_POPULATE), then DM (PREGEN_NARRATIVE adds `description` + `spotlight`) — sequential pre-gen dispatches only |
 | `campaign/encounters.json` | world-engine (PREGEN_POPULATE) |
+| `campaign/foreshadowing.json` | DM (PREGEN_NARRATIVE) |
 | `campaign/npcs.json` | DM (PREGEN_NARRATIVE) |
 | `campaign/quests.json` | DM (PREGEN_NARRATIVE); orchestrator toggles `completed` flags only |
 
