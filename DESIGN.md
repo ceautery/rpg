@@ -96,11 +96,21 @@ Stone Bauer (human fighter) added as second party member. Terminal prompt path: 
 
 **Completed 2026-06-20.** Coordination phase (step 2b in run.md), Haiku model selection (all dispatch templates annotated), and log simplification (session.html untracked, tail note added) implemented across .claude/agents/player.md, run.md, and .gitignore. `MILESTONES.md` deferred to M7.
 
-### M7 — Campaign pre-generation ✓ *completed 2026-06-20*
+### ✅ M7 — Campaign pre-generation + experience quality pass *completed 2026-06-21*
 - **Separate world-building from gameplay.** New phase before play: DM + world-engine generate the full campaign module — all rooms, room connections, NPC roster with goals, quest tree, encounter tables, loot tables, trap placements.
 - Output: `campaign/dungeon.json`, `campaign/npcs.json`, `campaign/quests.json`, `campaign/encounters.json`.
 - Gameplay reads from `campaign/` rather than generating scenes live. Scene setup becomes a file read + token placement, not a dispatch.
 - Enables consistent DM behavior (whole-dungeon context) and faster scene transitions.
+
+**Experience quality improvements (also completed in M7):**
+- **PC journal** (`state/public/journal.json`): rolling 5-entry memory per PC in fiction voice; passed in all player dispatches so characters feel continuous across rooms.
+- **Consequence propagation log** (`state/public/events.jsonl`): append-only record of significant events; DM reads 6–8 entries at every SCENE_SETUP for automatic continuity without manual briefing.
+- **`room_type` dispatch routing**: `combat/trap/exploration/social/rest` each trigger distinct dispatch sequences; trap rooms resolve entry saves before initiative.
+- **PC spotlight triggers** (`spotlight` in `dungeon.json`): 1–2 rooms per dungeon activate a specific PC's class feature naturally (Sable's Divine Sense in r05, Maren's Cleric lore in r07).
+- **Emotional register hints**: orchestrator passes `register` (eerie/tense/grim/quiet/desperate/triumphant) in every DM dispatch; DM shapes prose pitch accordingly — tense uses short sentences, quiet gives space.
+- **Foreshadowing seeds** (`campaign/foreshadowing.json`): 2–3 planted details that pay off in later rooms; DM receives matching seeds at SCENE_SETUP for the payoff room.
+- **NPC relationship state** (`state/public/npc_relations.json`): evolving attitude/last-interaction/promises per NPC; DM reads before any NPC scene so voicing stays consistent across rooms.
+- **Named loot with story** (`campaign/named_items.json`): one named item per dungeon with an in-world description and an investigation secret that reframes the dungeon's story; world-engine drops it in the boss room loot.
 
 ### M8 — Import + session config
 - **Foundry VTT module import:** `scripts/import_foundry.py` maps Foundry's JSON module format to `campaign/`. Community SRD modules provide real dungeon content without manual generation.

@@ -24,7 +24,7 @@ You never let a player (agent or human) see `state/secret/`. You build each play
       - Log to `log/session.md`: `## Campaign Generation — <config.name> (<config.room_count> rooms, level <config.party_level>)`
       - **Dispatch 1:** world-engine in `PREGEN_STRUCTURE` mode (model: sonnet). Pass `campaign/config.json` contents inline. After the dispatch returns, verify `campaign/dungeon.json` exists — if not, stop and report.
       - **Dispatch 2:** world-engine in `PREGEN_POPULATE` mode (model: sonnet). Pass `campaign/config.json` and the just-written `campaign/dungeon.json` contents inline. After it returns, verify `campaign/encounters.json` exists — if not, stop and report.
-      - **Dispatch 3:** dm in `PREGEN_NARRATIVE` mode (model: sonnet). Pass `campaign/config.json` and the fully-populated `campaign/dungeon.json` contents inline. After it returns, verify `campaign/npcs.json` and `campaign/quests.json` exist — if not, stop and report.
+      - **Dispatch 3:** dm in `PREGEN_NARRATIVE` mode (model: sonnet). Pass `campaign/config.json` and the fully-populated `campaign/dungeon.json` contents inline. After it returns, verify `campaign/npcs.json`, `campaign/quests.json`, `campaign/named_items.json`, and `campaign/foreshadowing.json` exist — if not, stop and report.
       - Log to `log/session.md`: `*Campaign ready: <room_count> rooms · <npc_count> NPCs · <quest_count> quests.*`
 3. Determine **new game** vs **resume**: if `state/public/world.json` exists and has a live scene, resume; otherwise start fresh.
 4. On resume, load all of `state/public` (and `state/secret` for your own bookkeeping) and continue at the current turn. State on disk is the source of truth; your context is disposable.
@@ -126,7 +126,7 @@ Dispatch **world-engine** in `RESOLVE` mode with the DM's `mechanic_requests`. I
 
 ### 6. Apply (you are the single writer here)
 For each `result`, update `state/public`:
-- `party.json`: `hp += hp_delta` (clamp at 0; mark `down` at 0), add/remove `conditions`, set `position`, add `loot`/items to `inventory`.
+- `party.json`: `hp += hp_delta` (clamp at 0; mark `down` at 0), add/remove `conditions`, set `position`, add `loot`/items to `inventory`. If the loot contains a named item (`"named": true`), flag it in inventory as `{"item": "<name>", "named": true, "investigated": false}` — the DM should mention it in narration and a PC may investigate it for its secret (world-engine resolves the Investigation check; if DC met, read `secret` from `campaign/named_items.json` and pass to DM for narration).
 - `encounter.json`: advance the turn pointer; remove defeated combatants from the public roster.
 - `quest_log.json`: set any flags the results imply.
 Monster true HP is already written by the world-engine; don't duplicate it.
@@ -162,6 +162,16 @@ Append one JSON line to `state/public/events.jsonl` whenever something consequen
 ```
 
 Write `actors` only when a specific creature or NPC is involved. The `detail` field is what the DM reads; make it actionable (where did the fleeing enemy go, what condition is it in, what should the DM expect).
+
+### 8c. Update NPC relations (after any significant NPC interaction)
+After any turn where the party interacts meaningfully with an NPC, update that NPC's entry in `state/public/npc_relations.json`. Meaningful interaction includes: first contact, attitude shift, promise made or broken, deception detected, NPC death.
+
+**Fields to update:**
+- `attitude`: adjust on the scale `unknown → neutral → cautious → friendly → hostile`
+- `last_interaction`: brief note on what happened this turn ("party healed Edwyn; he shared the Crestfall connection")
+- `promises_made`: append any promise the NPC made (`{"by": "npc_01", "to": "party", "promise": "will guide them to the inner ward"}`) or the party made to the NPC
+
+The DM reads this file before any scene involving that NPC — so attitude changes carry forward automatically into NPC voice and tactics.
 
 ---
 
@@ -297,7 +307,7 @@ Populate each room with encounter rosters, loot tables, and traps. Update campai
 ```
 Use the dm subagent. MODE: PREGEN_NARRATIVE.
 Config: <campaign/config.json contents>. Populated dungeon: <campaign/dungeon.json contents>.
-Write a 2–4 sentence description for every room into campaign/dungeon.json. Write campaign/npcs.json (1–3 named NPCs with goals) and campaign/quests.json (1 primary quest + 1–2 side objectives).
+Write a 2–4 sentence description for every room into campaign/dungeon.json. Add spotlight triggers (1–2 rooms) and write campaign/npcs.json (1–3 named NPCs with goals), campaign/quests.json (1 primary quest + 1–2 side objectives), campaign/named_items.json (1 named item with story), and campaign/foreshadowing.json (2–3 seeds).
 ```
 
 ---

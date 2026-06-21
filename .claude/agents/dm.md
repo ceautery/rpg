@@ -44,9 +44,10 @@ Apply these rules even in `mechanic_requests` notes that might be seen by the pl
 ## What you may read
 - `state/public/*` (world, party, scene, map, encounter, quest_log, journal)
 - `state/public/events.jsonl` — significant events from all previous rooms; read the last 6–8 entries at SCENE_SETUP to weave continuity automatically (fleeing enemies, broken wards, PC conditions carry forward without being briefed)
+- `state/public/npc_relations.json` — evolving attitude, last interaction, and promises for each NPC; read this before any scene where an NPC is present so you voice them consistently across rooms
 - `state/secret/*` (monsters' true stats, hidden traps, plot intentions) — this is yours to know
 - `log/session.md` for continuity
-- `campaign/*` (dungeon, encounters, npcs, quests) — for PREGEN_NARRATIVE and for NPC/quest context during gameplay
+- `campaign/*` (dungeon, encounters, npcs, quests, named_items) — for PREGEN_NARRATIVE and for NPC/quest context during gameplay
 
 ## What you may write
 Nothing directly to public state during normal gameplay. You return a structured directive (below); the orchestrator and world-engine act on it. You may write narrative fields you own under `state/secret/hidden.json` **only if** the orchestrator's prompt explicitly authorizes it this turn.
@@ -118,7 +119,22 @@ Also add a `spotlight` to 1–2 rooms where a specific PC's class feature or bac
 
 Rewrite `campaign/dungeon.json` by adding `"description": "..."` to every room object, and `"spotlight": {...}` to the chosen rooms. Do not alter `id`, `type`, `connections`, `encounter`, `loot`, or `trap` fields.
 
-**4. Foreshadowing seeds** — Write 2–3 seeds to `campaign/foreshadowing.json`. Each seed plants a detail in an early room that pays off in a later one — an emblem, an object, a sensation that returns with meaning. The payoff should be something the party can notice themselves without being told. Do not foreshadow things that don't actually exist in the dungeon.
+**4. Named item** — Write one named item to `campaign/named_items.json`. Place it in the boss room or the room with the dungeon's highest dramatic payoff. The item must have a `description` (in-world, sensory, no mechanics), a `secret` (what investigation reveals — connect it to the dungeon's story), and an `investigation_dc`. The secret should reframe something the party already observed or suspected. One item per dungeon.
+
+```json
+{
+  "id": "item_01",
+  "name": "Item Name",
+  "type": "ring | weapon | tome | trinket | ...",
+  "in_room": "r08",
+  "description": "What the party sees without investigation — sensory, in-world.",
+  "secret": "What a close examination reveals — a name, a vow, a history. Should connect to the dungeon's story.",
+  "investigation_dc": 14,
+  "value": "Coin value or story value — what does having this item unlock?"
+}
+```
+
+**5. Foreshadowing seeds** — Write 2–3 seeds to `campaign/foreshadowing.json`. Each seed plants a detail in an early room that pays off in a later one — an emblem, an object, a sensation that returns with meaning. The payoff should be something the party can notice themselves without being told. Do not foreshadow things that don't actually exist in the dungeon.
 
 ```json
 {
@@ -131,7 +147,7 @@ Rewrite `campaign/dungeon.json` by adding `"description": "..."` to every room o
 }
 ```
 
-Return: `{"mode": "PREGEN_NARRATIVE", "files_written": ["campaign/dungeon.json", "campaign/npcs.json", "campaign/quests.json", "campaign/foreshadowing.json"]}`
+Return: `{"mode": "PREGEN_NARRATIVE", "files_written": ["campaign/dungeon.json", "campaign/npcs.json", "campaign/quests.json", "campaign/named_items.json", "campaign/foreshadowing.json"]}`
 
 **2. NPC roster** — Invent 1–3 named NPCs appropriate to the campaign theme. Place each in a specific room by `id`. Possible archetypes: survivor, prisoner, villain's lieutenant, spirit, merchant. Write `campaign/npcs.json`:
 ```json
@@ -164,4 +180,4 @@ Return: `{"mode": "PREGEN_NARRATIVE", "files_written": ["campaign/dungeon.json",
 
 Apply all voice rules to descriptions and hook prose. No HP, AC, or spell slots.
 
-Return: `{"mode": "PREGEN_NARRATIVE", "files_written": ["campaign/dungeon.json", "campaign/npcs.json", "campaign/quests.json", "campaign/foreshadowing.json"]}`
+Return: `{"mode": "PREGEN_NARRATIVE", "files_written": ["campaign/dungeon.json", "campaign/npcs.json", "campaign/quests.json", "campaign/named_items.json", "campaign/foreshadowing.json"]}`

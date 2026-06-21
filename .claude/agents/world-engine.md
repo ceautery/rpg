@@ -110,7 +110,7 @@ Use `dice.py` to pick from the returned list by rolling `1dN` where N is the res
 - 3–4: coins only — roll `2d10` gold
 - 5–6: no loot
 - Entrance room always has no loot regardless of roll.
-- Boss room always has `1d6 * 10` gold plus one magic item (query `oracle.py magic-items --source srd-2024 --fields name,rarity`; pick with `1dN`).
+- Boss room always has `1d6 * 10` gold plus one magic item (query `oracle.py magic-items --source srd-2024 --fields name,rarity`; pick with `1dN`), plus the named item from `campaign/named_items.json` where `in_room` matches the boss room id — add it to the loot table as `{"item": "<name>", "count": 1, "named": true}`.
 
 **Trap** (`trap_<id>`) — Roll `1d6` via `dice.py`: 1–2 = trap present, 3–6 = none.
 - If present: roll DC = `1d4+10`, damage = `1d8`, save = `"dex"`.

@@ -1,0 +1,12 @@
+[
+  {
+    "id": "item_01",
+    "name": "The Warden's Seal",
+    "type": "ring",
+    "in_room": "r08",
+    "description": "A heavy iron ring, too large for a finger — meant to be worn on a gauntlet. The outer face is stamped with a spiral sun, the same mark as the chanfrons on the warhorse skeletons. It has never left this tomb.",
+    "secret": "The inner band is engraved in the same old dialect as the r07 inscriptions: 'I will hold until the line holds.' It is a vow. Vrath was not interred here as a prisoner — he stayed willingly as the ward's anchor. Whatever broke the ward in r07 broke the compact he swore to uphold. Someone released him from outside.",
+    "investigation_dc": 14,
+    "value": "No coin value. The Crestfall temple records Brother Edwyn mentioned would identify this ring as proof of who originally commissioned the ward — and implicitly, who was responsible for its breaking."
+  }
+]

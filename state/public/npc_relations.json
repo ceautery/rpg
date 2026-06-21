@@ -1,0 +1,24 @@
+{
+  "_note": "Evolving per-NPC relationship state. Orchestrator updates after each significant NPC interaction. DM reads this before any scene involving NPCs. Attitude scale: unknown / neutral / cautious / friendly / hostile.",
+  "npc_01": {
+    "name": "Brother Edwyn",
+    "attitude": "unknown",
+    "last_interaction": null,
+    "promises_made": [],
+    "notes": "Injured and hiding in the preparation chamber (r04). No party contact yet. Likely to be frightened on first contact; will warm quickly if the party seems capable."
+  },
+  "npc_02": {
+    "name": "Sera Dobb",
+    "attitude": "unknown",
+    "last_interaction": null,
+    "promises_made": [],
+    "notes": "Somewhere in the looted vault (r06), searching through grave goods. No party contact yet. Will lie about her name and deny involvement with the broken ward. Has the chalk-marked satchel."
+  },
+  "npc_03": {
+    "name": "Vrath",
+    "attitude": "hostile",
+    "last_interaction": null,
+    "promises_made": [],
+    "notes": "The warlord's wight, waiting in r08. Does not parley. Attitude is fixed — treat as encounter, not conversation."
+  }
+}
