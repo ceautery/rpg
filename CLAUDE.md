@@ -15,7 +15,7 @@
 | File / directory | Writer |
 |---|---|
 | `state/public/party.json`, `encounter.json` (applied results) | orchestrator |
-| `state/public/world.json`, `quest_log.json`, `scene.json` | orchestrator |
+| `state/public/world.json`, `quest_log.json`, `scene.json`, `journal.json` | orchestrator |
 | `state/public/map.txt`, `encounter.json` (mechanical scaffold) | world-engine |
 | `state/secret/monsters.json` | world-engine |
 | `state/secret/hidden.json` | DM (when orchestrator authorizes) |

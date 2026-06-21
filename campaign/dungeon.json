@@ -2,6 +2,7 @@
   {
     "id": "r01",
     "type": "entrance",
+    "room_type": "combat",
     "description": "A stone threshold, old enough that the mason's marks on its lintel have been worn to shallow grooves by centuries of wind and creeping moss. The sealing stone that once blocked the entrance has been levered aside and left canted against the wall — someone pried it open weeks ago and never replaced it. The smell that rises from below is ancient and cold, the particular rot of a place that has been closed off from the living world for a very long time and has just been reminded that the world exists.",
     "connections": ["r02"],
     "encounter": {"table_ref": "enc_r01"},
@@ -11,6 +12,7 @@
   {
     "id": "r02",
     "type": "corridor",
+    "room_type": "combat",
     "description": "The passage stretches some forty feet, cut low and narrow into the bedrock, with burial niches carved into both walls at shoulder height. Each niche was sealed with a fitted stone tablet, but most of those tablets lie broken on the floor, shoved outward from within. The linen wrappings that once shrouded the occupants have been dragged into the corridor and lie in pale, tattered drifts — as if the dead dressed themselves in darkness and then discarded what they no longer needed. The air does not move.",
     "connections": ["r01", "r03"],
     "encounter": {"table_ref": "enc_r02"},
@@ -20,6 +22,7 @@
   {
     "id": "r03",
     "type": "vault",
+    "room_type": "combat",
     "description": "This side-vault was built to receive the offering goods of the honoured dead — clay urns of oil, bundles of dried herbs, small figures of hammered tin. The urns have all been knocked from their shelves and shattered; the herbs are black dust; the tin figures are scattered across the floor like dropped coins. A cold that has nothing to do with the season sits in the corners of this room and does not disperse. The darkness here feels watched.",
     "connections": ["r02", "r04"],
     "encounter": {"table_ref": "enc_r03"},
@@ -29,6 +32,7 @@
   {
     "id": "r04",
     "type": "chamber",
+    "room_type": "combat",
     "description": "A preparation chamber where the builders once readied the dead for interment: two long stone slabs dominate the centre of the room, their surfaces still faintly marked with the channels that once drained away what preparation required. Corroded iron instruments hang from hooks on the south wall, some fallen to the floor and gone to rust. A low wooden shelf along the east wall has mostly collapsed under its own rot, spilling what remains of its contents — stoppered jars, scraps of linen, a small hand-scale tipped on its side — across the flagstones.",
     "connections": ["r03", "r05"],
     "encounter": {"table_ref": "enc_r04"},
@@ -38,6 +42,7 @@
   {
     "id": "r05",
     "type": "chamber",
+    "room_type": "trap",
     "description": "The corridor opens here into a wide hall where three passages branch away into darkness — east, south, and west — and the ceiling rises high enough that torchlight does not fully reach it. The floor is broad flagstone, worn smooth by centuries, but a stretch near the centre looks subtly wrong: the stones there are slightly darker, the mortar lines too uniform, as if the floor was repaired at some point and the repair did not take. The bones of three great warhorses stand distributed across the room, still wearing the corroded remnants of barding and iron chanfrons, posed as if grazing in a field they can no longer see.",
     "connections": ["r04", "r06", "r07"],
     "encounter": {"table_ref": "enc_r05"},
@@ -47,6 +52,7 @@
   {
     "id": "r06",
     "type": "vault",
+    "room_type": "combat",
     "description": "Someone has been through this vault already — and recently. Grave goods that should have remained undisturbed for generations have been pulled from their stone shelves and sorted through with a rough, impatient hand: some piled at the centre of the room, others flung against the walls. A leather satchel, emptied, lies near the east door. Whatever was taken, whoever took it, they were in a hurry and did not finish the job. The remaining goods are still scattered around the room amid a litter of broken pottery and trampled linen.",
     "connections": ["r05", "r07"],
     "encounter": {"table_ref": "enc_r06"},
@@ -56,6 +62,7 @@
   {
     "id": "r07",
     "type": "vault",
+    "room_type": "combat",
     "description": "The antechamber before the warlord's tomb is marked differently from every room behind it: the walls here are carved with continuous text in an old dialect, column after column of dense, angular script running floor to ceiling. Those who can read it would find the same warning repeated in rotating variations — a threat, a promise, and a record of what was interred here and why it should not be disturbed. At the centre of the room, a crescent of standing stones no taller than a man's knee forms an old ward that has been broken: one of the stones lies toppled and cracked, and the faint luminescence that might once have traced the ward's outline is entirely gone.",
     "connections": ["r06", "r05", "r08"],
     "encounter": {"table_ref": "enc_r07"},
@@ -65,6 +72,7 @@
   {
     "id": "r08",
     "type": "boss",
+    "room_type": "combat",
     "description": "The burial chamber of the warlord Vrath is vast, built to impress the dead as much as the living: the ceiling vaults high overhead on heavy stone ribs, and the walls are hung with the corroded remnants of battle-standards, their fabric rotted to nothing but their iron poles still upright in their brackets. At the chamber's heart stands a sarcophagus of dark grey stone, large enough to hold a man in armour — and it is open, the lid shoved to the floor in pieces, the inside empty. What emerged from it stands at the far end of the room, turned toward the entrance as if it has been waiting. The cold here is absolute. The torches that burn in the wall-sconces cast light but seem to produce no warmth at all.",
     "connections": ["r07"],
     "encounter": {"table_ref": "enc_r08"},

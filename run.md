@@ -48,10 +48,22 @@ Repeat until an end condition fires. Each turn:
 Read `state/public/*` fresh. Increment/confirm the turn number. Note the active PCs and, in combat, the initiative order and turn pointer from `encounter.json`.
 
 ### 2. Scene setup (only when a new scene/encounter is needed)
-1. Read `current_room_id` from `state/public/world.json`. Find the matching room object in `campaign/dungeon.json`. Its `description` field is the scene prose — no DM dispatch needed.
-2. Look up `encounter.table_ref` for this room in `campaign/encounters.json` to get the pre-selected monster roster. Dispatch **world-engine** in `GENERATE` mode, passing the roster as an explicit list (not a free-selection request). World-engine rolls each monster's HP, writes `map.txt`, `encounter.json`, and `state/secret/monsters.json`.
-   - If the room's `trap` is non-null, resolve `room.trap.table_ref` in `campaign/encounters.json` (same lookup as the encounter ref) to get the full trap object `{dc, damage_die, save}` — pass it inline to the GENERATE request so world-engine places it on the map with the pre-rolled DC.
-3. Build `state/public/scene.json` from: the pre-written `description`, the public map, visible creatures by name and apparent state (never numeric HP), exits derived from the room's `connections` list, and an empty `npc_dialogue` list. **Strip anything from `secret/`.**
+
+Check `room_type` in `campaign/dungeon.json` to select the correct dispatch sequence:
+
+| `room_type` | Dispatch sequence |
+|---|---|
+| `combat` | Standard: WE generate → [Coordination] → TAKE_TURN → DM ADJUDICATE → WE RESOLVE → Apply → DM narrate |
+| `trap` | WE resolves trap first (PC DEX saves, damage) → DM narrates trap → then standard combat sequence if monsters present |
+| `exploration` | [Coordination] → PCs declare investigation actions → WE RESOLVE skill checks → DM narrates discoveries. No ADJUDICATE needed. |
+| `social` | DM voices NPC → PCs respond → [WE RESOLVE persuasion/deception check if declared] → DM narrates outcome |
+| `rest` | Orchestrator applies rest directly (see Rest procedure) → DM narrates briefly |
+
+For all room types:
+1. Read `current_room_id` from `state/public/world.json`. Find the matching room in `campaign/dungeon.json`. Its `description` field is the scene prose — no DM dispatch needed.
+2. For **combat** and **trap** rooms: look up `encounter.table_ref` in `campaign/encounters.json`. Dispatch **world-engine** in `GENERATE` mode with the explicit roster. World-engine rolls HP, writes `map.txt`, `encounter.json`, and `state/secret/monsters.json`.
+   - For **trap** rooms: also pass the trap object `{dc, damage_die, save}` from `campaign/encounters.json[trap_ref]`. WE places it on the map and resolves entry (PC DEX saves) before any initiative is rolled.
+3. Build `state/public/scene.json` from: the pre-written `description`, the public map, visible creatures by name and apparent state (never numeric HP), exits from the room's `connections` list, and an empty `npc_dialogue` list. **Strip anything from `secret/`.**
 4. Place PC tokens in `party.json` and on the map.
 5. Append the scene to `log/session.md` (see Log format).
 
@@ -93,7 +105,7 @@ Replace "before entering" with a location cue when relevant ("before crossing th
 
 ### 3. Collect actions — THE GATE
 For every active PC this turn:
-- **Agent PC:** dispatch the **player** subagent in `TAKE_TURN` mode. Pass it, inline, only: its own sheet (from `party.json`) and its perception packet (the public scene + its map view). Never pass secret state or other players' reasoning.
+- **Agent PC:** dispatch the **player** subagent in `TAKE_TURN` mode. Pass it, inline, only: its own sheet (from `party.json`), its perception packet (the public scene + its map view), and its journal slice from `state/public/journal.json` (last 3 entries for this PC). Never pass secret state or other players' reasoning.
 - **Human PC:** present the scene and the human's sheet at the terminal, then prompt: *"What do you do?"* Capture free text and coerce it into the action schema (ask a brief follow-up if intent/target is ambiguous).
 
 Write each returned/captured action to `state/actions/<turn>.<actor>.json`. **Do not proceed until every active PC's action file for this turn exists.** This gate is identical for agents and the human.
@@ -121,9 +133,19 @@ Dispatch **dm** again in `ADJUDICATE` mode with the same actions plus the world-
 ### 8. End-of-turn check
 Act on `scene_status`:
 - `ongoing` → loop to step 1 (or step 3 if same scene continues).
-- `cleared` / `quest_beat` → update `world.json`/`quest_log.json`, then set up the next scene (step 2).
+- `cleared` / `quest_beat` → update `world.json`/`quest_log.json`, write journal entries (step 8a), then set up the next scene (step 2).
 - `party_down` → narrate the conclusion and end the session.
 Also end if the human asks to quit. Because all state is on disk, quitting is safe at any turn boundary; resuming re-enters at step 1.
+
+### 8a. Write journal entries (on `cleared` or `quest_beat`)
+After each room clears, append one entry per PC to `state/public/journal.json`. Write in each PC's voice — first-person, fiction language only, no mechanical terms. 2–3 sentences covering: what they faced, what worked, and one emotional or tactical note their character would carry forward. Keep the 5 most recent entries per PC; trim older ones.
+
+**Format:**
+```json
+{ "room_id": "r04", "entry": "The preparation chamber was heavier work than the vault..." }
+```
+
+These entries are passed to player agents in future TAKE_TURN and COORDINATE dispatches so characters feel continuous across rooms.
 
 ---
 
@@ -168,14 +190,20 @@ Model assignments: **haiku** for fast/bounded tasks, **sonnet** for creative/gen
 **Player (coordinate):** model: haiku
 ```
 Use the player subagent. MODE: COORDINATE. Turn <n>. You control <actor>.
-Scene: <prose>. Sheet: <json>. Prior transcript: <running transcript or "none">.
+Scene: <prose>. Journal (your recent experiences): <last 3 journal entries for this PC>.
+Sheet [private — do NOT reference these terms in speech]: <json>.
+Prior transcript: <running transcript or "none">.
 Speak one or two lines in character. Return plain text, not JSON.
+VOICE: No mechanical terms in speech. "initiative" → "moves fast"; "spell slot" → "I have a little left in me"; "AC" → "the armour should hold". Your character knows the world, not the rulebook.
 ```
 
 **Player (take turn):** model: haiku
 ```
 Use the player subagent. MODE: TAKE_TURN. Turn <n>. You control <actor>.
-Sheet: <json>. Perception packet: <json>. Return only the action JSON.
+Journal (your recent experiences): <last 3 journal entries for this PC>.
+Sheet [private tactical reference — do NOT use these terms in your description]: <json>.
+Perception packet: <json>.
+Return only the action JSON. The `description` field must be in-world language only — no HP values, no AC, no roll modifiers, no spell slot counts.
 ```
 
 **Player (create character):** model: sonnet

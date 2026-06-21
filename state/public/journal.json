@@ -1,0 +1,31 @@
+{
+  "_note": "Rolling record of each PC's experience in cleared rooms. Orchestrator writes one entry per PC after each room clear. Keep the 5 most recent entries per PC. Fiction language only — no mechanical terms.",
+  "maren": [
+    {
+      "room_id": "r01",
+      "entry": "Two skeletons met us at the threshold — old things, hollow of everything but reflex. My faith drove one apart before it could close the distance; Sable's blade finished the other. The entrance holds, but whatever disturbed this place came through here first, and it knew what it was looking for."
+    },
+    {
+      "room_id": "r02",
+      "entry": "The burial corridor had ghouls — three of them, pressing out from the wall niches, with the hunger of things that have been waiting. I laid a wasting curse across their kind before the first blow fell. Sable's divine fire sent two ghouls and the skeleton fleeing south in terror. The one that held its ground I destroyed with a word of power, though the effort cost me. The corridor holds."
+    },
+    {
+      "room_id": "r03",
+      "entry": "The offering vault held something worse — a specter, incorporeal and cold, that drifted straight toward me and reached for me twice. Both times its touch found nothing. I drove it back with sacred fire and a conjured weapon that hung in the air like a second will until the spirit recognised it was losing and fled through the south wall. The shambling dead it left behind, Sable and I unmade. Whatever that thing is, it is ahead of us now, and it is not finished."
+    }
+  ],
+  "sable": [
+    {
+      "room_id": "r01",
+      "entry": "Two skeletons at the threshold. Maren's channelling drove one to pieces before I reached it; I put down the second. Fast work, nothing that should worry us — but something opened this tomb before we did, and it came through the same door we did, and it knew what it wanted."
+    },
+    {
+      "room_id": "r02",
+      "entry": "The corridor was tight and there were three ghouls and a skeleton in it, all hungry. I called on my oath and pushed two of the ghouls and the skeleton back with holy fire — they fled south, ahead of us. Maren finished the last one with a single word. My divine reserves are empty now. What comes next, I meet with steel and whatever courage is left."
+    },
+    {
+      "room_id": "r03",
+      "entry": "The vault had a specter — something without a body, made of cold light and reach — and it wanted Maren. She held it off twice and drove it back with fire and a conjured blade until it ran through solid stone ahead of us, wounded but not finished. I cleared the shambling dead while she worked. That spirit is in the next room. It has had time to collect itself."
+    }
+  ]
+}
